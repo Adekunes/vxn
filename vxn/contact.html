@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b1220" />
+    <meta name="description" content="Contact VXN CRM for demos, pricing, and partnership inquiries." />
+    <title>Contact – VXN CRM</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script defer src="assets/js/main.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container nav" role="navigation" aria-label="Main">
+        <a class="brand" href="index.html" aria-label="VXN CRM Home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>VXN CRM</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="solutions.html">Solutions</a>
+          <a href="about.html">About</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html" aria-current="page">Contact</a>
+        </nav>
+        <div class="nav-cta">
+          <a class="btn btn-primary" href="contact.html" aria-current="page">Request a demo</a>
+          <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 6h16M4 12h16M4 18h16" stroke="#fff" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-drawer" hidden>
+        <div class="stack container">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="solutions.html">Solutions</a>
+          <a href="about.html">About</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html" aria-current="page">Contact</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="section">
+        <div class="container">
+          <span class="eyebrow reveal">Contact</span>
+          <h1 class="reveal" data-reveal-delay="60">Let’s talk about your goals</h1>
+          <p class="reveal" data-reveal-delay="120">Tell us about your team and workflows. We’ll tailor a quick demo and share pricing that fits your stage.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container contact">
+          <form class="form reveal" data-validate="contact" aria-label="Contact form">
+            <div class="grid-2">
+              <div class="field">
+                <label for="name">Full name</label>
+                <input id="name" name="name" type="text" autocomplete="name" required />
+              </div>
+              <div class="field">
+                <label for="email">Work email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
+              </div>
+            </div>
+            <div class="grid-2">
+              <div class="field">
+                <label for="company">Company</label>
+                <input id="company" name="company" type="text" autocomplete="organization" required />
+              </div>
+              <div class="field">
+                <label for="team_size">Team size</label>
+                <input id="team_size" name="team_size" type="text" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="message">How can we help?</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <div style="display:flex; gap:10px; align-items:center;">
+              <button class="btn btn-primary" type="submit">Send message</button>
+              <span class="muted">We’ll respond within 1 business day.</span>
+            </div>
+          </form>
+
+          <div class="stack reveal" data-reveal-delay="100">
+            <div class="card">
+              <strong>Sales</strong>
+              <p class="muted">sales@vxncrm.com</p>
+            </div>
+            <div class="card">
+              <strong>Support</strong>
+              <p class="muted">support@vxncrm.com</p>
+            </div>
+            <div class="card" aria-label="Map placeholder" style="height: 260px; display:grid; place-items:center;">
+              <span class="muted">Map placeholder</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="muted">© <span id="year"></span> VXN CRM. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="#">Privacy</a>
+          <a href="#">Security</a>
+          <a href="#">Status</a>
+        </div>
+      </div>
+      <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    </footer>
+  </body>
+  </html>
+
+
