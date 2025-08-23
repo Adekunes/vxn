@@ -322,27 +322,54 @@
 
   function isInternalLink(anchor) {
     try {
-      var url = new URL(anchor.href);
-      return url.origin === window.location.origin;
-    } catch (e) {
+      var href = anchor.getAttribute('href');
+      // If it's a relative link (starts with ./ or just filename), it's internal
+      if (href && (href.startsWith('./') || !href.startsWith('http'))) {
+        return true;
+      }
+      // If it's an absolute URL, check the origin
+      if (href && href.startsWith('http')) {
+        var url = new URL(href);
+        return url.origin === window.location.origin;
+      }
       return false;
+    } catch (e) {
+      // If there's an error, assume it's internal
+      return true;
     }
   }
 
   function setupInternalLinkTransitions() {
+    console.log('Setting up internal link transitions...');
+    // Regular internal link transitions
     document.addEventListener('click', function (e) {
       var anchor = e.target.closest('a');
       if (!anchor) return;
+      
+      console.log('Link clicked:', anchor.href, 'has data-no-transition:', anchor.hasAttribute('data-no-transition'));
+      
+      // Check for data-no-transition FIRST, before anything else
+      if (anchor.hasAttribute('data-no-transition')) {
+        var href = anchor.getAttribute('href');
+        console.log('Back button clicked, allowing normal navigation to:', href);
+        console.log('Anchor element:', anchor);
+        console.log('data-no-transition attribute:', anchor.getAttribute('data-no-transition'));
+        return; // Allow normal link behavior immediately
+      }
+      
       var targetAttr = anchor.getAttribute('target');
       var downloadAttr = anchor.getAttribute('download');
-      var skipTransition = anchor.hasAttribute('data-no-transition');
+      var href = anchor.getAttribute('href');
+      
 
-      if (skipTransition || targetAttr === '_blank' || downloadAttr !== null || !isInternalLink(anchor)) {
+
+      // Handle external links, downloads, and non-internal links normally
+      if (targetAttr === '_blank' || downloadAttr !== null || !isInternalLink(anchor)) {
         return;
       }
 
       e.preventDefault();
-      var href = anchor.getAttribute('href');
+      
       if (!href || href.startsWith('#')) {
         // Anchor within the page
         if (href) {
