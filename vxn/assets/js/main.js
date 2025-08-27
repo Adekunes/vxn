@@ -418,8 +418,13 @@
 
     function closeDrawer() {
       if (gsapLoaded) {
-        gsap.to(drawer, {
+        gsap.to('.mobile-drawer-content', {
           x: '100%',
+          duration: 0.3,
+          ease: "power2.inOut",
+        });
+        gsap.to('.mobile-drawer', {
+          opacity: 0,
           duration: 0.3,
           ease: "power2.inOut",
           onComplete: () => {
@@ -441,9 +446,13 @@
       toggle.setAttribute('aria-expanded', 'true');
       
       if (gsapLoaded) {
-        gsap.fromTo(drawer, 
+        gsap.fromTo('.mobile-drawer-content', 
           { x: '100%' },
           { x: '0%', duration: 0.3, ease: "power2.out" }
+        );
+        gsap.fromTo('.mobile-drawer',
+          { opacity: 0 },
+          { opacity: 1, duration: 0.3, ease: "power2.out" }
         );
       }
     }
@@ -457,9 +466,12 @@
     });
 
     drawer.addEventListener('click', function (e) {
-      var anchor = e.target.closest('a');
-      if (!anchor) return;
-      closeDrawer();
+      if (e.target.classList.contains('mobile-drawer-overlay')) {
+        closeDrawer();
+      }
+      if (e.target.closest('a')) {
+        closeDrawer();
+      }
     });
 
     document.addEventListener('keydown', function (e) {
