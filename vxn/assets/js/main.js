@@ -13,6 +13,11 @@
       document.body.classList.add('is-ready');
     });
 
+    // Fallback: ensure body is visible even if CSS transition fails
+    setTimeout(function () {
+      document.body.classList.add('is-ready');
+    }, 100);
+
     setupInternalLinkTransitions();
     setupMobileDrawer();
     setupScrollReveal();

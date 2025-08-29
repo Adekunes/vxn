@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#007aff" />
+    <meta name="description" content="VXN VISION System Status - Check the current status of our services and infrastructure." />
+    <meta name="keywords" content="system status, service status, uptime, maintenance, VXN VISION" />
+    <meta name="author" content="VXN VISION" />
+    <meta name="robots" content="index, follow" />
+    
+    <title>System Status | VXN VISION</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script defer src="assets/js/main.js"></script>
+  </head>
+  <body class="is-ready">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container nav" role="navigation" aria-label="Main">
+        <a class="brand" href="index.html" aria-label="VXN VISION Home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>VXN VISION</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="solutions.html">Solutions</a>
+          <a href="about.html">About</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="nav-cta">
+          <a class="btn btn-primary" href="contact.html">Request a demo</a>
+          <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-drawer" hidden>
+        <div class="stack container">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="solutions.html">Solutions</a>
+          <a href="about.html">About</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="section">
+        <div class="container-narrow">
+          <h1 class="section-title">System Status</h1>
+          <p class="lede">Real-time status of VXN VISION services and infrastructure.</p>
+          
+          <div class="status-overview">
+            <div class="status-card operational">
+              <h3>All Systems Operational</h3>
+              <p>All services are running normally.</p>
+              <span class="status-indicator">●</span>
+            </div>
+          </div>
+          
+          <div class="content-body">
+            <h2>Service Status</h2>
+            
+            <div class="service-status">
+              <div class="service operational">
+                <h3>CRM Platform</h3>
+                <p>Operational</p>
+                <span class="status-dot operational">●</span>
+              </div>
+              
+              <div class="service operational">
+                <h3>API Services</h3>
+                <p>Operational</p>
+                <span class="status-dot operational">●</span>
+              </div>
+              
+              <div class="service operational">
+                <h3>Database</h3>
+                <p>Operational</p>
+                <span class="status-dot operational">●</span>
+              </div>
+              
+              <div class="service operational">
+                <h3>Authentication</h3>
+                <p>Operational</p>
+                <span class="status-dot operational">●</span>
+              </div>
+            </div>
+            
+            <h2>Performance Metrics</h2>
+            <div class="metrics-grid">
+              <div class="metric">
+                <strong>99.9%</strong>
+                <span>Uptime (30 days)</span>
+              </div>
+              <div class="metric">
+                <strong>45ms</strong>
+                <span>Average Response Time</span>
+              </div>
+              <div class="metric">
+                <strong>0</strong>
+                <span>Active Incidents</span>
+              </div>
+            </div>
+            
+            <h2>Recent Updates</h2>
+            <div class="status-updates">
+              <div class="update">
+                <time>January 15, 2024 - 14:30 UTC</time>
+                <p>All systems operational. No issues reported.</p>
+              </div>
+              <div class="update">
+                <time>January 14, 2024 - 09:15 UTC</time>
+                <p>Scheduled maintenance completed successfully. All services restored.</p>
+              </div>
+              <div class="update">
+                <time>January 13, 2024 - 16:45 UTC</time>
+                <p>Performance optimization completed. Response times improved by 15%.</p>
+              </div>
+            </div>
+            
+            <h2>Maintenance Schedule</h2>
+            <p>We perform scheduled maintenance during low-traffic hours to minimize impact on users. Maintenance windows are typically scheduled for:</p>
+            <ul>
+              <li>Sunday: 2:00 AM - 6:00 AM UTC</li>
+              <li>Wednesday: 2:00 AM - 4:00 AM UTC</li>
+            </ul>
+            
+            <h2>Get Notifications</h2>
+            <p>Stay informed about service status and updates:</p>
+            <div class="notification-options">
+              <a href="mailto:status@vxn-vision.com" class="btn">Email Updates</a>
+              <a href="#" class="btn">RSS Feed</a>
+              <a href="#" class="btn">Status Page API</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="muted">© <span id="year"></span> VXN VISION. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy</a>
+          <a href="security.html">Security</a>
+          <a href="status.html">Status</a>
+        </div>
+      </div>
+      <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    </footer>
+  </body>
+</html>
