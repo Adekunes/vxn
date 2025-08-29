@@ -363,6 +363,12 @@ p {
     box-shadow: var(--shadow-sm);
   }
 
+  /* Ensure icon maintains contrast over varying backgrounds */
+  .mobile-drawer.open ~ .nav-cta .nav-toggle,
+  .site-header .nav-cta .nav-toggle[aria-expanded="true"] {
+    color: var(--color-text);
+  }
+
   .mobile-drawer {
     position: fixed;
     top: 72px;

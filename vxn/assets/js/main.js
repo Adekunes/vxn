@@ -40,8 +40,9 @@
       var targetAttr = anchor.getAttribute('target');
       var downloadAttr = anchor.getAttribute('download');
       var skipTransition = anchor.hasAttribute('data-no-transition');
+      var insideMobileDrawer = !!anchor.closest('.mobile-drawer');
 
-      if (skipTransition || targetAttr === '_blank' || downloadAttr !== null || !isInternalLink(anchor)) {
+      if (skipTransition || insideMobileDrawer || targetAttr === '_blank' || downloadAttr !== null || !isInternalLink(anchor)) {
         return;
       }
 
@@ -80,12 +81,24 @@
       return;
     }
 
+    // Ensure toggle color remains visible when drawer opens
+    function syncToggleColor(isOpen) {
+      try {
+        if (isOpen) {
+          toggle.style.color = getComputedStyle(document.body).getPropertyValue('--color-text') || '#1d1d1f';
+        } else {
+          toggle.style.color = '';
+        }
+      } catch (e) {}
+    }
+
     function closeDrawer() {
       drawer.classList.remove('open');
       toggle.setAttribute('aria-expanded', 'false');
       drawer.hidden = true;
       // Prevent body scroll when drawer is closed
       document.body.style.overflow = '';
+      syncToggleColor(false);
     }
 
     function openDrawer() {
@@ -94,6 +107,7 @@
       drawer.hidden = false;
       // Prevent body scroll when drawer is open
       document.body.style.overflow = 'hidden';
+      syncToggleColor(true);
     }
 
     toggle.addEventListener('click', function (e) {
