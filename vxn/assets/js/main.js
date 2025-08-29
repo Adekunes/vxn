@@ -76,12 +76,25 @@
       drawer.classList.remove('open');
       toggle.setAttribute('aria-expanded', 'false');
       drawer.hidden = true;
+      // Prevent body scroll when drawer is open
+      document.body.style.overflow = '';
+    }
+
+    function openDrawer() {
+      drawer.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+      drawer.hidden = false;
+      // Prevent body scroll when drawer is open
+      document.body.style.overflow = 'hidden';
     }
 
     toggle.addEventListener('click', function () {
-      var isOpen = drawer.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      drawer.hidden = !isOpen;
+      var isOpen = drawer.classList.contains('open');
+      if (isOpen) {
+        closeDrawer();
+      } else {
+        openDrawer();
+      }
     });
 
     drawer.addEventListener('click', function (e) {
@@ -92,6 +105,13 @@
 
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') closeDrawer();
+    });
+
+    // Close drawer on window resize to prevent layout issues
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 860) {
+        closeDrawer();
+      }
     });
   }
 
