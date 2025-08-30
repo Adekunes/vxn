@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://vxn-vision.com/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Disallow admin areas (if any exist in the future)
+Disallow: /admin/
+Disallow: /private/
+
+# Allow important pages
+Allow: /index.html
+Allow: /about.html
+Allow: /services.html
+Allow: /solutions.html
+Allow: /blog.html
+Allow: /contact.html
+Allow: /assets/css/
+Allow: /assets/js/
