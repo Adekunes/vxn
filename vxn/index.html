@@ -3,22 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#ff7a00" />
-    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon.png" />
+    <meta name="theme-color" content="#0b1220" />
     <meta name="description" content="VXN CRM – Client relationship management that helps you build trust, streamline workflows, and grow revenue." />
     <title>VXN CRM – Build lasting client relationships</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="assets/css/style.css" />
     <script defer src="assets/js/main.js"></script>
   </head>
-  <body class="is-ready">
+  <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
       <div class="container nav" role="navigation" aria-label="Main">
         <a class="brand" href="index.html" aria-label="VXN CRM Home">
-          <img class="brand-img" src="assets/img/vxn-logo.png" alt="VXN CRM" />
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>VXN CRM</span>
         </a>
         <nav class="nav-links" aria-label="Primary">
           <a href="index.html" aria-current="page">Home</a>
@@ -58,8 +57,8 @@
               <span class="line">Build lasting relationships</span>
               <span class="line">that drive <span class="accent">predictable growth</span>.</span>
             </h1>
-            <p class="lede reveal" data-reveal-delay="120">VXN CRM unifies your customer data, orchestrates follow-ups, and gives teams clear next steps—so nothing slips through the cracks.</p>
-            <div class="stack" style="grid-auto-flow: column; grid-auto-columns: max-content; align-items: center; gap: 16px;">
+            <p class="lead reveal" data-reveal-delay="120">VXN CRM unifies your customer data, orchestrates follow-ups, and gives teams clear next steps—so nothing slips through the cracks.</p>
+            <div class="stack" style="grid-auto-flow: column; grid-auto-columns: max-content; align-items: center; gap: 10px;">
               <a class="btn btn-primary reveal" data-reveal-delay="180" href="contact.html">Get started</a>
               <a class="btn reveal" data-reveal-delay="220" href="solutions.html">See how it works</a>
             </div>
@@ -77,7 +76,7 @@
               </div>
               <div class="card">
                 <div class="stack">
-                  <div style="display:grid; grid-template-columns: 1fr auto; align-items:center; gap:16px;">
+                  <div style="display:grid; grid-template-columns: 1fr auto; align-items:center; gap:10px;">
                     <strong>Acme Renewals</strong>
                     <span class="pill">+65%</span>
                   </div>
@@ -86,7 +85,7 @@
               </div>
               <div class="card">
                 <div class="stack">
-                  <div style="display:grid; grid-template-columns: 1fr auto; align-items:center; gap:16px;">
+                  <div style="display:grid; grid-template-columns: 1fr auto; align-items:center; gap:10px;">
                     <strong>Northwind Expansion</strong>
                     <span class="pill">$180k</span>
                   </div>
@@ -95,7 +94,7 @@
               </div>
               <div class="card">
                 <div class="stack">
-                  <div style="display:grid; grid-template-columns: 1fr auto; align-items:center; gap:16px;">
+                  <div style="display:grid; grid-template-columns: 1fr auto; align-items:center; gap:10px;">
                     <strong>Globex Pilot</strong>
                     <span class="pill">Due Friday</span>
                   </div>
@@ -136,15 +135,15 @@
           <h2 class="reveal center">Teams see results in weeks</h2>
           <div class="testimonials">
             <div class="quote reveal">
-              <p>"VXN CRM gave us one source of truth across sales and success. Our renewals hit a record high."</p>
+              <p>“VXN CRM gave us one source of truth across sales and success. Our renewals hit a record high.”</p>
               <cite>Jordan Patel, VP Revenue</cite>
             </div>
             <div class="quote reveal" data-reveal-delay="60">
-              <p>"The automation playbooks are a game changer. Reps spend time with customers, not spreadsheets."</p>
+              <p>“The automation playbooks are a game changer. Reps spend time with customers, not spreadsheets.”</p>
               <cite>Samira Chen, Head of Sales Ops</cite>
             </div>
             <div class="quote reveal" data-reveal-delay="120">
-              <p>"Implementation was smooth and we were live in under a month. The team support is stellar."</p>
+              <p>“Implementation was smooth and we were live in under a month. The team support is stellar.”</p>
               <cite>Leo Alvarez, COO</cite>
             </div>
           </div>
@@ -164,9 +163,9 @@
       <div class="container footer-grid">
         <div class="muted">© <span id="year"></span> VXN CRM. All rights reserved.</div>
         <div class="footer-links">
-          <a href="privacy.html">Privacy</a>
-          <a href="security.html">Security</a>
-          <a href="status.html">Status</a>
+          <a href="#">Privacy</a>
+          <a href="#">Security</a>
+          <a href="#">Status</a>
         </div>
       </div>
       <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
