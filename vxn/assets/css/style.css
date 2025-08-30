@@ -1,15 +1,18 @@
 /*
+
   VXN CRM – Modern Glassy Design System
   - Mobile-first responsive design
   - Glossy Apple-like navigation
   - Glassy hero effects
   - Consistent design language
+
 */
 
 /* -----------------------------
    Design System Variables
 ------------------------------ */
 :root {
+
   /* Color Palette */
   --color-bg: #ffffff;
   --color-surface: #fafafa;
@@ -22,6 +25,7 @@
   --color-success: #34c759;
   --color-warning: #ff9500;
   --color-error: #ff3b30;
+
 
   /* Glassy Effects */
   --glass-bg: rgba(255, 255, 255, 0.8);
@@ -59,6 +63,7 @@
 /* -----------------------------
    Base Reset & Typography
 ------------------------------ */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -80,16 +85,19 @@ html {
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
   color: var(--color-text);
-  background: var(--color-bg);
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
   overflow-x: hidden;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
   min-height: 100vh;
   min-height: calc(var(--vh, 1vh) * 100);
+
   opacity: 0;
   transition: opacity var(--transition-slow);
 }
@@ -119,6 +127,8 @@ svg {
   max-width: var(--container);
   margin: 0 auto;
   padding: 0 var(--gutter);
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .container-narrow {
@@ -198,18 +208,22 @@ p {
 }
 
 /* -----------------------------
+
    Glossy Navigation
 ------------------------------ */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
+
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border-bottom: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow);
+
   transition: all var(--transition);
+
 }
 
 .nav {
@@ -243,6 +257,7 @@ p {
   background: linear-gradient(135deg, var(--color-primary), var(--color-primary-700));
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-sm);
+
 }
 
 .nav-links {
@@ -252,6 +267,7 @@ p {
 }
 
 .nav-links a {
+
   padding: 12px 16px;
   border-radius: var(--radius-full);
   color: var(--color-text-dim);
@@ -288,6 +304,7 @@ p {
   color: var(--color-primary);
   background: rgba(0, 122, 255, 0.1);
   font-weight: 600;
+
 }
 
 .nav-cta {
@@ -305,6 +322,7 @@ p {
    Glassy Buttons
 ------------------------------ */
 .btn {
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -337,6 +355,7 @@ p {
   color: white;
   border: none;
   box-shadow: var(--shadow-md);
+
 }
 
 .btn-primary:hover {
@@ -344,6 +363,7 @@ p {
   box-shadow: var(--shadow-lg);
   transform: translateY(-2px);
 }
+
 
 /* -----------------------------
    Mobile Navigation
@@ -360,11 +380,13 @@ p {
     width: 48px;
     height: 48px;
     border-radius: var(--radius-md);
+
     border: 1px solid var(--glass-border);
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     color: var(--color-text);
+
     min-height: 48px;
     min-width: 48px;
     box-shadow: var(--shadow-sm);
@@ -450,6 +472,7 @@ p {
 ------------------------------ */
 .hero {
   padding: 80px 0 60px;
+
   position: relative;
   overflow: hidden;
 }
@@ -461,6 +484,7 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
+
   background: linear-gradient(135deg, 
     rgba(0, 122, 255, 0.05) 0%,
     rgba(255, 255, 255, 0.1) 50%,
@@ -500,6 +524,7 @@ p {
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-xl);
   box-shadow: var(--glass-shadow);
+
   padding: 32px;
   transition: all var(--transition);
 }
@@ -566,12 +591,14 @@ p {
   text-align: center;
   padding: 20px;
   border-radius: var(--radius-lg);
+
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-border);
   box-shadow: var(--shadow-sm);
   transition: all var(--transition);
+
 }
 
 .metric:hover {
@@ -624,11 +651,13 @@ p {
   display: block;
   text-decoration: none;
   color: inherit;
+
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
+
   overflow: hidden;
   transition: all var(--transition);
   box-shadow: var(--shadow-sm);
@@ -934,10 +963,12 @@ p {
   display: inline-block;
   padding: 8px 16px;
   border-radius: var(--radius-full);
+
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-border);
+
   font-size: 14px;
   font-weight: 500;
   color: var(--color-text);
@@ -966,9 +997,11 @@ p {
   text-decoration: none;
 }
 
+
 /* -----------------------------
    Scroll Reveal Animations
 ------------------------------ */
+
 .reveal {
   opacity: 0;
   transform: translateY(20px);
@@ -1041,10 +1074,12 @@ p {
   align-items: start;
   padding: 20px;
   border: 1px solid var(--glass-border);
+
   border-radius: var(--radius-lg);
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
+
 }
 
 .step-num {
@@ -1071,11 +1106,13 @@ p {
   gap: 16px;
   align-items: center;
   padding: 20px;
+
   border-radius: var(--radius-lg);
   border: 1px solid var(--glass-border);
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
+
 }
 
 .avatar {
@@ -1088,6 +1125,7 @@ p {
   color: white;
   font-weight: 700;
   font-size: 24px;
+
 }
 
 .contact {
@@ -1097,9 +1135,11 @@ p {
 }
 
 .form {
+
   display: grid;
   gap: 20px;
   padding: 32px;
+
   border-radius: var(--radius-lg);
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
@@ -1107,6 +1147,7 @@ p {
   border: 1px solid var(--glass-border);
   box-shadow: var(--shadow-sm);
 }
+
 
 .field {
   display: grid;
@@ -1148,11 +1189,13 @@ p {
 .cta {
   margin: 40px 0 0;
   padding: 32px;
+
   border-radius: var(--radius-xl);
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-border);
+
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
@@ -1189,17 +1232,20 @@ p {
   color: var(--color-text-dim);
   font-style: normal;
   font-weight: 500;
+
 }
 
 /* -----------------------------
-   Footer
+   Footer - Enhanced Design
 ------------------------------ */
 .site-footer {
+\
   margin-top: 80px;
   padding: 40px 0;
   border-top: 1px solid var(--glass-border);
   color: var(--color-text-dim);
   background: var(--color-surface);
+
 }
 
 .footer-grid {
@@ -1209,6 +1255,7 @@ p {
   align-items: center;
   text-align: center;
 }
+
 
 .footer-links {
   display: flex;
@@ -1280,8 +1327,10 @@ p {
 /* -----------------------------
    Status Page Styles
 ------------------------------ */
+
 .status-overview {
   margin-bottom: 40px;
+
 }
 
 .status-card {
@@ -1296,6 +1345,7 @@ p {
   border: 1px solid var(--glass-border);
   box-shadow: var(--shadow-sm);
 }
+
 
 .status-card.operational {
   border-color: var(--color-success);
@@ -1474,6 +1524,7 @@ p {
 .contact-page .field textarea:focus {
   border-color: var(--color-primary);
   box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.12);
+
 }
 
 .contact-page .card {

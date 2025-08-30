@@ -96,6 +96,7 @@
       drawer.classList.remove('open');
       toggle.setAttribute('aria-expanded', 'false');
       drawer.hidden = true;
+
       // Prevent body scroll when drawer is closed
       document.body.style.overflow = '';
       syncToggleColor(false);
@@ -115,6 +116,7 @@
       e.stopPropagation();
       
       if (drawer.classList.contains('open')) {
+
         closeDrawer();
       } else {
         openDrawer();
@@ -166,6 +168,13 @@
           closeDrawer();
         }
       }, 250);
+    });
+
+    // Close drawer on window resize to prevent layout issues
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 860) {
+        closeDrawer();
+      }
     });
   }
 
