@@ -1,0 +1,44 @@
+/* Footer CSS - Footer Styles */
+
+/* -----------------------------
+   Site Footer
+------------------------------ */
+.site-footer {
+  margin-top: 80px;
+  padding: 40px 0;
+  border-top: 1px solid var(--glass-border);
+  color: var(--color-text-dim);
+  background: var(--color-surface);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-links a {
+  color: var(--color-text-dim);
+  transition: color var(--transition);
+}
+
+.footer-links a:hover {
+  color: var(--color-primary);
+}
+
+/* Responsive footer */
+@media (min-width: 640px) {
+  .footer-grid {
+    grid-template-columns: 1fr auto;
+    text-align: left;
+  }
+}

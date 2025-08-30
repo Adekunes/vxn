@@ -1,0 +1,203 @@
+/* Navigation CSS - Header & Navigation Styles */
+
+/* -----------------------------
+   Site Header
+------------------------------ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  min-height: 72px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.brand-img {
+  height: 32px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition);
+  padding: 8px 0;
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: var(--color-primary);
+}
+
+.nav-links a[aria-current="page"] {
+  color: var(--color-primary);
+}
+
+.nav-links a[aria-current="page"]::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 1px;
+}
+
+.nav-cta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* -----------------------------
+   Mobile Navigation
+------------------------------ */
+@media (max-width: 860px) {
+  .nav-links {
+    display: none;
+  }
+  
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    color: var(--color-text);
+    min-height: 48px;
+    min-width: 48px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .mobile-drawer {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
+    width: 100vw;
+    max-width: 100vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    transform: translateY(-10px) translateZ(0);
+    -webkit-transform: translateY(-10px) translateZ(0);
+    box-shadow: var(--glass-shadow);
+    visibility: hidden;
+    min-height: calc(var(--vh, 1vh) * 100 - 72px);
+  }
+
+  .mobile-drawer.open {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+    -webkit-transform: translateY(0) translateZ(0);
+    pointer-events: auto;
+    visibility: visible;
+  }
+
+  .mobile-drawer .stack {
+    display: grid;
+    gap: 8px;
+    padding: 24px;
+    max-width: 100%;
+  }
+
+  .mobile-drawer a {
+    padding: 16px 20px;
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    font-size: 16px;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    transition: all var(--transition);
+  }
+
+  .mobile-drawer a:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .mobile-drawer a[aria-current="page"] {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+  }
+
+  /* Mobile navbar color consistency */
+  .mobile-drawer {
+    background: rgba(255, 255, 255, 0.96) !important;
+    backdrop-filter: var(--glass-blur) !important;
+    -webkit-backdrop-filter: var(--glass-blur) !important;
+  }
+
+  .mobile-drawer a {
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: var(--color-text) !important;
+    border: 1px solid var(--glass-border) !important;
+  }
+
+  .mobile-drawer a:hover {
+    background: rgba(255, 255, 255, 1) !important;
+  }
+
+  .mobile-drawer a[aria-current="page"] {
+    background: var(--color-primary) !important;
+    color: white !important;
+    border-color: var(--color-primary) !important;
+  }
+
+  /* Ensure nav toggle button maintains proper colors */
+  .nav-toggle {
+    color: var(--color-text) !important;
+    background: var(--glass-bg) !important;
+    border: 1px solid var(--glass-border) !important;
+  }
+
+  .nav-toggle[aria-expanded="true"] {
+    color: var(--color-text) !important;
+  }
+}
