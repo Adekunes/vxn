@@ -103,19 +103,15 @@
 .field textarea {
   width: 100%;
   padding: 6px 10px;
-  font-size: 14px;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
-  background: white;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   color: var(--color-text);
-  transition: all 0.3s ease;
+  font-size: 14px;
   min-height: 32px;
-}
-
-.field textarea {
-  min-height: 60px;
-  resize: vertical;
-  font-family: inherit;
+  transition: all var(--transition);
 }
 
 .field input:focus,
@@ -125,45 +121,29 @@
   box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
 }
 
-.field input::placeholder,
-.field textarea::placeholder {
-  color: var(--color-text-dim);
-  opacity: 0.7;
-}
-
-/* Grid layout for form fields */
-.form .grid-2 {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-}
-
-@media (min-width: 640px) {
-  .form .grid-2 {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.field textarea {
+  resize: vertical;
+  min-height: 80px;
 }
 
 /* -----------------------------
    Icons
 ------------------------------ */
 .icon {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--glass-border);
-  display: inline-grid;
-  place-items: center;
-  margin-bottom: 16px;
-  color: var(--color-primary);
-  background: rgba(0, 122, 255, 0.1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: currentColor;
 }
 
-.icon svg path {
-  stroke: currentColor !important;
+.icon svg {
+  width: 100%;
+  height: 100%;
 }
 
-/* Card icons - subtle and not overwhelming */
+/* Card icons for feature cards */
 .card-icon {
   display: flex;
   align-items: center;
