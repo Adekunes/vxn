@@ -609,6 +609,87 @@ p {
     color: white;
     border-color: var(--color-primary);
   }
+
+  /* Hero section mobile improvements */
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+
+  .hero-title .line {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .lede {
+    font-size: 1.1rem;
+    max-width: 100%;
+  }
+
+  /* Metrics mobile layout */
+  .metrics {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .metric {
+    text-align: center;
+    padding: 16px 12px;
+  }
+
+  .metric strong {
+    font-size: 1.5rem;
+  }
+
+  .metric span {
+    font-size: 0.9rem;
+  }
+
+  /* Hero card mobile improvements */
+  .hero-card {
+    padding: 24px;
+    margin: 0 auto;
+    max-width: 400px;
+  }
+
+  .hero-card .card {
+    padding: 16px;
+  }
+
+  /* Button stack mobile */
+  .stack[style*="grid-auto-flow: column"] {
+    grid-auto-flow: row !important;
+    gap: 12px !important;
+  }
+
+  /* Container padding on mobile */
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* Section padding mobile */
+  .section {
+    padding: 48px 0;
+  }
+
+  /* Cards mobile spacing */
+  .card {
+    padding: 20px;
+  }
+
+  /* Features grid mobile */
+  .features {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }
 
 /* -----------------------------
@@ -1994,21 +2075,17 @@ p {
 .field input,
 .field textarea {
   width: 100%;
-  padding: 12px 16px;
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-md);
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  color: var(--color-text);
+  padding: 8px 12px;
   font-size: 14px;
-  line-height: 1.5;
-  transition: all var(--transition);
-  min-height: 44px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: white;
+  transition: all 0.3s ease;
+  min-height: 36px;
 }
 
 .field textarea {
-  min-height: 100px;
+  min-height: 70px;
   resize: vertical;
   font-family: inherit;
 }
@@ -2018,7 +2095,6 @@ p {
   outline: none;
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
-  background: rgba(255, 255, 255, 0.95);
 }
 
 .field input::placeholder,

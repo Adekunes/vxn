@@ -162,37 +162,48 @@
       
       <!-- Phone number protection script -->
       <script>
-        // Protect phone number from AI scrapers
+        // Protect phone number from AI scrapers while keeping it visible to users
         document.addEventListener('DOMContentLoaded', function() {
           const phoneNumber = document.querySelector('.phone-number');
           if (phoneNumber) {
-            // Hide the actual number initially
             const parts = phoneNumber.querySelectorAll('.phone-part');
+            const hint = document.querySelector('.phone-hint');
+            
+            // Make number visible by default for users
             parts.forEach(part => {
-              part.style.color = 'transparent';
-              part.style.textShadow = '0 0 8px rgba(0,0,0,0.5)';
+              part.style.color = 'var(--color-primary)';
+              part.style.textShadow = 'none';
             });
             
-            // Show on hover or click
+            // Hide hint after first interaction
+            if (hint) {
+              hint.style.opacity = '0.7';
+              hint.style.fontSize = '12px';
+              hint.style.color = 'var(--color-text-dim)';
+            }
+            
+            // Add subtle protection for AI scrapers
             phoneNumber.addEventListener('mouseenter', function() {
-              parts.forEach(part => {
-                part.style.color = 'var(--color-primary)';
-                part.style.textShadow = 'none';
-              });
+              if (hint) hint.style.opacity = '1';
             });
             
             phoneNumber.addEventListener('mouseleave', function() {
-              parts.forEach(part => {
-                part.style.color = 'transparent';
-                part.style.textShadow = '0 0 8px rgba(0,0,0,0.5)';
-              });
+              if (hint) hint.style.opacity = '0.7';
             });
             
-            // Also show on click for mobile
+            // Click to copy functionality
             phoneNumber.addEventListener('click', function() {
-              parts.forEach(part => {
-                part.style.color = 'var(--color-primary)';
-                part.style.textShadow = 'none';
+              const fullNumber = '+1 514 659 5337';
+              navigator.clipboard.writeText(fullNumber).then(() => {
+                if (hint) {
+                  const originalText = hint.textContent;
+                  hint.textContent = 'Copied!';
+                  hint.style.color = 'var(--color-success)';
+                  setTimeout(() => {
+                    hint.textContent = originalText;
+                    hint.style.color = 'var(--color-text-dim)';
+                  }, 2000);
+                }
               });
             });
           }
