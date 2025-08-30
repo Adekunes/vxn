@@ -230,6 +230,13 @@ p {
   color: var(--color-text);
 }
 
+/* Brand logo image */
+.brand-img {
+  height: clamp(4em, 12em, 5em);
+  width: auto;
+  display: block;
+}
+
 .brand-mark {
   width: 32px;
   height: 32px;
