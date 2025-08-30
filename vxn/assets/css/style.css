@@ -1443,3 +1443,73 @@ p {
 .contact-info p:last-child {
   margin-bottom: 0;
 }
+
+/* -----------------------------
+   Contact Page Accent
+------------------------------ */
+.contact-page main {
+  background: linear-gradient(180deg,
+    rgba(0, 122, 255, 0.06) 0%,
+    rgba(0, 122, 255, 0.03) 35%,
+    rgba(0, 122, 255, 0.00) 100%);
+}
+
+.contact-page .section:first-of-type .container .eyebrow {
+  color: var(--color-primary);
+}
+
+.contact-page .section:first-of-type h1 {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-700));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.contact-page .form {
+  border-color: rgba(0, 122, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 122, 255, 0.08);
+}
+
+.contact-page .field input:focus,
+.contact-page .field textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.12);
+}
+
+.contact-page .card {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 122, 255, 0.15);
+}
+
+.contact-page .card strong {
+  color: var(--color-text);
+}
+
+.contact-page .card .muted {
+  color: var(--color-primary);
+}
+
+.contact-page .btn-primary {
+  box-shadow: 0 12px 24px rgba(0, 122, 255, 0.25);
+}
+
+.contact-page .btn-primary:hover {
+  box-shadow: 0 16px 32px rgba(0, 86, 204, 0.28);
+}
+
+/* Soften input backgrounds on contact page */
+.contact-page .field input,
+.contact-page .field textarea {
+  background: rgba(0, 122, 255, 0.06);
+  border-color: rgba(0, 122, 255, 0.18);
+}
+
+.contact-page .field input:hover,
+.contact-page .field textarea:hover {
+  background: rgba(0, 122, 255, 0.08);
+}
+
+.contact-page .field input::placeholder,
+.contact-page .field textarea::placeholder {
+  color: var(--color-text-dim);
+}
