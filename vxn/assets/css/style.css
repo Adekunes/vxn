@@ -68,6 +68,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  
 }
 
 html, body {
@@ -99,6 +100,7 @@ body {
   min-height: calc(var(--vh, 1vh) * 100);
 
   opacity: 0;
+  
   transition: opacity var(--transition-slow);
 }
 
@@ -119,7 +121,9 @@ a {
 svg {
   display: block;
 }
-
+div {
+  overflow-y: clip;
+}
 /* -----------------------------
    Layout Components
 ------------------------------ */
