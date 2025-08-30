@@ -690,6 +690,40 @@ p {
     grid-template-columns: 1fr;
     gap: 20px;
   }
+
+  /* Mobile navbar color consistency */
+  .mobile-drawer {
+    background: rgba(255, 255, 255, 0.96) !important;
+    backdrop-filter: var(--glass-blur) !important;
+    -webkit-backdrop-filter: var(--glass-blur) !important;
+  }
+
+  .mobile-drawer a {
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: var(--color-text) !important;
+    border: 1px solid var(--glass-border) !important;
+  }
+
+  .mobile-drawer a:hover {
+    background: rgba(255, 255, 255, 1) !important;
+  }
+
+  .mobile-drawer a[aria-current="page"] {
+    background: var(--color-primary) !important;
+    color: white !important;
+    border-color: var(--color-primary) !important;
+  }
+
+  /* Ensure nav toggle button maintains proper colors */
+  .nav-toggle {
+    color: var(--color-text) !important;
+    background: var(--glass-bg) !important;
+    border: 1px solid var(--glass-border) !important;
+  }
+
+  .nav-toggle[aria-expanded="true"] {
+    color: var(--color-text) !important;
+  }
 }
 
 /* -----------------------------
@@ -2074,27 +2108,27 @@ p {
 
 .field input,
 .field textarea {
-  width: 100%;
-  padding: 8px 12px;
-  font-size: 14px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: white;
-  transition: all 0.3s ease;
-  min-height: 36px;
+  width: 100% !important;
+  padding: 6px 10px !important;
+  font-size: 14px !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: var(--radius-md) !important;
+  background: white !important;
+  transition: all 0.3s ease !important;
+  min-height: 32px !important;
 }
 
 .field textarea {
-  min-height: 70px;
+  min-height: 60px !important;
   resize: vertical;
   font-family: inherit;
 }
 
 .field input:focus,
 .field textarea:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+  outline: none !important;
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1) !important;
 }
 
 .field input::placeholder,

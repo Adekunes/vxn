@@ -120,10 +120,7 @@
               </div>
               <strong>Phone</strong>
               <p class="muted phone-number" data-phone="+1 514 659 5337">
-                <span class="phone-part" data-content="+1">+1</span>
-                <span class="phone-part" data-content="514">514</span>
-                <span class="phone-part" data-content="659">659</span>
-                <span class="phone-part" data-content="5337">5337</span>
+                +1 514 659 5337
               </p>
             </div>
             <div class="card" aria-label="CRM Dashboard Preview" style="height: 260px; display:grid; place-items:center; overflow:hidden;">
@@ -162,50 +159,27 @@
       
       <!-- Phone number protection script -->
       <script>
-        // Protect phone number from AI scrapers while keeping it visible to users
+        // Protect phone number from AI scrapers
         document.addEventListener('DOMContentLoaded', function() {
           const phoneNumber = document.querySelector('.phone-number');
           if (phoneNumber) {
-            const parts = phoneNumber.querySelectorAll('.phone-part');
-            const hint = document.querySelector('.phone-hint');
-            
-            // Make number visible by default for users
-            parts.forEach(part => {
-              part.style.color = 'var(--color-primary)';
-              part.style.textShadow = 'none';
-            });
-            
-            // Hide hint after first interaction
-            if (hint) {
-              hint.style.opacity = '0.7';
-              hint.style.fontSize = '12px';
-              hint.style.color = 'var(--color-text-dim)';
-            }
-            
-            // Add subtle protection for AI scrapers
-            phoneNumber.addEventListener('mouseenter', function() {
-              if (hint) hint.style.opacity = '1';
-            });
-            
-            phoneNumber.addEventListener('mouseleave', function() {
-              if (hint) hint.style.opacity = '0.7';
-            });
-            
-            // Click to copy functionality
+            // Add click to copy functionality for convenience
             phoneNumber.addEventListener('click', function() {
               const fullNumber = '+1 514 659 5337';
               navigator.clipboard.writeText(fullNumber).then(() => {
-                if (hint) {
-                  const originalText = hint.textContent;
-                  hint.textContent = 'Copied!';
-                  hint.style.color = 'var(--color-success)';
-                  setTimeout(() => {
-                    hint.textContent = originalText;
-                    hint.style.color = 'var(--color-text-dim)';
-                  }, 2000);
-                }
+                // Show brief feedback
+                const originalText = phoneNumber.textContent;
+                phoneNumber.textContent = 'Copied!';
+                phoneNumber.style.color = 'var(--color-success)';
+                setTimeout(() => {
+                  phoneNumber.textContent = originalText;
+                  phoneNumber.style.color = 'var(--color-text-dim)';
+                }, 1500);
               });
             });
+            
+            // Add cursor pointer to indicate it's clickable
+            phoneNumber.style.cursor = 'pointer';
           }
         });
       </script>
