@@ -1745,3 +1745,114 @@ p {
   box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4);
   transform: translateY(-2px);
 }
+
+.feature-icon:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
+}
+
+/* Enhanced solutions page cards */
+.solutions .card {
+  text-align: center;
+  padding: 32px 24px;
+}
+
+.solutions .card h3 {
+  margin-bottom: 16px;
+  color: var(--color-text);
+}
+
+.solutions .card p {
+  color: var(--color-text-dim);
+  line-height: 1.6;
+}
+
+/* Form field styling - reduced sizes */
+.field {
+  margin-bottom: 20px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--color-text);
+  font-size: 14px;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  color: var(--color-text);
+  font-size: 14px;
+  line-height: 1.5;
+  transition: all var(--transition);
+  min-height: 44px;
+}
+
+.field textarea {
+  min-height: 100px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--color-text-dim);
+  opacity: 0.7;
+}
+
+/* Grid layout for form fields */
+.form .grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 640px) {
+  .form .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Feature icons for solutions page */
+.feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-700));
+  border-radius: var(--radius-lg);
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.feature-icon svg {
+  width: 32px;
+  height: 32px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+.feature-icon:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
+}
