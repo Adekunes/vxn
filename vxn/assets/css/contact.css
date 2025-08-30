@@ -1,0 +1,95 @@
+/* Contact Page Specific Styles */
+
+/* Contact Page Accent */
+.contact-page main {
+  background: linear-gradient(180deg,
+    rgba(0, 122, 255, 0.06) 0%,
+    rgba(0, 122, 255, 0.03) 35%,
+    rgba(0, 122, 255, 0.00) 100%);
+}
+
+.contact-page .section:first-of-type .container .eyebrow {
+  color: var(--color-primary);
+}
+
+.contact-page .section:first-of-type h1 {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-700));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.contact-page .form {
+  border-color: rgba(0, 122, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 122, 255, 0.08);
+}
+
+.contact-page .card {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 122, 255, 0.15);
+}
+
+.contact-page .card strong {
+  color: var(--color-text);
+}
+
+.contact-page .card .muted {
+  color: var(--color-primary);
+}
+
+.contact-page .btn-primary {
+  box-shadow: 0 12px 24px rgba(0, 122, 255, 0.25);
+}
+
+.contact-page .btn-primary:hover {
+  box-shadow: 0 16px 32px rgba(0, 86, 204, 0.28);
+}
+
+/* Contact form specific styling */
+.contact .form {
+  max-width: 600px;
+  margin: 0 auto 48px auto;
+}
+
+.contact .stack {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* Contact icons */
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, rgba(0, 122, 255, 0.1), rgba(0, 122, 255, 0.05));
+  border-radius: var(--radius-md);
+  color: var(--color-primary);
+  transition: all 0.3s ease;
+}
+
+.contact-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+.contact-icon:hover {
+  background: linear-gradient(135deg, rgba(0, 122, 255, 0.15), rgba(0, 122, 255, 0.1));
+  transform: translateY(-1px);
+}
+
+/* Phone number styling */
+.phone-number {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.phone-number:hover {
+  color: var(--color-primary) !important;
+}
