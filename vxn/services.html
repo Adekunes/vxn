@@ -3,21 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#ff7a00" />
-    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon.png" />
+    <meta name="theme-color" content="#0b1220" />
     <meta name="description" content="Implementation, migration, training, and ongoing CRM services tailored to your teams." />
     <title>Services – VXN CRM</title>
     <link rel="stylesheet" href="assets/css/style.css" />
     <script defer src="assets/js/main.js"></script>
   </head>
-  <body class="is-ready">
+  <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
       <div class="container nav" role="navigation" aria-label="Main">
         <a class="brand" href="index.html" aria-label="VXN CRM Home">
-          <img class="brand-img" src="assets/img/vxn-logo.png" alt="VXN CRM" />
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>VXN CRM</span>
         </a>
         <nav class="nav-links" aria-label="Primary">
           <a href="index.html">Home</a>
@@ -31,9 +30,7 @@
           <a class="btn btn-primary" href="contact.html">Request a demo</a>
           <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-
-              <path d="M4 6h16M4 12h16M4 18h16" stroke="#111" stroke-width="2" stroke-linecap="round" />
-
+              <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
             </svg>
           </button>
         </div>
@@ -137,9 +134,9 @@
       <div class="container footer-grid">
         <div class="muted">© <span id="year"></span> VXN CRM. All rights reserved.</div>
         <div class="footer-links">
-          <a href="privacy.html">Privacy</a>
-          <a href="security.html">Security</a>
-          <a href="status.html">Status</a>
+          <a href="#">Privacy</a>
+          <a href="#">Security</a>
+          <a href="#">Status</a>
         </div>
       </div>
       <script>document.getElementById('year').textContent = new Date().getFullYear();</script>

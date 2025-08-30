@@ -1,11 +1,11 @@
-// VXN CRM – Modern JavaScript
+// VXN CRM – Main JS
 // - Page fade transitions
 // - Mobile navigation drawer
 // - Scroll reveal animations
-// - Touch optimizations
+// - Contact form validation
 
 (function () {
-  var transitionDurationMs = 500;
+  var transitionDurationMs = 380;
 
   function onReady() {
     // Allow CSS transition to apply after initial render
@@ -13,15 +13,10 @@
       document.body.classList.add('is-ready');
     });
 
-    // Fallback: ensure body is visible even if CSS transition fails
-    setTimeout(function () {
-      document.body.classList.add('is-ready');
-    }, 100);
-
     setupInternalLinkTransitions();
     setupMobileDrawer();
     setupScrollReveal();
-    setupMobileOptimizations();
+    setupFormValidation();
   }
 
   function isInternalLink(anchor) {
@@ -40,9 +35,8 @@
       var targetAttr = anchor.getAttribute('target');
       var downloadAttr = anchor.getAttribute('download');
       var skipTransition = anchor.hasAttribute('data-no-transition');
-      var insideMobileDrawer = !!anchor.closest('.mobile-drawer');
 
-      if (skipTransition || insideMobileDrawer || targetAttr === '_blank' || downloadAttr !== null || !isInternalLink(anchor)) {
+      if (skipTransition || targetAttr === '_blank' || downloadAttr !== null || !isInternalLink(anchor)) {
         return;
       }
 
@@ -76,30 +70,14 @@
   function setupMobileDrawer() {
     var toggle = document.querySelector('.nav-toggle');
     var drawer = document.querySelector('.mobile-drawer');
-    
-    if (!toggle || !drawer) {
-      return;
-    }
-
-    // Ensure toggle color remains visible when drawer opens
-    function syncToggleColor(isOpen) {
-      try {
-        if (isOpen) {
-          toggle.style.color = getComputedStyle(document.body).getPropertyValue('--color-text') || '#1d1d1f';
-        } else {
-          toggle.style.color = '';
-        }
-      } catch (e) {}
-    }
+    if (!toggle || !drawer) return;
 
     function closeDrawer() {
       drawer.classList.remove('open');
       toggle.setAttribute('aria-expanded', 'false');
       drawer.hidden = true;
-
-      // Prevent body scroll when drawer is closed
+      // Prevent body scroll when drawer is open
       document.body.style.overflow = '';
-      syncToggleColor(false);
     }
 
     function openDrawer() {
@@ -108,66 +86,25 @@
       drawer.hidden = false;
       // Prevent body scroll when drawer is open
       document.body.style.overflow = 'hidden';
-      syncToggleColor(true);
     }
 
-    toggle.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      
-      if (drawer.classList.contains('open')) {
-
+    toggle.addEventListener('click', function () {
+      var isOpen = drawer.classList.contains('open');
+      if (isOpen) {
         closeDrawer();
       } else {
         openDrawer();
       }
     });
 
-    // Close drawer when clicking on navigation links
     drawer.addEventListener('click', function (e) {
       var anchor = e.target.closest('a');
       if (!anchor) return;
-      
-      // Small delay to allow the click to register before closing
-      setTimeout(function() {
-        closeDrawer();
-      }, 100);
+      closeDrawer();
     });
 
-    // Close drawer when clicking outside
-    document.addEventListener('click', function (e) {
-      if (drawer.classList.contains('open') && 
-          !drawer.contains(e.target) && 
-          !toggle.contains(e.target)) {
-        closeDrawer();
-      }
-    });
-
-    // Close drawer on escape key
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && drawer.classList.contains('open')) {
-        closeDrawer();
-      }
-    });
-
-    // Handle orientation change
-    window.addEventListener('orientationchange', function() {
-      // Close drawer on orientation change to prevent layout issues
-      if (drawer.classList.contains('open')) {
-        closeDrawer();
-      }
-    });
-
-    // Handle window resize
-    var resizeTimer;
-    window.addEventListener('resize', function() {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(function() {
-        // Close drawer if screen becomes large enough for desktop navigation
-        if (window.innerWidth > 860 && drawer.classList.contains('open')) {
-          closeDrawer();
-        }
-      }, 250);
+      if (e.key === 'Escape') closeDrawer();
     });
 
     // Close drawer on window resize to prevent layout issues
@@ -208,63 +145,68 @@
     elements.forEach(function (el) { observer.observe(el); });
   }
 
-  function setupMobileOptimizations() {
-    // Prevent zoom on double tap for iOS
-    var lastTouchEnd = 0;
-    document.addEventListener('touchend', function (event) {
-      var now = (new Date()).getTime();
-      if (now - lastTouchEnd <= 300) {
-        event.preventDefault();
+  function setupFormValidation() {
+    var form = document.querySelector('form[data-validate="contact"]');
+    if (!form) return;
+
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function showError(field, message) {
+      var container = field.closest('.field') || field.parentElement;
+      if (!container) return;
+      var error = container.querySelector('.error');
+      if (!error) {
+        error = document.createElement('div');
+        error.className = 'error';
+        error.setAttribute('role', 'alert');
+        container.appendChild(error);
       }
-      lastTouchEnd = now;
-    }, false);
-
-    // Improve touch scrolling performance
-    if ('ontouchstart' in window) {
-      document.documentElement.style.webkitOverflowScrolling = 'touch';
+      error.textContent = message;
+      field.setAttribute('aria-invalid', 'true');
     }
 
-    // Handle viewport height issues on mobile browsers
-    function setVH() {
-      var vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty('--vh', vh + 'px');
+    function clearError(field) {
+      var container = field.closest('.field') || field.parentElement;
+      if (!container) return;
+      var error = container.querySelector('.error');
+      if (error) error.textContent = '';
+      field.removeAttribute('aria-invalid');
     }
-    
-    setVH();
-    window.addEventListener('resize', setVH);
-    window.addEventListener('orientationchange', setVH);
 
-    // Ensure proper focus management for mobile navigation
-    var mobileDrawer = document.querySelector('.mobile-drawer');
-    if (mobileDrawer) {
-      var firstLink = mobileDrawer.querySelector('a');
-      var lastLink = mobileDrawer.querySelectorAll('a');
-      lastLink = lastLink[lastLink.length - 1];
+    form.addEventListener('submit', function (e) {
+      var isValid = true;
+      var name = form.querySelector('input[name="name"]');
+      var email = form.querySelector('input[name="email"]');
+      var company = form.querySelector('input[name="company"]');
+      var message = form.querySelector('textarea[name="message"]');
 
-      if (firstLink && lastLink) {
-        // Trap focus within mobile drawer when open
-        mobileDrawer.addEventListener('keydown', function(e) {
-          if (e.key === 'Tab') {
-            if (e.shiftKey) {
-              if (document.activeElement === firstLink) {
-                e.preventDefault();
-                lastLink.focus();
-              }
-            } else {
-              if (document.activeElement === lastLink) {
-                e.preventDefault();
-                firstLink.focus();
-              }
-            }
-          }
-        });
+      [name, email, company, message].forEach(function (field) {
+        if (!field) return;
+        clearError(field);
+        if (!field.value || field.value.trim() === '') {
+          isValid = false;
+          showError(field, 'This field is required.');
+        }
+      });
+
+      if (email && email.value && !emailPattern.test(email.value)) {
+        isValid = false;
+        showError(email, 'Enter a valid email address.');
       }
-    }
 
-    // Add smooth scrolling for iOS
-    if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-      document.documentElement.style.scrollBehavior = 'smooth';
-    }
+      if (!isValid) {
+        e.preventDefault();
+      } else {
+        e.preventDefault();
+        // Simulate successful submit for static site
+        form.reset();
+        var notice = document.createElement('div');
+        notice.className = 'pill';
+        notice.textContent = 'Thanks! Your message has been sent.';
+        form.appendChild(notice);
+        setTimeout(function () { if (notice && notice.parentElement) notice.parentElement.removeChild(notice); }, 4000);
+      }
+    });
   }
 
   if (document.readyState === 'loading') {
