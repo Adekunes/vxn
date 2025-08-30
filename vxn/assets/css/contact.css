@@ -8,20 +8,6 @@
     rgba(0, 122, 255, 0.00) 100%);
 }
 
-.contact-page .hero {
-  background: linear-gradient(135deg,
-    rgba(0, 122, 255, 0.08) 0%,
-    rgba(0, 122, 255, 0.04) 50%,
-    rgba(0, 122, 255, 0.00) 100%);
-}
-
-.contact-page .section {
-  background: linear-gradient(135deg,
-    rgba(0, 122, 255, 0.04) 0%,
-    rgba(0, 122, 255, 0.02) 50%,
-    rgba(0, 122, 255, 0.00) 100%);
-}
-
 .contact-page .section:first-of-type .container .eyebrow {
   color: var(--color-primary);
 }
@@ -71,16 +57,16 @@
   gap: 24px;
 }
 
-/* Contact form fields - original sizes */
+/* Contact form fields - made smaller */
 .contact .field input,
 .contact .field textarea {
-  padding: 8px 12px;
-  min-height: 38px;
-  font-size: 14px;
+  padding: 4px 8px !important;
+  min-height: 28px !important;
+  font-size: 13px !important;
 }
 
 .contact .field textarea {
-  min-height: 80px;
+  min-height: 50px !important;
 }
 
 /* Contact icons */

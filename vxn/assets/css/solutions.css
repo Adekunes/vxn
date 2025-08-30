@@ -21,8 +21,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: 64px;
+  height: 64px;
   margin-bottom: 20px;
   background: linear-gradient(135deg, var(--color-primary), var(--color-primary-700));
   border-radius: var(--radius-lg);
@@ -32,8 +32,8 @@
 }
 
 .feature-icon svg {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   stroke: currentColor;
   stroke-width: 2;
   fill: none;
@@ -42,25 +42,6 @@
 .feature-icon:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
-}
-
-/* Integration section */
-.integration-section {
-  text-align: center;
-  margin: 60px 0;
-}
-
-.integration-section h2 {
-  margin-bottom: 16px;
-  color: var(--color-text);
-}
-
-.integration-section p {
-  color: var(--color-text-dim);
-  margin-bottom: 40px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /* Integration grid layout */
@@ -74,33 +55,48 @@
   margin-right: auto;
 }
 
-/* Integration cards */
 .integration-card {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
+  background: white;
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: 24px;
+  padding: 32px 24px;
   text-align: center;
   transition: all 0.3s ease;
-  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.integration-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
 }
 
 .integration-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-color: rgba(0, 122, 255, 0.2);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary);
+}
+
+.integration-card:hover::before {
+  transform: scaleX(1);
 }
 
 .integration-card h4 {
-  margin-bottom: 12px;
-  color: var(--color-text);
+  margin: 0 0 12px 0;
   font-size: 18px;
   font-weight: 600;
+  color: var(--color-text);
 }
 
 .integration-card p {
+  margin: 0;
   color: var(--color-text-dim);
   font-size: 14px;
   line-height: 1.5;
@@ -111,8 +107,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   margin-bottom: 16px;
   background: linear-gradient(135deg, rgba(0, 122, 255, 0.08), rgba(0, 122, 255, 0.03));
   border-radius: var(--radius-md);
@@ -121,26 +117,14 @@
 }
 
 .integration-icon svg {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   stroke: currentColor;
   stroke-width: 2;
   fill: none;
 }
 
 .integration-icon:hover {
-  background: linear-gradient(135deg, rgba(0, 122, 255, 0.12), rgba(0, 122, 255, 0.08));
+  background: linear-gradient(135deg, rgba(0, 122, 255, 0.12), rgba(0, 122, 255, 0.06));
   transform: translateY(-1px);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .integration-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  
-  .integration-card {
-    padding: 20px;
-  }
 }

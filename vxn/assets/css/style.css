@@ -1,4 +1,4 @@
-/* Main CSS - Imports and Original Styles */
+/* Main CSS - Imports and Remaining Styles */
 
 /* Import base styles */
 @import url('base.css');
@@ -16,7 +16,9 @@
 @import url('contact.css');
 @import url('solutions.css');
 
-/* Original Styles - Restored */
+/* -----------------------------
+   Remaining Styles
+------------------------------ */
 
 /* -----------------------------
    Hero Section
@@ -87,7 +89,7 @@
 ------------------------------ */
 .features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 1fr;
   gap: 24px;
   margin-top: 32px;
 }
@@ -201,22 +203,12 @@
 .reveal {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all var(--transition-slow);
 }
 
-.reveal.is-visible {
+.reveal-visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-.reveal.no-hover-transform:hover {
-  transform: none;
-}
-
-.reveal.no-hover-transform .btn:hover,
-.reveal.no-hover-transform .card:hover,
-.reveal.no-hover-transform .metric:hover {
-  transform: none;
 }
 
 /* -----------------------------
