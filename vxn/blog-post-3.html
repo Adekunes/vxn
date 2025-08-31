@@ -39,6 +39,7 @@
     <!-- CSS Files -->
     <link rel="stylesheet" href="assets/css/style.css" />
     
+    <script defer src="assets/js/i18n.js"></script>
     <script defer src="assets/js/main.js"></script>
     
     <!-- Structured Data -->
@@ -71,15 +72,19 @@
           <img class="brand-img" src="assets/img/vxn-logo.png" alt="VXN VISION" />
         </a>
         <nav class="nav-links" aria-label="Primary">
-          <a href="index.html">Home</a>
-          <a href="services.html">Services</a>
-          <a href="solutions.html">Solutions</a>
-          <a href="about.html">About</a>
-          <a href="blog.html">Blog</a>
-          <a href="contact.html">Contact</a>
+          <a href="index.html" data-i18n="nav.home">Home</a>
+          <a href="services.html" data-i18n="nav.services">Services</a>
+          <a href="solutions.html" data-i18n="nav.solutions">Solutions</a>
+          <a href="about.html" data-i18n="nav.about">About</a>
+          <a href="blog.html" data-i18n="nav.blog">Blog</a>
+          <a href="contact.html" data-i18n="nav.contact">Contact</a>
         </nav>
         <div class="nav-cta">
-          <a class="btn btn-primary" href="contact.html">Request a demo</a>
+          <a class="btn btn-primary" href="contact.html" data-i18n="nav.requestDemo">Request a demo</a>
+          <div class="lang-switch" aria-label="Language">
+            <button type="button" data-lang="en">EN</button>
+            <button type="button" data-lang="fr">FR</button>
+          </div>
           <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M4 6h16M4 12h16M4 18h16" stroke="#111" stroke-width="2" stroke-linecap="round" />
@@ -89,12 +94,12 @@
       </div>
               <div class="mobile-drawer" hidden>
           <div class="stack container">
-            <a href="index.html">Home</a>
-            <a href="services.html">Services</a>
-            <a href="solutions.html">Solutions</a>
-            <a href="about.html">About</a>
-            <a href="blog.html">Blog</a>
-            <a href="contact.html">Contact</a>
+            <a href="index.html" data-i18n="nav.home">Home</a>
+            <a href="services.html" data-i18n="nav.services">Services</a>
+            <a href="solutions.html" data-i18n="nav.solutions">Solutions</a>
+            <a href="about.html" data-i18n="nav.about">About</a>
+            <a href="blog.html" data-i18n="nav.blog">Blog</a>
+            <a href="contact.html" data-i18n="nav.contact">Contact</a>
           </div>
         </div>
     </header>
@@ -104,15 +109,15 @@
         <header class="blog-post-header">
           <div class="container-narrow">
             <nav class="breadcrumb" aria-label="Breadcrumb">
-              <a href="blog.html" class="back-to-blog" data-no-transition>Back to Blog</a>
+              <a href="blog.html" class="back-to-blog" data-no-transition data-i18n="blog.post.back">Back to Blog</a>
             </nav>
             <div class="blog-post-meta">
-              <span class="category">CX</span>
-              <span class="read-time">8 min read</span>
+              <span class="category" data-i18n="blog.posts.3.category">CX</span>
+              <span class="read-time" data-i18n="blog.posts.3.readTime">8 min read</span>
               <time datetime="2024-01-10">January 10, 2024</time>
             </div>
-            <h1 class="blog-post-title">Interview frameworks that uncover hidden churn risks</h1>
-            <p class="blog-post-excerpt">Customer churn often happens silently, but strategic interview frameworks can reveal the warning signs before it's too late.</p>
+            <h1 class="blog-post-title" data-i18n="blog.posts.3.title">Interview frameworks that uncover hidden churn risks</h1>
+            <p class="blog-post-excerpt" data-i18n="blog.posts.3.excerpt">Customer churn often happens silently, but strategic interview frameworks can reveal the warning signs before it's too late.</p>
             <div class="blog-post-author">
               <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" alt="Author avatar" class="author-avatar" />
               <div>
@@ -162,9 +167,9 @@
             </div>
             
             <div class="blog-post-cta">
-              <h3>Ready to prevent churn proactively?</h3>
-              <p>See how VXN VISION can help you identify and address churn risks before they impact your business.</p>
-              <a href="contact.html" class="btn btn-primary">Get started today</a>
+              <h3 data-i18n="blog.posts.3.cta.title">Ready to prevent churn proactively?</h3>
+              <p data-i18n="blog.posts.3.cta.text">See how VXN VISION can help you identify and address churn risks before they impact your business.</p>
+              <a href="contact.html" class="btn btn-primary" data-i18n="blog.posts.3.cta.button">Get started today</a>
             </div>
           </div>
         </div>

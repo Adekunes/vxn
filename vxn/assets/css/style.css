@@ -317,6 +317,66 @@
   gap: 12px;
   flex-shrink: 0;
   }
+
+  /* Language switch - compact pill buttons */
+  .lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px;
+  border-radius: var(--radius-full);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-sm);
+  }
+
+  .lang-switch button {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--color-text-dim);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  font-size: 13px;
+  padding: 8px 12px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition);
+  min-height: 34px;
+  line-height: 1;
+  }
+
+  .lang-switch button:hover {
+  color: var(--color-text);
+  background: rgba(255, 255, 255, 0.7);
+  }
+
+  .lang-switch button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.18);
+  }
+
+  .lang-switch button.active {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-700));
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 6px 16px rgba(0, 122, 255, 0.25);
+  }
+
+  @media (max-width: 860px) {
+  .lang-switch {
+  padding: 2px;
+  gap: 4px;
+  }
+  .lang-switch button {
+  font-size: 12px;
+  padding: 8px 10px;
+  min-height: 32px;
+  }
+  }
   
   .nav-toggle {
   display: none;
