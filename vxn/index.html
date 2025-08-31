@@ -3,32 +3,40 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0b1220" />
+    <meta name="theme-color" content="#ff7a00" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon.png" />
     <meta name="description" content="VXN CRM – Client relationship management that helps you build trust, streamline workflows, and grow revenue." />
-    <title>VXN CRM – Build lasting client relationships</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>VXN VISION - Modern CRM Platform for Growing Businesses</title>
+    
+    <!-- CSS Files -->
     <link rel="stylesheet" href="assets/css/style.css" />
+    
+    <script defer src="assets/js/i18n.js"></script>
     <script defer src="assets/js/main.js"></script>
   </head>
-  <body>
+  <body class="is-ready">
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
       <div class="container nav" role="navigation" aria-label="Main">
         <a class="brand" href="index.html" aria-label="VXN CRM Home">
-          <span class="brand-mark" aria-hidden="true"></span>
-          <span>VXN CRM</span>
+          <img class="brand-img" src="assets/img/vxn-logo.png" alt="VXN CRM" />
         </a>
         <nav class="nav-links" aria-label="Primary">
-          <a href="index.html" aria-current="page">Home</a>
-          <a href="services.html">Services</a>
-          <a href="solutions.html">Solutions</a>
-          <a href="about.html">About</a>
-          <a href="blog.html">Blog</a>
-          <a href="contact.html">Contact</a>
+          <a href="index.html" aria-current="page" data-i18n="nav.home">Home</a>
+          <a href="services.html" data-i18n="nav.services">Services</a>
+          <a href="solutions.html" data-i18n="nav.solutions">Solutions</a>
+          <a href="about.html" data-i18n="nav.about">About</a>
+          <a href="blog.html" data-i18n="nav.blog">Blog</a>
+          <a href="contact.html" data-i18n="nav.contact">Contact</a>
         </nav>
         <div class="nav-cta">
-          <a class="btn btn-primary" href="contact.html">Request a demo</a>
+          <a class="btn btn-primary" href="contact.html" data-i18n="nav.requestDemo">Request a demo</a>
+          <div class="lang-switch" aria-label="Language">
+            <button type="button" data-lang="en">EN</button>
+            <button type="button" data-lang="fr">FR</button>
+          </div>
           <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
@@ -38,12 +46,12 @@
       </div>
       <div class="mobile-drawer" hidden>
         <div class="stack container">
-          <a href="index.html" aria-current="page">Home</a>
-          <a href="services.html">Services</a>
-          <a href="solutions.html">Solutions</a>
-          <a href="about.html">About</a>
-          <a href="blog.html">Blog</a>
-          <a href="contact.html">Contact</a>
+          <a href="index.html" aria-current="page" data-i18n="nav.home">Home</a>
+          <a href="services.html" data-i18n="nav.services">Services</a>
+          <a href="solutions.html" data-i18n="nav.solutions">Solutions</a>
+          <a href="about.html" data-i18n="nav.about">About</a>
+          <a href="blog.html" data-i18n="nav.blog">Blog</a>
+          <a href="contact.html" data-i18n="nav.contact">Contact</a>
         </div>
       </div>
     </header>
@@ -52,15 +60,15 @@
       <section class="hero section">
         <div class="container hero-grid">
           <div class="stack">
-            <span class="eyebrow reveal">Client Relationship Management</span>
+            <span class="eyebrow reveal" data-i18n="index.hero.eyebrow">Client Relationship Management</span>
             <h1 class="hero-title reveal" data-reveal-delay="60">
-              <span class="line">Build lasting relationships</span>
-              <span class="line">that drive <span class="accent">predictable growth</span>.</span>
+              <span class="line" data-i18n="index.hero.title1">Build lasting relationships</span>
+              <span class="line"><span class="accent" data-i18n="index.hero.title2">that drive predictable growth.</span></span>
             </h1>
-            <p class="lead reveal" data-reveal-delay="120">VXN CRM unifies your customer data, orchestrates follow-ups, and gives teams clear next steps—so nothing slips through the cracks.</p>
-            <div class="stack" style="grid-auto-flow: column; grid-auto-columns: max-content; align-items: center; gap: 10px;">
-              <a class="btn btn-primary reveal" data-reveal-delay="180" href="contact.html">Get started</a>
-              <a class="btn reveal" data-reveal-delay="220" href="solutions.html">See how it works</a>
+            <p class="lede reveal" data-reveal-delay="120" data-i18n="index.hero.lede">VXN CRM unifies your customer data, orchestrates follow-ups, and gives teams clear next steps—so nothing slips through the cracks.</p>
+            <div class="stack" style="grid-auto-flow: column; grid-auto-columns: max-content; align-items: center; gap: 16px;">
+              <a class="btn btn-primary reveal" data-reveal-delay="180" href="contact.html" data-i18n="index.cta.getStarted">Get started</a>
+              <a class="btn reveal" data-reveal-delay="220" href="solutions.html" data-i18n="index.cta.seeHow">See how it works</a>
             </div>
             <div class="metrics">
               <div class="metric reveal" data-reveal-delay="260"><strong>+28%</strong><span>Win rate</span></div>
@@ -76,7 +84,7 @@
               </div>
               <div class="card">
                 <div class="stack">
-                  <div style="display:grid; grid-template-columns: 1fr auto; align-items:center; gap:10px;">
+                  <div style="display:grid; grid-template-columns: 1fr auto; align-items:center; gap:16px;">
                     <strong>Acme Renewals</strong>
                     <span class="pill">+65%</span>
                   </div>
@@ -85,7 +93,7 @@
               </div>
               <div class="card">
                 <div class="stack">
-                  <div style="display:grid; grid-template-columns: 1fr auto; align-items:center; gap:10px;">
+                  <div style="display:grid; grid-template-columns: 1fr auto; align-items:center; gap:16px;">
                     <strong>Northwind Expansion</strong>
                     <span class="pill">$180k</span>
                   </div>
@@ -94,7 +102,7 @@
               </div>
               <div class="card">
                 <div class="stack">
-                  <div style="display:grid; grid-template-columns: 1fr auto; align-items:center; gap:10px;">
+                  <div style="display:grid; grid-template-columns: 1fr auto; align-items:center; gap:16px;">
                     <strong>Globex Pilot</strong>
                     <span class="pill">Due Friday</span>
                   </div>
@@ -108,23 +116,23 @@
 
       <section class="section band">
         <div class="container">
-          <h2 class="reveal center section-title">Everything teams need to earn trust</h2>
-          <p class="center reveal" data-reveal-delay="80">Automate the busywork, personalize outreach at scale, and focus on winning moments.</p>
+          <h2 class="reveal center section-title" data-i18n="index.features.title">Everything teams need to earn trust</h2>
+          <p class="center reveal" data-reveal-delay="80" data-i18n="index.features.lede">Automate the busywork, personalize outreach at scale, and focus on winning moments.</p>
           <div class="features">
             <div class="card reveal">
               <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3l9 6-9 6-9-6 9-6z"/></svg></div>
-              <h3>Unified client profiles</h3>
-              <p>All interactions, contracts, and notes in one place—no more tab hunting.</p>
+              <h3 data-i18n="index.features.card1.title">Unified client profiles</h3>
+              <p data-i18n="index.features.card1.text">All interactions, contracts, and notes in one place—no more tab hunting.</p>
             </div>
             <div class="card reveal" data-reveal-delay="60">
               <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M12 4v16"/></svg></div>
-              <h3>Playbooks & automations</h3>
-              <p>Trigger timely follow-ups and nudges to keep deals moving without micromanagement.</p>
+              <h3 data-i18n="index.features.card2.title">Playbooks & automations</h3>
+              <p data-i18n="index.features.card2.text">Trigger timely follow-ups and nudges to keep deals moving without micromanagement.</p>
             </div>
             <div class="card reveal" data-reveal-delay="120">
               <div class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 7-7"/></svg></div>
-              <h3>Forecast you can trust</h3>
-              <p>Real-time pipeline health and risk signals help leaders forecast confidently.</p>
+              <h3 data-i18n="index.features.card3.title">Forecast you can trust</h3>
+              <p data-i18n="index.features.card3.text">Real-time pipeline health and risk signals help leaders forecast confidently.</p>
             </div>
           </div>
         </div>
@@ -132,28 +140,28 @@
 
       <section class="section">
         <div class="container">
-          <h2 class="reveal center">Teams see results in weeks</h2>
+          <h2 class="reveal center" data-i18n="index.testimonials.title">Teams see results in weeks</h2>
           <div class="testimonials">
             <div class="quote reveal">
-              <p>“VXN CRM gave us one source of truth across sales and success. Our renewals hit a record high.”</p>
-              <cite>Jordan Patel, VP Revenue</cite>
+              <p data-i18n="index.testimonials.q1">"VXN CRM gave us one source of truth across sales and success. Our renewals hit a record high."</p>
+              <cite data-i18n="index.testimonials.q1cite">Jordan Patel, VP Revenue</cite>
             </div>
             <div class="quote reveal" data-reveal-delay="60">
-              <p>“The automation playbooks are a game changer. Reps spend time with customers, not spreadsheets.”</p>
-              <cite>Samira Chen, Head of Sales Ops</cite>
+              <p data-i18n="index.testimonials.q2">"The automation playbooks are a game changer. Reps spend time with customers, not spreadsheets."</p>
+              <cite data-i18n="index.testimonials.q2cite">Samira Chen, Head of Sales Ops</cite>
             </div>
             <div class="quote reveal" data-reveal-delay="120">
-              <p>“Implementation was smooth and we were live in under a month. The team support is stellar.”</p>
-              <cite>Leo Alvarez, COO</cite>
+              <p data-i18n="index.testimonials.q3">"Implementation was smooth and we were live in under a month. The team support is stellar."</p>
+              <cite data-i18n="index.testimonials.q3cite">Leo Alvarez, COO</cite>
             </div>
           </div>
 
           <div class="cta reveal" data-reveal-delay="180">
             <div>
-              <strong>Ready to see it in action?</strong>
-              <p class="muted">Book a 30-minute walkthrough tailored to your workflows.</p>
+              <strong data-i18n="index.cta.title">Ready to see it in action?</strong>
+              <p class="muted" data-i18n="index.cta.text">Book a 30-minute walkthrough tailored to your workflows.</p>
             </div>
-            <a class="btn btn-primary" href="contact.html">Request demo</a>
+            <a class="btn btn-primary" href="contact.html" data-i18n="index.cta.button">Request demo</a>
           </div>
         </div>
       </section>
@@ -161,11 +169,26 @@
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div class="muted">© <span id="year"></span> VXN CRM. All rights reserved.</div>
+        <div class="muted">© <span id="year"></span> VXN CRM. <span data-i18n="common.rights">All rights reserved.</span></div>
         <div class="footer-links">
-          <a href="#">Privacy</a>
-          <a href="#">Security</a>
-          <a href="#">Status</a>
+          <a href="privacy.html" data-i18n="common.privacy">Privacy</a>
+          <a href="security.html" data-i18n="common.security">Security</a>
+
+          <a href="https://linkedin.com/company/vxn-crm" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <a href="https://facebook.com/vxncrm" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          <a href="https://twitter.com/vxncrm" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+            </svg>
+          </a>
         </div>
       </div>
       <script>document.getElementById('year').textContent = new Date().getFullYear();</script>

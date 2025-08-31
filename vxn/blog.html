@@ -3,101 +3,218 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#ffffff" />
-    <meta name="description" content="Insights and perspectives from VXN CRM: strategy, culture, and product." />
-    <title>Blog – VXN CRM</title>
+    <meta name="theme-color" content="#ff7a00" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon.png" />
+    <meta name="description" content="VXN VISION blog: Insights and perspectives on client relationships, strategy, culture, and product development. Expert CRM content and best practices." />
+    <meta name="keywords" content="CRM blog, client relationships, sales strategy, customer success, CRM best practices, sales insights" />
+    <meta name="author" content="VXN VISION" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vxn-vision.com/blog" />
+    <meta property="og:title" content="VXN VISION Blog – Client Relationship Insights" />
+    <meta property="og:description" content="Ideas shaping client relationships. Perspectives on strategy, culture, and technology behind human-centered growth." />
+    <meta property="og:image" content="https://vxn-vision.com/assets/images/blog-og.jpg" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://vxn-vision.com/blog" />
+    <meta property="twitter:title" content="VXN VISION Blog – Client Relationship Insights" />
+    <meta property="twitter:description" content="Ideas shaping client relationships. Perspectives on strategy, culture, and technology behind human-centered growth." />
+    <meta property="twitter:image" content="https://vxn-vision.com/assets/images/blog-twitter.jpg" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://vxn-vision.com/blog" />
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    
+    <title>VXN VISION Blog - CRM Insights & Best Practices | VXN VISION</title>
+    
+    <!-- CSS Files -->
     <link rel="stylesheet" href="assets/css/style.css" />
+    
+    <script defer src="assets/js/i18n.js"></script>
     <script defer src="assets/js/main.js"></script>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "VXN VISION Blog",
+      "description": "Insights and perspectives on client relationships, strategy, and CRM best practices",
+      "url": "https://vxn-vision.com/blog",
+      "publisher": {
+        "@type": "Organization",
+        "name": "VXN VISION"
+      },
+      "blogPost": [
+        {
+          "@type": "BlogPosting",
+          "headline": "Beyond funnels: designing relationship-driven growth",
+          "description": "Strategy insights on relationship-driven growth",
+          "author": {
+            "@type": "Person",
+            "name": "VXN VISION Team"
+          },
+          "datePublished": "2024-01-15"
+        }
+      ]
+    }
+    </script>
   </head>
-  <body>
+  <body class="is-ready">
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
       <div class="container nav" role="navigation" aria-label="Main">
-        <a class="brand" href="index.html" aria-label="VXN CRM Home">
-          <span class="brand-mark" aria-hidden="true"></span>
-          <span>VXN CRM</span>
+        <a class="brand" href="index.html" aria-label="VXN VISION Home">
+          <img class="brand-img" src="assets/img/vxn-logo.png" alt="VXN VISION" />
         </a>
         <nav class="nav-links" aria-label="Primary">
-          <a href="index.html">Home</a>
-          <a href="services.html">Services</a>
-          <a href="solutions.html">Solutions</a>
-          <a href="about.html">About</a>
-          <a href="blog.html" aria-current="page">Blog</a>
+          <a href="index.html" data-i18n="nav.home">Home</a>
+          <a href="services.html" data-i18n="nav.services">Services</a>
+          <a href="solutions.html" data-i18n="nav.solutions">Solutions</a>
+          <a href="about.html" data-i18n="nav.about">About</a>
+          <a href="blog.html" aria-current="page" data-i18n="nav.blog">Blog</a>
+          <a href="contact.html" data-i18n="nav.contact">Contact</a>
         </nav>
         <div class="nav-cta">
-          <a class="btn btn-primary" href="contact.html">Request a demo</a>
+          <a class="btn btn-primary" href="contact.html" data-i18n="nav.requestDemo">Request a demo</a>
+          <div class="lang-switch" aria-label="Language">
+            <button type="button" data-lang="en">EN</button>
+            <button type="button" data-lang="fr">FR</button>
+          </div>
           <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M4 6h16M4 12h16M4 18h16" stroke="#111" stroke-width="2" stroke-linecap="round" />
+              <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
             </svg>
           </button>
         </div>
       </div>
       <div class="mobile-drawer" hidden>
         <div class="stack container">
-          <a href="index.html">Home</a>
-          <a href="services.html">Services</a>
-          <a href="solutions.html">Solutions</a>
-          <a href="about.html">About</a>
-          <a href="blog.html" aria-current="page">Blog</a>
-          <a href="contact.html">Contact</a>
+          <a href="index.html" data-i18n="nav.home">Home</a>
+          <a href="services.html" data-i18n="nav.services">Services</a>
+          <a href="solutions.html" data-i18n="nav.solutions">Solutions</a>
+          <a href="about.html" data-i18n="nav.about">About</a>
+          <a href="blog.html" aria-current="page" data-i18n="nav.blog">Blog</a>
+          <a href="contact.html" data-i18n="nav.contact">Contact</a>
         </div>
       </div>
     </header>
 
     <main id="main">
-      <section class="section">
-        <div class="container-narrow">
-          <span class="eyebrow reveal">Blog</span>
-          <h1 class="reveal" data-reveal-delay="60">Ideas shaping client relationships</h1>
-          <p class="lede reveal" data-reveal-delay="120">Perspectives from our team and community on the craft, strategy, and technology behind human-centered growth.</p>
+      <section class="section blog-hero">
+        <div class="container">
+          <span class="eyebrow reveal" data-i18n="blog.hero.eyebrow">Blog</span>
+          <h1 class="reveal" data-reveal-delay="60" data-i18n="blog.hero.title">Ideas shaping client relationships</h1>
+          <p class="lede reveal" data-reveal-delay="120" data-i18n="blog.hero.lede">Perspectives from our team and community on the craft, strategy, and technology behind human-centered growth.</p>
         </div>
       </section>
 
       <section class="section band">
         <div class="container">
           <div class="posts-grid">
-            <a class="card post-card reveal" href="#" data-no-transition>
+            <a class="card post-card reveal" href="blog-post-1.html">
+              <div class="post-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M9 11H1a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2z"/>
+                  <path d="M23 11h-8a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2z"/>
+                  <path d="M9 17H1a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2z"/>
+                  <path d="M23 17h-8a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2z"/>
+                  <path d="M9 5H1a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2z"/>
+                  <path d="M23 5h-8a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2z"/>
+                </svg>
+              </div>
               <img class="media-square" src="https://images.unsplash.com/photo-1557800636-894a64c1696f?q=80&w=1200&auto=format&fit=crop" alt="Strategy workshop" />
               <div class="stack">
-                <div class="meta">Strategy — 7 min read</div>
-                <div class="title">Beyond funnels: designing relationship-driven growth</div>
+                <div class="meta" data-i18n="blog.posts.1.meta">Strategy — 7 min read</div>
+                <div class="title" data-i18n="blog.posts.1.title">Beyond funnels: designing relationship-driven growth</div>
+                <div class="excerpt" data-i18n="blog.posts.1.excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</div>
               </div>
             </a>
-            <a class="card post-card reveal" data-reveal-delay="40" href="#" data-no-transition>
+            <a class="card post-card reveal" data-reveal-delay="40" href="blog-post-2.html">
+              <div class="post-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M18 20V10"/>
+                  <path d="M12 20V4"/>
+                  <path d="M6 20v-6"/>
+                </svg>
+              </div>
               <img class="media-square" src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1200&auto=format&fit=crop" alt="Analytics dashboard" />
               <div class="stack">
-                <div class="meta">Data — 5 min read</div>
-                <div class="title">Signal over noise: a practical guide to pipeline health</div>
+                <div class="meta" data-i18n="blog.posts.2.meta">Data — 5 min read</div>
+                <div class="title" data-i18n="blog.posts.2.title">Signal over noise: a practical guide to pipeline health</div>
+                <div class="excerpt" data-i18n="blog.posts.2.excerpt">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</div>
               </div>
             </a>
-            <a class="card post-card reveal" data-reveal-delay="80" href="#" data-no-transition>
+            <a class="card post-card reveal" data-reveal-delay="80" href="blog-post-3.html">
+              <div class="post-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
               <img class="media-square" src="https://images.unsplash.com/photo-1544006659-f0b21884ce1d?q=80&w=1200&auto=format&fit=crop" alt="Customer interview" />
               <div class="stack">
-                <div class="meta">CX — 8 min read</div>
-                <div class="title">Interview frameworks that uncover hidden churn risks</div>
+                <div class="meta" data-i18n="blog.posts.3.meta">CX — 8 min read</div>
+                <div class="title" data-i18n="blog.posts.3.title">Interview frameworks that uncover hidden churn risks</div>
+                <div class="excerpt" data-i18n="blog.posts.3.excerpt">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.</div>
               </div>
             </a>
-            <a class="card post-card reveal" href="#" data-no-transition>
+            <a class="card post-card reveal" href="blog-post-4.html">
+              <div class="post-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </div>
               <img class="media-square" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1200&auto=format&fit=crop" alt="Design critique" />
               <div class="stack">
-                <div class="meta">Design — 6 min read</div>
-                <div class="title">The editorial rules behind clean enterprise UI</div>
+                <div class="meta" data-i18n="blog.posts.4.meta">Design — 6 min read</div>
+                <div class="title" data-i18n="blog.posts.4.title">The editorial rules behind clean enterprise UI</div>
+                <div class="excerpt" data-i18n="blog.posts.4.excerpt">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.</div>
               </div>
             </a>
-            <a class="card post-card reveal" data-reveal-delay="40" href="#" data-no-transition>
+            <a class="card post-card reveal" data-reveal-delay="40" href="blog-post-5.html">
+              <div class="post-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
               <img class="media-square" src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop" alt="Team at work" />
               <div class="stack">
-                <div class="meta">Leadership — 4 min read</div>
-                <div class="title">Coaching reps to consistent follow-through</div>
+                <div class="meta" data-i18n="blog.posts.5.meta">Leadership — 4 min read</div>
+                <div class="title" data-i18n="blog.posts.5.title">Coaching reps to consistent follow-through</div>
+                <div class="excerpt" data-i18n="blog.posts.5.excerpt">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate.</div>
               </div>
             </a>
-            <a class="card post-card reveal" data-reveal-delay="80" href="#" data-no-transition>
+            <a class="card post-card reveal" data-reveal-delay="80" href="blog-post-6.html">
+              <div class="post-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+              </div>
               <img class="media-square" src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1200&auto=format&fit=crop" alt="Analytics dashboard" />
               <div class="stack">
-                <div class="meta">Insights — 5 min read</div>
-                <div class="title">A lightweight taxonomy for deal risk signals</div>
+                <div class="meta" data-i18n="blog.posts.6.meta">Insights — 5 min read</div>
+                <div class="title" data-i18n="blog.posts.6.title">A lightweight taxonomy for deal risk signals</div>
+                <div class="excerpt" data-i18n="blog.posts.6.excerpt">Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur.</div>
               </div>
             </a>
           </div>
@@ -107,11 +224,26 @@
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div class="muted">© <span id="year"></span> VXN CRM. All rights reserved.</div>
+        <div class="muted">© <span id="year"></span> VXN VISION. <span data-i18n="common.rights">All rights reserved.</span></div>
         <div class="footer-links">
-          <a href="#">Privacy</a>
-          <a href="#">Security</a>
-          <a href="#">Status</a>
+          <a href="privacy.html" data-i18n="common.privacy">Privacy</a>
+          <a href="security.html" data-i18n="common.security">Security</a>
+
+          <a href="https://linkedin.com/company/vxn-crm" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <a href="https://facebook.com/vxncrm" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          <a href="https://twitter.com/vxncrm" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+            </svg>
+          </a>
         </div>
       </div>
       <script>document.getElementById('year').textContent = new Date().getFullYear();</script>

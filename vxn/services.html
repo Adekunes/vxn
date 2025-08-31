@@ -3,46 +3,57 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0b1220" />
+    <meta name="theme-color" content="#ff7a00" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon.png" />
     <meta name="description" content="Implementation, migration, training, and ongoing CRM services tailored to your teams." />
-    <title>Services – VXN CRM</title>
+    <title>VXN VISION Services - CRM Implementation & Support | VXN VISION</title>
+    
+    <!-- CSS Files -->
     <link rel="stylesheet" href="assets/css/style.css" />
+    
+    <script defer src="assets/js/i18n.js"></script>
     <script defer src="assets/js/main.js"></script>
   </head>
-  <body>
+  <body class="is-ready">
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
       <div class="container nav" role="navigation" aria-label="Main">
         <a class="brand" href="index.html" aria-label="VXN CRM Home">
-          <span class="brand-mark" aria-hidden="true"></span>
-          <span>VXN CRM</span>
+          <img class="brand-img" src="assets/img/vxn-logo.png" alt="VXN CRM" />
         </a>
         <nav class="nav-links" aria-label="Primary">
-          <a href="index.html">Home</a>
-          <a href="services.html" aria-current="page">Services</a>
-          <a href="solutions.html">Solutions</a>
-          <a href="about.html">About</a>
-          <a href="blog.html">Blog</a>
-          <a href="contact.html">Contact</a>
+          <a href="index.html" data-i18n="nav.home">Home</a>
+          <a href="services.html" aria-current="page" data-i18n="nav.services">Services</a>
+          <a href="solutions.html" data-i18n="nav.solutions">Solutions</a>
+          <a href="about.html" data-i18n="nav.about">About</a>
+          <a href="blog.html" data-i18n="nav.blog">Blog</a>
+          <a href="contact.html" data-i18n="nav.contact">Contact</a>
         </nav>
         <div class="nav-cta">
-          <a class="btn btn-primary" href="contact.html">Request a demo</a>
+          <a class="btn btn-primary" href="contact.html" data-i18n="nav.requestDemo">Request a demo</a>
+          <div class="lang-switch" aria-label="Language">
+            <button type="button" data-lang="en">EN</button>
+            <button type="button" data-lang="fr">FR</button>
+          </div>
           <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+
+              <path d="M4 6h16M4 12h16M4 18h16" stroke="#111" stroke-width="2" stroke-linecap="round" />
+
             </svg>
           </button>
         </div>
       </div>
       <div class="mobile-drawer" hidden>
         <div class="stack container">
-          <a href="index.html">Home</a>
-          <a href="services.html" aria-current="page">Services</a>
-          <a href="solutions.html">Solutions</a>
-          <a href="about.html">About</a>
-          <a href="blog.html">Blog</a>
-          <a href="contact.html">Contact</a>
+          <a href="index.html" data-i18n="nav.home">Home</a>
+          <a href="services.html" aria-current="page" data-i18n="nav.services">Services</a>
+          <a href="solutions.html" data-i18n="nav.solutions">Solutions</a>
+          <a href="about.html" data-i18n="nav.about">About</a>
+          <a href="blog.html" data-i18n="nav.blog">Blog</a>
+          <a href="contact.html" data-i18n="nav.contact">Contact</a>
         </div>
       </div>
     </header>
@@ -50,81 +61,121 @@
     <main id="main">
       <section class="section">
         <div class="container">
-          <span class="eyebrow reveal">Services</span>
-          <h1 class="reveal" data-reveal-delay="60">Expert services to launch fast and scale confidently</h1>
-          <p class="reveal" data-reveal-delay="120">Our team partners with you from day one—designing the right workflow, ensuring clean data, and enabling your teams for long-term success.</p>
+          <span class="eyebrow reveal" data-i18n="services.hero.eyebrow">Services</span>
+          <h1 class="reveal" data-reveal-delay="60" data-i18n="services.hero.title">Expert services to launch fast and scale confidently</h1>
+          <p class="reveal" data-reveal-delay="120" data-i18n="services.hero.lede">Our team partners with you from day one—designing the right workflow, ensuring clean data, and enabling your teams for long-term success.</p>
         </div>
       </section>
 
       <section class="section">
         <div class="container grid-3">
           <div class="card reveal">
-            <h3>CRM Implementation</h3>
-            <p>Solution design, configuration, and data model mapping aligned to your processes.</p>
+            <div class="card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M9 11H1a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2z"/>
+                <path d="M23 11h-8a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2z"/>
+                <path d="M9 17H1a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2z"/>
+                <path d="M23 17h-8a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2z"/>
+                <path d="M9 5H1a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2z"/>
+                <path d="M23 5h-8a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2z"/>
+              </svg>
+            </div>
+            <h3 data-i18n="services.cards.implementation.title">CRM Implementation</h3>
+            <p data-i18n="services.cards.implementation.text">Solution design, configuration, and data model mapping aligned to your processes.</p>
           </div>
           <div class="card reveal" data-reveal-delay="60">
-            <h3>Data Migration</h3>
-            <p>Secure migration from spreadsheets and legacy tools with rigorous validation.</p>
+            <div class="card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7,10 12,15 17,10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+            </div>
+            <h3 data-i18n="services.cards.migration.title">Data Migration</h3>
+            <p data-i18n="services.cards.migration.text">Secure migration from spreadsheets and legacy tools with rigorous validation.</p>
           </div>
           <div class="card reveal" data-reveal-delay="120">
-            <h3>Training & Enablement</h3>
-            <p>Role-based training and playbooks to drive adoption and measurable outcomes.</p>
+            <div class="card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
+            <h3 data-i18n="services.cards.training.title">Training & Enablement</h3>
+            <p data-i18n="services.cards.training.text">Role-based training and playbooks to drive adoption and measurable outcomes.</p>
           </div>
           <div class="card reveal">
-            <h3>Custom Integrations</h3>
-            <p>Connect your stack with APIs and middleware: email, support, billing, and more.</p>
+            <div class="card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+              </svg>
+            </div>
+            <h3 data-i18n="services.cards.integrations.title">Custom Integrations</h3>
+            <p data-i18n="services.cards.integrations.text">Connect your stack with APIs and middleware: email, support, billing, and more.</p>
           </div>
           <div class="card reveal" data-reveal-delay="60">
-            <h3>Analytics & Reporting</h3>
-            <p>Dashboards, KPIs, and forecasting to track pipeline health and retention.</p>
+            <div class="card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M18 20V10"/>
+                <path d="M12 20V4"/>
+                <path d="M6 20v-6"/>
+              </svg>
+            </div>
+            <h3 data-i18n="services.cards.analytics.title">Analytics & Reporting</h3>
+            <p data-i18n="services.cards.analytics.text">Dashboards, KPIs, and forecasting to track pipeline health and retention.</p>
           </div>
           <div class="card reveal" data-reveal-delay="120">
-            <h3>Ongoing Support</h3>
-            <p>Admin-as-a-service and quarterly reviews to keep you ahead of change.</p>
+            <div class="card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <h3 data-i18n="services.cards.support.title">Ongoing Support</h3>
+            <p data-i18n="services.cards.support.text">Admin-as-a-service and quarterly reviews to keep you ahead of change.</p>
           </div>
         </div>
       </section>
 
       <section class="section">
         <div class="container">
-          <h2 class="reveal center">A proven implementation approach</h2>
+          <h2 class="reveal center" data-i18n="services.steps.title">A proven implementation approach</h2>
           <div class="grid-2">
             <div class="step reveal">
               <div class="step-num">1</div>
               <div>
-                <strong>Discovery & design</strong>
-                <p class="muted">Workshops with your teams to align on goals and map the ideal workflow.</p>
+                <strong data-i18n="services.steps.1.title">Discovery & design</strong>
+                <p class="muted" data-i18n="services.steps.1.text">Workshops with your teams to align on goals and map the ideal workflow.</p>
               </div>
             </div>
             <div class="step reveal" data-reveal-delay="60">
               <div class="step-num">2</div>
               <div>
-                <strong>Configuration</strong>
-                <p class="muted">Fields, stages, playbooks, and permissions set up to match your process.</p>
+                <strong data-i18n="services.steps.2.title">Configuration</strong>
+                <p class="muted" data-i18n="services.steps.2.text">Fields, stages, playbooks, and permissions set up to match your process.</p>
               </div>
             </div>
             <div class="step reveal">
               <div class="step-num">3</div>
               <div>
-                <strong>Migration & QA</strong>
-                <p class="muted">Data cleaned and validated with multiple test runs before go-live.</p>
+                <strong data-i18n="services.steps.3.title">Migration & QA</strong>
+                <p class="muted" data-i18n="services.steps.3.text">Data cleaned and validated with multiple test runs before go-live.</p>
               </div>
             </div>
             <div class="step reveal" data-reveal-delay="60">
               <div class="step-num">4</div>
               <div>
-                <strong>Enablement</strong>
-                <p class="muted">Training, launch support, and success metrics to ensure adoption.</p>
+                <strong data-i18n="services.steps.4.title">Enablement</strong>
+                <p class="muted" data-i18n="services.steps.4.text">Training, launch support, and success metrics to ensure adoption.</p>
               </div>
             </div>
           </div>
 
           <div class="cta reveal" data-reveal-delay="120">
             <div>
-              <strong>Need a migration plan?</strong>
-              <p class="muted">We’ll audit your data and build a clear path to go-live.</p>
+              <strong data-i18n="services.cta.title">Need a migration plan?</strong>
+              <p class="muted" data-i18n="services.cta.text">We’ll audit your data and build a clear path to go-live.</p>
             </div>
-            <a class="btn btn-primary" href="contact.html">Talk to an expert</a>
+            <a class="btn btn-primary" href="contact.html" data-i18n="services.cta.button">Talk to an expert</a>
           </div>
         </div>
       </section>
@@ -132,11 +183,26 @@
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div class="muted">© <span id="year"></span> VXN CRM. All rights reserved.</div>
+        <div class="muted">© <span id="year"></span> VXN CRM. <span data-i18n="common.rights">All rights reserved.</span></div>
         <div class="footer-links">
-          <a href="#">Privacy</a>
-          <a href="#">Security</a>
-          <a href="#">Status</a>
+          <a href="privacy.html" data-i18n="common.privacy">Privacy</a>
+          <a href="security.html" data-i18n="common.security">Security</a>
+
+          <a href="https://linkedin.com/company/vxn-crm" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <a href="https://facebook.com/vxncrm" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          <a href="https://twitter.com/vxncrm" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+            </svg>
+          </a>
         </div>
       </div>
       <script>document.getElementById('year').textContent = new Date().getFullYear();</script>

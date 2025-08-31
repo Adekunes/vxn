@@ -3,46 +3,53 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0b1220" />
+    <meta name="theme-color" content="#007aff" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon.png" />
     <meta name="description" content="Contact VXN CRM for demos, pricing, and partnership inquiries." />
-    <title>Contact – VXN CRM</title>
+    <title>Contact VXN VISION - Get Started Today | VXN VISION</title>
+    
+    <!-- CSS Files -->
     <link rel="stylesheet" href="assets/css/style.css" />
+    
+    <script defer src="assets/js/i18n.js"></script>
     <script defer src="assets/js/main.js"></script>
   </head>
-  <body>
+  <body class="contact-page is-ready">
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
       <div class="container nav" role="navigation" aria-label="Main">
         <a class="brand" href="index.html" aria-label="VXN CRM Home">
-          <span class="brand-mark" aria-hidden="true"></span>
-          <span>VXN CRM</span>
+          <img class="brand-img" src="assets/img/vxn-logo.png" alt="VXN CRM" />
         </a>
         <nav class="nav-links" aria-label="Primary">
-          <a href="index.html">Home</a>
-          <a href="services.html">Services</a>
-          <a href="solutions.html">Solutions</a>
-          <a href="about.html">About</a>
-          <a href="blog.html">Blog</a>
-          <a href="contact.html" aria-current="page">Contact</a>
+          <a href="index.html" data-i18n="nav.home">Home</a>
+          <a href="services.html" data-i18n="nav.services">Services</a>
+          <a href="solutions.html" data-i18n="nav.solutions">Solutions</a>
+          <a href="about.html" data-i18n="nav.about">About</a>
+          <a href="blog.html" data-i18n="nav.blog">Blog</a>
+          <a href="contact.html" aria-current="page" data-i18n="nav.contact">Contact</a>
         </nav>
         <div class="nav-cta">
-          <a class="btn btn-primary" href="contact.html" aria-current="page">Request a demo</a>
+          <a class="btn btn-primary" href="contact.html" aria-current="page" data-i18n="nav.requestDemo">Request a demo</a>
           <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+
+              <path d="M4 6h16M4 12h16M4 18h16" stroke="#111" stroke-width="2" stroke-linecap="round" />
+
             </svg>
           </button>
         </div>
       </div>
       <div class="mobile-drawer" hidden>
         <div class="stack container">
-          <a href="index.html">Home</a>
-          <a href="services.html">Services</a>
-          <a href="solutions.html">Solutions</a>
-          <a href="about.html">About</a>
-          <a href="blog.html">Blog</a>
-          <a href="contact.html" aria-current="page">Contact</a>
+          <a href="index.html" data-i18n="nav.home">Home</a>
+          <a href="services.html" data-i18n="nav.services">Services</a>
+          <a href="solutions.html" data-i18n="nav.solutions">Solutions</a>
+          <a href="about.html" data-i18n="nav.about">About</a>
+          <a href="blog.html" data-i18n="nav.blog">Blog</a>
+          <a href="contact.html" aria-current="page" data-i18n="nav.contact">Contact</a>
         </div>
       </div>
     </header>
@@ -50,9 +57,9 @@
     <main id="main">
       <section class="section">
         <div class="container">
-          <span class="eyebrow reveal">Contact</span>
-          <h1 class="reveal" data-reveal-delay="60">Let’s talk about your goals</h1>
-          <p class="reveal" data-reveal-delay="120">Tell us about your team and workflows. We’ll tailor a quick demo and share pricing that fits your stage.</p>
+          <span class="eyebrow reveal" data-i18n="contact.hero.eyebrow">Contact</span>
+          <h1 class="reveal" data-reveal-delay="60" data-i18n="contact.hero.title">Let’s talk about your goals</h1>
+          <p class="reveal" data-reveal-delay="120" data-i18n="contact.hero.lede">Tell us about your team and workflows. We’ll tailor a quick demo and share pricing that fits your stage.</p>
         </div>
       </section>
 
@@ -61,45 +68,67 @@
           <form class="form reveal" data-validate="contact" aria-label="Contact form">
             <div class="grid-2">
               <div class="field">
-                <label for="name">Full name</label>
+                <label for="name" data-i18n="contact.form.name">Full name</label>
                 <input id="name" name="name" type="text" autocomplete="name" required />
               </div>
               <div class="field">
-                <label for="email">Work email</label>
+                <label for="email" data-i18n="contact.form.email">Work email</label>
                 <input id="email" name="email" type="email" autocomplete="email" required />
               </div>
             </div>
             <div class="grid-2">
               <div class="field">
-                <label for="company">Company</label>
+                <label for="company" data-i18n="contact.form.company">Company</label>
                 <input id="company" name="company" type="text" autocomplete="organization" required />
               </div>
               <div class="field">
-                <label for="team_size">Team size</label>
+                <label for="team_size" data-i18n="contact.form.teamSize">Team size</label>
                 <input id="team_size" name="team_size" type="text" />
               </div>
             </div>
             <div class="field">
-              <label for="message">How can we help?</label>
+              <label for="message" data-i18n="contact.form.message">How can we help?</label>
               <textarea id="message" name="message" rows="5" required></textarea>
             </div>
             <div style="display:flex; gap:10px; align-items:center;">
-              <button class="btn btn-primary" type="submit">Send message</button>
-              <span class="muted">We’ll respond within 1 business day.</span>
+              <button class="btn btn-primary" type="submit" data-i18n="contact.form.send">Send message</button>
+              <span class="muted" data-i18n="contact.form.response">We'll respond within 48 hours.</span>
             </div>
           </form>
 
           <div class="stack reveal" data-reveal-delay="100">
             <div class="card">
-              <strong>Sales</strong>
+              <div class="contact-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </div>
+              <strong data-i18n="contact.card.sales">Sales</strong>
               <p class="muted">sales@vxncrm.com</p>
             </div>
             <div class="card">
-              <strong>Support</strong>
+              <div class="contact-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+              </div>
+              <strong data-i18n="contact.card.support">Support</strong>
               <p class="muted">support@vxncrm.com</p>
             </div>
-            <div class="card" aria-label="Map placeholder" style="height: 260px; display:grid; place-items:center;">
-              <span class="muted">Map placeholder</span>
+            <div class="card">
+              <div class="contact-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <strong data-i18n="contact.card.phone">Phone</strong>
+              <p class="muted phone-number" data-phone="+1 514 659 5337">
+                +1 514 659 5337
+              </p>
+            </div>
+            <div class="card" aria-label="CRM Dashboard Preview" style="height: 260px; display:grid; place-items:center; overflow:hidden; border-radius: 16px; box-shadow: var(--shadow-sm);">
+              <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=400&auto=format&fit=crop" alt="CRM Dashboard Interface" style="width:100%; height:100%; object-fit:cover; border-radius: 16px;" />
             </div>
           </div>
         </div>
@@ -108,14 +137,56 @@
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div class="muted">© <span id="year"></span> VXN CRM. All rights reserved.</div>
+        <div class="muted">© <span id="year"></span> VXN CRM. <span data-i18n="common.rights">All rights reserved.</span></div>
         <div class="footer-links">
-          <a href="#">Privacy</a>
-          <a href="#">Security</a>
-          <a href="#">Status</a>
+          <a href="privacy.html" data-i18n="common.privacy">Privacy</a>
+          <a href="security.html" data-i18n="common.security">Security</a>
+
+          <a href="https://linkedin.com/company/vxn-crm" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <a href="https://facebook.com/vxncrm" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          <a href="https://twitter.com/vxncrm" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+            </svg>
+          </a>
         </div>
       </div>
       <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+      
+      <!-- Phone number protection script -->
+      <script>
+        // Protect phone number from AI scrapers
+        document.addEventListener('DOMContentLoaded', function() {
+          const phoneNumber = document.querySelector('.phone-number');
+          if (phoneNumber) {
+            // Add click to copy functionality for convenience
+            phoneNumber.addEventListener('click', function() {
+              const fullNumber = '+1 514 659 5337';
+              navigator.clipboard.writeText(fullNumber).then(() => {
+                // Show brief feedback
+                const originalText = phoneNumber.textContent;
+                phoneNumber.textContent = 'Copied!';
+                phoneNumber.style.color = 'var(--color-success)';
+                setTimeout(() => {
+                  phoneNumber.textContent = originalText;
+                  phoneNumber.style.color = 'var(--color-text-dim)';
+                }, 1500);
+              });
+            });
+            
+            // Add cursor pointer to indicate it's clickable
+            phoneNumber.style.cursor = 'pointer';
+          }
+        });
+      </script>
     </footer>
   </body>
   </html>
