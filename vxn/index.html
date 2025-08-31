@@ -12,6 +12,7 @@
     <!-- CSS Files -->
     <link rel="stylesheet" href="assets/css/style.css" />
     
+    <script defer src="assets/js/i18n.js"></script>
     <script defer src="assets/js/main.js"></script>
   </head>
   <body class="is-ready">
@@ -23,15 +24,19 @@
           <img class="brand-img" src="assets/img/vxn-logo.png" alt="VXN CRM" />
         </a>
         <nav class="nav-links" aria-label="Primary">
-          <a href="index.html" aria-current="page">Home</a>
-          <a href="services.html">Services</a>
-          <a href="solutions.html">Solutions</a>
-          <a href="about.html">About</a>
-          <a href="blog.html">Blog</a>
-          <a href="contact.html">Contact</a>
+          <a href="index.html" aria-current="page" data-i18n="nav.home">Home</a>
+          <a href="services.html" data-i18n="nav.services">Services</a>
+          <a href="solutions.html" data-i18n="nav.solutions">Solutions</a>
+          <a href="about.html" data-i18n="nav.about">About</a>
+          <a href="blog.html" data-i18n="nav.blog">Blog</a>
+          <a href="contact.html" data-i18n="nav.contact">Contact</a>
         </nav>
         <div class="nav-cta">
-          <a class="btn btn-primary" href="contact.html">Request a demo</a>
+          <a class="btn btn-primary" href="contact.html" data-i18n="nav.requestDemo">Request a demo</a>
+          <div class="lang-switch" aria-label="Language">
+            <button type="button" data-lang="en">EN</button>
+            <button type="button" data-lang="fr">FR</button>
+          </div>
           <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
@@ -41,12 +46,12 @@
       </div>
       <div class="mobile-drawer" hidden>
         <div class="stack container">
-          <a href="index.html" aria-current="page">Home</a>
-          <a href="services.html">Services</a>
-          <a href="solutions.html">Solutions</a>
-          <a href="about.html">About</a>
-          <a href="blog.html">Blog</a>
-          <a href="contact.html">Contact</a>
+          <a href="index.html" aria-current="page" data-i18n="nav.home">Home</a>
+          <a href="services.html" data-i18n="nav.services">Services</a>
+          <a href="solutions.html" data-i18n="nav.solutions">Solutions</a>
+          <a href="about.html" data-i18n="nav.about">About</a>
+          <a href="blog.html" data-i18n="nav.blog">Blog</a>
+          <a href="contact.html" data-i18n="nav.contact">Contact</a>
         </div>
       </div>
     </header>
@@ -55,15 +60,15 @@
       <section class="hero section">
         <div class="container hero-grid">
           <div class="stack">
-            <span class="eyebrow reveal">Client Relationship Management</span>
+            <span class="eyebrow reveal" data-i18n="index.hero.eyebrow">Client Relationship Management</span>
             <h1 class="hero-title reveal" data-reveal-delay="60">
-              <span class="line">Build lasting relationships</span>
-              <span class="line">that drive <span class="accent">predictable growth</span>.</span>
+              <span class="line" data-i18n="index.hero.title1">Build lasting relationships</span>
+              <span class="line"><span class="accent" data-i18n="index.hero.title2">that drive predictable growth.</span></span>
             </h1>
-            <p class="lede reveal" data-reveal-delay="120">VXN CRM unifies your customer data, orchestrates follow-ups, and gives teams clear next steps—so nothing slips through the cracks.</p>
+            <p class="lede reveal" data-reveal-delay="120" data-i18n="index.hero.lede">VXN CRM unifies your customer data, orchestrates follow-ups, and gives teams clear next steps—so nothing slips through the cracks.</p>
             <div class="stack" style="grid-auto-flow: column; grid-auto-columns: max-content; align-items: center; gap: 16px;">
-              <a class="btn btn-primary reveal" data-reveal-delay="180" href="contact.html">Get started</a>
-              <a class="btn reveal" data-reveal-delay="220" href="solutions.html">See how it works</a>
+              <a class="btn btn-primary reveal" data-reveal-delay="180" href="contact.html" data-i18n="index.cta.getStarted">Get started</a>
+              <a class="btn reveal" data-reveal-delay="220" href="solutions.html" data-i18n="index.cta.seeHow">See how it works</a>
             </div>
             <div class="metrics">
               <div class="metric reveal" data-reveal-delay="260"><strong>+28%</strong><span>Win rate</span></div>
@@ -164,10 +169,10 @@
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div class="muted">© <span id="year"></span> VXN CRM. All rights reserved.</div>
+        <div class="muted">© <span id="year"></span> VXN CRM. <span data-i18n="common.rights">All rights reserved.</span></div>
         <div class="footer-links">
-          <a href="privacy.html">Privacy</a>
-          <a href="security.html">Security</a>
+          <a href="privacy.html" data-i18n="common.privacy">Privacy</a>
+          <a href="security.html" data-i18n="common.security">Security</a>
 
           <a href="https://linkedin.com/company/vxn-crm" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

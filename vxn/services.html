@@ -12,6 +12,7 @@
     <!-- CSS Files -->
     <link rel="stylesheet" href="assets/css/style.css" />
     
+    <script defer src="assets/js/i18n.js"></script>
     <script defer src="assets/js/main.js"></script>
   </head>
   <body class="is-ready">
@@ -23,15 +24,19 @@
           <img class="brand-img" src="assets/img/vxn-logo.png" alt="VXN CRM" />
         </a>
         <nav class="nav-links" aria-label="Primary">
-          <a href="index.html">Home</a>
-          <a href="services.html" aria-current="page">Services</a>
-          <a href="solutions.html">Solutions</a>
-          <a href="about.html">About</a>
-          <a href="blog.html">Blog</a>
-          <a href="contact.html">Contact</a>
+          <a href="index.html" data-i18n="nav.home">Home</a>
+          <a href="services.html" aria-current="page" data-i18n="nav.services">Services</a>
+          <a href="solutions.html" data-i18n="nav.solutions">Solutions</a>
+          <a href="about.html" data-i18n="nav.about">About</a>
+          <a href="blog.html" data-i18n="nav.blog">Blog</a>
+          <a href="contact.html" data-i18n="nav.contact">Contact</a>
         </nav>
         <div class="nav-cta">
-          <a class="btn btn-primary" href="contact.html">Request a demo</a>
+          <a class="btn btn-primary" href="contact.html" data-i18n="nav.requestDemo">Request a demo</a>
+          <div class="lang-switch" aria-label="Language">
+            <button type="button" data-lang="en">EN</button>
+            <button type="button" data-lang="fr">FR</button>
+          </div>
           <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
 
@@ -43,12 +48,12 @@
       </div>
       <div class="mobile-drawer" hidden>
         <div class="stack container">
-          <a href="index.html">Home</a>
-          <a href="services.html" aria-current="page">Services</a>
-          <a href="solutions.html">Solutions</a>
-          <a href="about.html">About</a>
-          <a href="blog.html">Blog</a>
-          <a href="contact.html">Contact</a>
+          <a href="index.html" data-i18n="nav.home">Home</a>
+          <a href="services.html" aria-current="page" data-i18n="nav.services">Services</a>
+          <a href="solutions.html" data-i18n="nav.solutions">Solutions</a>
+          <a href="about.html" data-i18n="nav.about">About</a>
+          <a href="blog.html" data-i18n="nav.blog">Blog</a>
+          <a href="contact.html" data-i18n="nav.contact">Contact</a>
         </div>
       </div>
     </header>
@@ -56,9 +61,9 @@
     <main id="main">
       <section class="section">
         <div class="container">
-          <span class="eyebrow reveal">Services</span>
-          <h1 class="reveal" data-reveal-delay="60">Expert services to launch fast and scale confidently</h1>
-          <p class="reveal" data-reveal-delay="120">Our team partners with you from day one—designing the right workflow, ensuring clean data, and enabling your teams for long-term success.</p>
+          <span class="eyebrow reveal" data-i18n="services.hero.eyebrow">Services</span>
+          <h1 class="reveal" data-reveal-delay="60" data-i18n="services.hero.title">Expert services to launch fast and scale confidently</h1>
+          <p class="reveal" data-reveal-delay="120" data-i18n="services.hero.lede">Our team partners with you from day one—designing the right workflow, ensuring clean data, and enabling your teams for long-term success.</p>
         </div>
       </section>
 
@@ -167,10 +172,10 @@
 
           <div class="cta reveal" data-reveal-delay="120">
             <div>
-              <strong>Need a migration plan?</strong>
-              <p class="muted">We’ll audit your data and build a clear path to go-live.</p>
+              <strong data-i18n="services.cta.title">Need a migration plan?</strong>
+              <p class="muted" data-i18n="services.cta.text">We’ll audit your data and build a clear path to go-live.</p>
             </div>
-            <a class="btn btn-primary" href="contact.html">Talk to an expert</a>
+            <a class="btn btn-primary" href="contact.html" data-i18n="services.cta.button">Talk to an expert</a>
           </div>
         </div>
       </section>
@@ -178,10 +183,10 @@
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div class="muted">© <span id="year"></span> VXN CRM. All rights reserved.</div>
+        <div class="muted">© <span id="year"></span> VXN CRM. <span data-i18n="common.rights">All rights reserved.</span></div>
         <div class="footer-links">
-          <a href="privacy.html">Privacy</a>
-          <a href="security.html">Security</a>
+          <a href="privacy.html" data-i18n="common.privacy">Privacy</a>
+          <a href="security.html" data-i18n="common.security">Security</a>
 
           <a href="https://linkedin.com/company/vxn-crm" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

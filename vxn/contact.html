@@ -12,6 +12,7 @@
     <!-- CSS Files -->
     <link rel="stylesheet" href="assets/css/style.css" />
     
+    <script defer src="assets/js/i18n.js"></script>
     <script defer src="assets/js/main.js"></script>
   </head>
   <body class="contact-page is-ready">
@@ -23,15 +24,15 @@
           <img class="brand-img" src="assets/img/vxn-logo.png" alt="VXN CRM" />
         </a>
         <nav class="nav-links" aria-label="Primary">
-          <a href="index.html">Home</a>
-          <a href="services.html">Services</a>
-          <a href="solutions.html">Solutions</a>
-          <a href="about.html">About</a>
-          <a href="blog.html">Blog</a>
-          <a href="contact.html" aria-current="page">Contact</a>
+          <a href="index.html" data-i18n="nav.home">Home</a>
+          <a href="services.html" data-i18n="nav.services">Services</a>
+          <a href="solutions.html" data-i18n="nav.solutions">Solutions</a>
+          <a href="about.html" data-i18n="nav.about">About</a>
+          <a href="blog.html" data-i18n="nav.blog">Blog</a>
+          <a href="contact.html" aria-current="page" data-i18n="nav.contact">Contact</a>
         </nav>
         <div class="nav-cta">
-          <a class="btn btn-primary" href="contact.html" aria-current="page">Request a demo</a>
+          <a class="btn btn-primary" href="contact.html" aria-current="page" data-i18n="nav.requestDemo">Request a demo</a>
           <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
 
@@ -43,12 +44,12 @@
       </div>
       <div class="mobile-drawer" hidden>
         <div class="stack container">
-          <a href="index.html">Home</a>
-          <a href="services.html">Services</a>
-          <a href="solutions.html">Solutions</a>
-          <a href="about.html">About</a>
-          <a href="blog.html">Blog</a>
-          <a href="contact.html" aria-current="page">Contact</a>
+          <a href="index.html" data-i18n="nav.home">Home</a>
+          <a href="services.html" data-i18n="nav.services">Services</a>
+          <a href="solutions.html" data-i18n="nav.solutions">Solutions</a>
+          <a href="about.html" data-i18n="nav.about">About</a>
+          <a href="blog.html" data-i18n="nav.blog">Blog</a>
+          <a href="contact.html" aria-current="page" data-i18n="nav.contact">Contact</a>
         </div>
       </div>
     </header>
@@ -56,9 +57,9 @@
     <main id="main">
       <section class="section">
         <div class="container">
-          <span class="eyebrow reveal">Contact</span>
-          <h1 class="reveal" data-reveal-delay="60">Let’s talk about your goals</h1>
-          <p class="reveal" data-reveal-delay="120">Tell us about your team and workflows. We’ll tailor a quick demo and share pricing that fits your stage.</p>
+          <span class="eyebrow reveal" data-i18n="contact.hero.eyebrow">Contact</span>
+          <h1 class="reveal" data-reveal-delay="60" data-i18n="contact.hero.title">Let’s talk about your goals</h1>
+          <p class="reveal" data-reveal-delay="120" data-i18n="contact.hero.lede">Tell us about your team and workflows. We’ll tailor a quick demo and share pricing that fits your stage.</p>
         </div>
       </section>
 
@@ -67,31 +68,31 @@
           <form class="form reveal" data-validate="contact" aria-label="Contact form">
             <div class="grid-2">
               <div class="field">
-                <label for="name">Full name</label>
+                <label for="name" data-i18n="contact.form.name">Full name</label>
                 <input id="name" name="name" type="text" autocomplete="name" required />
               </div>
               <div class="field">
-                <label for="email">Work email</label>
+                <label for="email" data-i18n="contact.form.email">Work email</label>
                 <input id="email" name="email" type="email" autocomplete="email" required />
               </div>
             </div>
             <div class="grid-2">
               <div class="field">
-                <label for="company">Company</label>
+                <label for="company" data-i18n="contact.form.company">Company</label>
                 <input id="company" name="company" type="text" autocomplete="organization" required />
               </div>
               <div class="field">
-                <label for="team_size">Team size</label>
+                <label for="team_size" data-i18n="contact.form.teamSize">Team size</label>
                 <input id="team_size" name="team_size" type="text" />
               </div>
             </div>
             <div class="field">
-              <label for="message">How can we help?</label>
+              <label for="message" data-i18n="contact.form.message">How can we help?</label>
               <textarea id="message" name="message" rows="5" required></textarea>
             </div>
             <div style="display:flex; gap:10px; align-items:center;">
-              <button class="btn btn-primary" type="submit">Send message</button>
-              <span class="muted">We'll respond within 48 hours.</span>
+              <button class="btn btn-primary" type="submit" data-i18n="contact.form.send">Send message</button>
+              <span class="muted" data-i18n="contact.form.response">We'll respond within 48 hours.</span>
             </div>
           </form>
 
@@ -103,7 +104,7 @@
                   <polyline points="22,6 12,13 2,6"/>
                 </svg>
               </div>
-              <strong>Sales</strong>
+              <strong data-i18n="contact.card.sales">Sales</strong>
               <p class="muted">sales@vxncrm.com</p>
             </div>
             <div class="card">
@@ -112,7 +113,7 @@
                   <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                 </svg>
               </div>
-              <strong>Support</strong>
+              <strong data-i18n="contact.card.support">Support</strong>
               <p class="muted">support@vxncrm.com</p>
             </div>
             <div class="card">
@@ -121,13 +122,13 @@
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                 </svg>
               </div>
-              <strong>Phone</strong>
+              <strong data-i18n="contact.card.phone">Phone</strong>
               <p class="muted phone-number" data-phone="+1 514 659 5337">
                 +1 514 659 5337
               </p>
             </div>
-            <div class="card" aria-label="CRM Dashboard Preview" style="height: 260px; display:grid; place-items:center; overflow:hidden;">
-              <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=400&auto=format&fit=crop" alt="CRM Dashboard Interface" style="width:100%; height:100%; object-fit:cover;" />
+            <div class="card" aria-label="CRM Dashboard Preview" style="height: 260px; display:grid; place-items:center; overflow:hidden; border-radius: 16px; box-shadow: var(--shadow-sm);">
+              <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=400&auto=format&fit=crop" alt="CRM Dashboard Interface" style="width:100%; height:100%; object-fit:cover; border-radius: 16px;" />
             </div>
           </div>
         </div>
@@ -136,10 +137,10 @@
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div class="muted">© <span id="year"></span> VXN CRM. All rights reserved.</div>
+        <div class="muted">© <span id="year"></span> VXN CRM. <span data-i18n="common.rights">All rights reserved.</span></div>
         <div class="footer-links">
-          <a href="privacy.html">Privacy</a>
-          <a href="security.html">Security</a>
+          <a href="privacy.html" data-i18n="common.privacy">Privacy</a>
+          <a href="security.html" data-i18n="common.security">Security</a>
 
           <a href="https://linkedin.com/company/vxn-crm" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
