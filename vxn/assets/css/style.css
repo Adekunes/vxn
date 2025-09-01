@@ -250,7 +250,7 @@
   
   /* Brand logo image */
   .brand-img {
-  height: clamp(4em, 12em, 5em);
+  height: clamp(2.75em, 9vw, 4.5em);
   width: auto;
   display: block;
   }
@@ -595,6 +595,17 @@
   min-width: 48px;
   box-shadow: var(--shadow-sm);
   }
+
+  /* Make language switch prominent on mobile header */
+  .nav-cta {
+  gap: 8px;
+  }
+  .nav-cta .lang-switch {
+  order: 0;
+  }
+  .nav-cta .btn.btn-primary {
+  display: none;
+  }
   
   /* Ensure icon maintains contrast over varying backgrounds */
   .mobile-drawer.open ~ .nav-cta .nav-toggle,
@@ -641,6 +652,10 @@
   gap: 8px;
   padding: 24px;
   max-width: 100%;
+  }
+  /* Add spacing below language switch in drawer */
+  .mobile-drawer .lang-switch {
+  margin-bottom: 8px;
   }
   
   .mobile-drawer a {
