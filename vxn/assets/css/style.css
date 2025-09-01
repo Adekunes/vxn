@@ -752,6 +752,13 @@
   transform: translateY(-4px);
   box-shadow: var(--shadow-xl);
   }
+  /* Hero CTAs container */
+  .hero-ctas {
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  align-items: center;
+  gap: 16px;
+  }
   
   /* -----------------------------
     Feature Cards
@@ -1338,6 +1345,35 @@
   .hero-grid {
   grid-template-columns: 1.2fr 1fr;
   gap: 60px;
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 639.98px) {
+  /* Stack hero CTAs vertically on small screens */
+  .hero-ctas {
+  grid-auto-flow: row;
+  grid-auto-columns: auto;
+  justify-items: stretch;
+  }
+  .hero-ctas .btn,
+  .hero-ctas .btn-primary {
+  width: 100%;
+  }
+  /* Compact buttons for mobile ergonomics */
+  .btn {
+  padding: 14px 20px;
+  min-height: 48px;
+  font-size: 15px;
+  }
+  .btn-primary {
+  padding: 16px 22px;
+  min-height: 52px;
+  font-size: 16px;
+  }
+  /* Metrics grid to single column on mobile */
+  .metrics {
+  grid-template-columns: 1fr;
+  }
   }
   
   .features {

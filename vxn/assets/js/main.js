@@ -99,8 +99,15 @@
 
     drawer.addEventListener('click', function (e) {
       var anchor = e.target.closest('a');
-      if (!anchor) return;
-      closeDrawer();
+      if (anchor) {
+        closeDrawer();
+        return;
+      }
+      var langBtn = e.target.closest('.lang-switch [data-lang]');
+      if (langBtn) {
+        // Let i18n handler run, then close the drawer to reveal changes
+        setTimeout(closeDrawer, 0);
+      }
     });
 
     document.addEventListener('keydown', function (e) {
