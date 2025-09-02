@@ -68,6 +68,14 @@
   }
 
   function setupMobileDrawer() {
+    // Ensure only a single nav toggle exists
+    var allToggles = Array.prototype.slice.call(document.querySelectorAll('.nav-toggle'));
+    if (allToggles.length > 1) {
+      allToggles.slice(1).forEach(function (btn) {
+        if (btn && btn.parentElement) btn.parentElement.removeChild(btn);
+      });
+    }
+
     var toggle = document.querySelector('.nav-toggle');
     var drawer = document.querySelector('.mobile-drawer');
     if (!toggle || !drawer) return;
@@ -78,6 +86,7 @@
       drawer.hidden = true;
       // Prevent body scroll when drawer is open
       document.body.style.overflow = '';
+      document.body.classList.remove('drawer-open');
     }
 
     function openDrawer() {
@@ -86,6 +95,7 @@
       drawer.hidden = false;
       // Prevent body scroll when drawer is open
       document.body.style.overflow = 'hidden';
+      document.body.classList.add('drawer-open');
     }
 
     toggle.addEventListener('click', function () {

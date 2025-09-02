@@ -600,8 +600,9 @@
   .nav-cta {
   gap: 8px;
   }
+  /* Hide header language switch on mobile; it's available in the drawer */
   .nav-cta .lang-switch {
-  order: 0;
+  display: none;
   }
   .nav-cta .btn.btn-primary {
   display: none;
@@ -611,6 +612,10 @@
   .mobile-drawer.open ~ .nav-cta .nav-toggle,
   .site-header .nav-cta .nav-toggle[aria-expanded="true"] {
   color: var(--color-text);
+  }
+  /* Hide the hamburger while the drawer is open to avoid visual duplication */
+  body.drawer-open .site-header .nav-cta .nav-toggle {
+  visibility: hidden;
   }
   
   .mobile-drawer {
