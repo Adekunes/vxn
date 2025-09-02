@@ -1346,6 +1346,7 @@
   grid-template-columns: 1.2fr 1fr;
   gap: 60px;
   }
+  }
 
   /* Mobile optimizations */
   @media (max-width: 639.98px) {
@@ -1376,6 +1377,7 @@
   }
   }
   
+  @media (min-width: 640px) {
   .features {
   grid-template-columns: repeat(2, 1fr);
   }
@@ -2072,6 +2074,9 @@
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
   }
+ 
+ 
+ 
   
   /* Enhanced solutions page cards */
   .solutions .card {
@@ -2177,3 +2182,4 @@
   .feature-icon:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
+  }
