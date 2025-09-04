@@ -122,6 +122,13 @@
   svg {
   display: block;
   }
+  /* Prevent any long text from causing sideways scroll */
+  .lede,
+  .muted,
+  .excerpt,
+  .content-body,
+  .pill,
+  .post-card .excerpt { word-break: break-word; overflow-wrap: anywhere; }
   /* -----------------------------
     Layout Components
   ------------------------------ */
@@ -129,7 +136,7 @@
   max-width: var(--container);
   margin: 0 auto;
   padding: 0 var(--gutter);
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
   }
   
@@ -137,6 +144,7 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 0 var(--gutter);
+  overflow-x: clip;
   }
   
   .section {
@@ -639,8 +647,8 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
-  width: 100vw;
-  max-width: 100vw;
+  width: 100%;
+  max-width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
@@ -683,6 +691,10 @@
   display: flex;
   align-items: center;
   transition: all var(--transition);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   }
   
   .mobile-drawer a:hover {
@@ -727,8 +739,8 @@
   position: absolute;
   top: -10%;
   right: -15%;
-  width: 520px;
-  height: 520px;
+  width: min(520px, 65vw);
+  height: min(520px, 65vw);
   background: radial-gradient(closest-side, rgba(0, 122, 255, 0.18), rgba(0, 122, 255, 0.0));
   filter: blur(20px);
   z-index: -1;
@@ -1038,6 +1050,8 @@
   gap: 18px;
   border-radius: var(--radius-lg);
   }
+  /* Ensure CTA card never causes sideways scroll */
+  .cta { overflow: clip; }
   .cta .hero-ctas {
   grid-auto-flow: row !important;
   grid-auto-columns: auto !important;
@@ -1049,6 +1063,14 @@
   .cta .btn,
   .cta .btn-primary {
   width: 100%;
+  }
+  /* Make drawer language switch fit without overflow */
+  .mobile-drawer .lang-switch { width: 100%; justify-content: space-between; }
+  .mobile-drawer .lang-switch button { flex: 1 1 0; text-align: center; }
+  /* Prevent long headings/titles from forcing horizontal scroll */
+  h1, h2, h3, h4, .section-title, .post-card .title {
+  word-break: break-word;
+  overflow-wrap: anywhere;
   }
   .testimonials {
   gap: 16px;
@@ -1068,18 +1090,10 @@
   .features {
   grid-template-columns: repeat(2, 1fr);
   }
-  
-  .posts-grid {
-  grid-template-columns: repeat(2, 1fr);
-  }
   }
   
   @media (min-width: 1024px) {
   .features {
-  grid-template-columns: repeat(3, 1fr);
-  }
-  
-  .posts-grid {
   grid-template-columns: repeat(3, 1fr);
   }
   
@@ -1103,7 +1117,7 @@
   ------------------------------ */
   @media (max-width: 860px) {
   /* Hide all element scrollbars on mobile (visual only) */
-  * { -ms-overflow-style: none; scrollbar-width: none; }
+  * { -ms-overflow-style: none; scrollbar-width: none; overscroll-behavior-x: none; }
   *::-webkit-scrollbar { width: 0 !important; height: 0 !important; }
 
   /* Prevent inner scrollbars in common sections */
@@ -1119,7 +1133,7 @@
   .features,
   .form,
   .card,
-  .mobile-drawer .stack { overflow: visible !important; }
+  .mobile-drawer .stack { overflow-x: clip !important; }
 
   /* Keep drawer scroll functional but hide its scrollbar */
   .mobile-drawer { -ms-overflow-style: none; scrollbar-width: none; }
@@ -1254,6 +1268,8 @@
   text-align: center;
   margin-bottom: 32px;
   }
+  /* Extra spacing before section headings like "What Our Clients Say" */
+  .section .section-title.heading-accent { margin-top: 24px; }
   
   .section-title::after {
   content: "";
@@ -1418,17 +1434,15 @@
   box-shadow: var(--shadow-sm);
   transition: all var(--transition);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   }
   .quote::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-700));
-  opacity: 0.85;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(0,122,255,0.08), rgba(0,122,255,0.0));
   }
   .quote::before {
   content: "\201C";
@@ -1459,7 +1473,7 @@
   
   .quote:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.08);
   }
   
   .quote cite {
@@ -1503,6 +1517,10 @@
   transition: color var(--transition);
   padding: 6px 10px;
   border-radius: var(--radius-full);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   }
   
   .footer-links a:hover {

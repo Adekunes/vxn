@@ -20,6 +20,7 @@
     setupTypingEffect();
     setupHeaderScrollState();
     setupEnhancedContactForm();
+    hideDuplicateHeroCtaOnHome();
   }
 
   function isInternalLink(anchor) {
@@ -29,6 +30,23 @@
     } catch (e) {
       return false;
     }
+  }
+
+  // Hide duplicate CTA in homepage hero when both buttons link to same page
+  function hideDuplicateHeroCtaOnHome(){
+    try {
+      var hero = document.querySelector('.hero');
+      if (!hero) return;
+      var ctas = Array.prototype.slice.call(hero.querySelectorAll('.hero-ctas .btn, .hero-ctas .btn-primary'));
+      if (ctas.length < 2) return;
+      var href1 = (ctas[0].getAttribute('href') || '').trim();
+      var href2 = (ctas[1].getAttribute('href') || '').trim();
+      if (href1 && href2 && href1 === href2) {
+        // Keep the primary if present; otherwise keep the first
+        var keep = hero.querySelector('.hero-ctas .btn-primary') || ctas[0];
+        ctas.forEach(function(btn){ if (btn !== keep) btn.parentElement && btn.parentElement.removeChild(btn); });
+      }
+    } catch(e) {}
   }
 
   function setupHeaderScrollState(){
