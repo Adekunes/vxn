@@ -1937,6 +1937,20 @@
   
   .testimonials { grid-template-columns: repeat(2, 1fr); }
   }
+
+  /* Ensure no inner scrollbars on desktop sections */
+  @media (min-width: 861px) {
+  .site-header,
+  .nav,
+  .hero,
+  .section,
+  .container,
+  .footer-grid,
+  .metrics,
+  .testimonials {
+  overflow: visible !important;
+  }
+  }
   
   /* -----------------------------
     Status Page Styles
