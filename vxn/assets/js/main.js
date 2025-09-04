@@ -187,6 +187,7 @@
       var text = strong.textContent.trim();
       var isPercent = text.indexOf('%') !== -1;
       var isPlus = text.indexOf('+') !== -1;
+      var hasX = /x$/i.test(text);
       var clean = text.replace(/[^0-9.]/g, '');
       var target = parseFloat(clean);
       if (isNaN(target)) return;
@@ -198,7 +199,7 @@
         var p = Math.min(1, (ts - start) / duration);
         var val = Math.floor(target * p * 100) / 100;
         var prefix = isPlus ? '+' : '';
-        var suffix = isPercent ? '%' : '';
+        var suffix = (isPercent ? '%' : '') + (hasX ? 'x' : '');
         strong.textContent = prefix + (val.toFixed(val % 1 === 0 ? 0 : 1)) + suffix;
         if (p < 1) requestAnimationFrame(step);
       }
