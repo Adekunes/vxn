@@ -7,6 +7,7 @@
  - Consistent design language
 
 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 /* -----------------------------
   Design System Variables
@@ -17,8 +18,8 @@
   --color-bg: #ffffff;
   --color-surface: #fafafa;
   --color-elevated: #ffffff;
-  --color-text: #1d1d1f;
-  --color-text-dim: #86868b;
+  --color-text: #111827;
+  --color-text-dim: #4b5563;
   --color-primary: #007aff;
   --color-primary-700: #0056cc;
   --color-accent: #007aff;
@@ -85,11 +86,11 @@
   }
   
   body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   
   color: var(--color-text);
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  line-height: 1.6;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   
@@ -121,9 +122,6 @@
   svg {
   display: block;
   }
-  div {
-  overflow-y: clip;
-  }
   /* -----------------------------
     Layout Components
   ------------------------------ */
@@ -153,10 +151,11 @@
     Typography System
   ------------------------------ */
   h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.2;
   margin: 0 0 16px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   }
   
   h1 {
@@ -219,15 +218,20 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border-bottom: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
+  background: linear-gradient(180deg, rgba(255,255,255,0.78), rgba(255,255,255,0.58));
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
   
   transition: all var(--transition);
   
+  }
+
+  .site-header.scrolled {
+  background: rgba(255,255,255,0.92);
+  border-bottom-color: rgba(0,0,0,0.08);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
   }
   
   .nav {
@@ -516,6 +520,7 @@
   position: relative;
   overflow: hidden;
   }
+  .cta * { max-width: 100%; }
   
   .cta::before {
   content: '';
@@ -714,6 +719,18 @@
   rgba(255, 255, 255, 0.1) 50%,
   rgba(0, 122, 255, 0.05) 100%);
   z-index: -1;
+  }
+  .hero::after {
+  content: '';
+  position: absolute;
+  top: -10%;
+  right: -15%;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(closest-side, rgba(0, 122, 255, 0.18), rgba(0, 122, 255, 0.0));
+  filter: blur(20px);
+  z-index: -1;
+  pointer-events: none;
   }
   
   .hero-grid {
@@ -1360,13 +1377,20 @@
   ------------------------------ */
   @media (min-width: 640px) {
   .hero-grid {
-  grid-template-columns: 1.2fr 1fr;
-  gap: 60px;
+  grid-template-columns: 1fr;
+  gap: 48px;
   }
   }
 
   /* Mobile optimizations */
   @media (max-width: 639.98px) {
+  /* Increase breathing room between blocks */
+  .section {
+  padding: 64px 0;
+  }
+  .stack {
+  gap: 20px;
+  }
   /* Stack hero CTAs vertically on small screens */
   .hero-ctas {
   grid-auto-flow: row;
@@ -1391,6 +1415,36 @@
   /* Metrics grid to single column on mobile */
   .metrics {
   grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 28px;
+  }
+  /* CTA spacing tweaks for mobile */
+  .cta {
+  padding: 28px 20px;
+  gap: 18px;
+  border-radius: var(--radius-lg);
+  }
+  .cta .hero-ctas {
+  grid-auto-flow: row !important;
+  grid-auto-columns: auto !important;
+  }
+  .hero-ctas {
+  grid-auto-flow: row !important;
+  grid-auto-columns: auto !important;
+  }
+  .cta .btn,
+  .cta .btn-primary {
+  width: 100%;
+  }
+  .testimonials {
+  gap: 16px;
+  }
+  .quote {
+  padding: 18px;
+  }
+  .cta strong,
+  .cta p {
+  overflow-wrap: anywhere;
   }
   }
   
@@ -1759,10 +1813,13 @@
   .footer-links a {
   color: var(--color-text-dim);
   transition: color var(--transition);
+  padding: 6px 10px;
+  border-radius: var(--radius-full);
   }
   
   .footer-links a:hover {
   color: var(--color-primary);
+  background: rgba(0, 122, 255, 0.06);
   }
   
   /* -----------------------------
@@ -1777,6 +1834,22 @@
   grid-template-columns: 1.2fr 1fr;
   }
   
+  /* Footer mobile refinements */
+  @media (max-width: 639.98px) {
+  .footer-grid {
+  gap: 20px;
+  }
+  .footer-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  justify-items: center;
+  gap: 10px 14px;
+  }
+  .footer-links a svg {
+  margin-left: 6px;
+  }
+  }
+
   .cta {
   grid-template-columns: 1fr auto;
   text-align: left;

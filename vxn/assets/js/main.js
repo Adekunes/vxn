@@ -18,6 +18,7 @@
     setupScrollReveal();
     setupFormValidation();
     setupTypingEffect();
+    setupHeaderScrollState();
   }
 
   function isInternalLink(anchor) {
@@ -27,6 +28,17 @@
     } catch (e) {
       return false;
     }
+  }
+
+  function setupHeaderScrollState(){
+    var header = document.querySelector('.site-header');
+    if (!header) return;
+    function onScroll(){
+      var y = window.scrollY || document.documentElement.scrollTop || 0;
+      if (y > 6) header.classList.add('scrolled'); else header.classList.remove('scrolled');
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
   }
 
   function setupInternalLinkTransitions() {
