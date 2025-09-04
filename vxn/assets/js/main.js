@@ -17,6 +17,7 @@
     setupMobileDrawer();
     setupScrollReveal();
     setupFormValidation();
+    setupTypingEffect();
   }
 
   function isInternalLink(anchor) {
@@ -223,6 +224,101 @@
         form.appendChild(notice);
         setTimeout(function () { if (notice && notice.parentElement) notice.parentElement.removeChild(notice); }, 4000);
       }
+    });
+  }
+
+  // -----------------------------
+  // Typing Effect Utility
+  // -----------------------------
+  function setupTypingEffect(){
+    // Feature detect: reduce motion
+    var prefersReduced = false;
+    try { prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch(e) {}
+
+    // Helper to type a single element's textContent
+    function typeElement(el, options){
+      var text = el.textContent || '';
+      var speed = options && options.speed != null ? options.speed : 35; // ms per char
+      var startDelay = options && options.startDelay != null ? options.startDelay : 0;
+      var showCursor = options && options.showCursor !== false;
+      var cursorMuted = !!(options && options.cursorMuted);
+
+      // Skip if no text or reduced motion
+      if (!text || prefersReduced) return Promise.resolve(0);
+
+      // Prepare element
+      el.setAttribute('aria-live', 'polite');
+      el.setAttribute('aria-atomic', 'true');
+      var original = text;
+      el.textContent = '';
+      el.classList.add('typing-line');
+
+      var cursor
+      if (showCursor){
+        cursor = document.createElement('span');
+        cursor.className = 'typing-cursor' + (cursorMuted ? ' muted' : '');
+        el.appendChild(cursor);
+      }
+
+      var i = 0;
+      function step(){
+        if (i < original.length){
+          // Insert next char before cursor
+          if (cursor){ cursor.remove(); }
+          el.textContent += original.charAt(i);
+          if (cursor){ el.appendChild(cursor); }
+          i++;
+          setTimeout(step, speed);
+        } else {
+          // Done: remove cursor after a short pause
+          setTimeout(function(){ if (cursor && cursor.parentElement) cursor.parentElement.removeChild(cursor); }, 250);
+        }
+      }
+
+      return new Promise(function(resolve){
+        setTimeout(function(){ step(); resolve(original.length * speed + startDelay + 250); }, startDelay);
+      });
+    }
+
+    // Auto-wire: find hero sections and type h1 lines and subtitle
+    var hero = document.querySelector('.hero, .blog-hero, main > .section:first-of-type');
+    if (!hero) return;
+
+    // Strategy: type within the hero container for elements marked with data-typed
+    var targets = Array.prototype.slice.call(hero.querySelectorAll('[data-typed]'));
+    if (targets.length === 0){
+      // Fallback heuristic: split .hero-title lines if present
+      var title = hero.querySelector('.hero-title');
+      if (title){
+        var lines = Array.prototype.slice.call(title.querySelectorAll('.line'));
+        if (lines.length){
+          // Chain typing: line1 -> line2 -> lede
+          var totalDelay = 0;
+          lines.forEach(function(line, idx){
+            typeElement(line, { startDelay: totalDelay, speed: 32, showCursor: true, cursorMuted: false });
+            totalDelay += (line.textContent || '').length * 32 + 400;
+          });
+          var lede = hero.querySelector('.lede');
+          if (lede){ typeElement(lede, { startDelay: totalDelay + 250, speed: 18, showCursor: true, cursorMuted: true }); }
+        }
+      } else {
+        // Generic: try h1 and following p.lede
+        var h1 = hero.querySelector('h1');
+        if (h1){ typeElement(h1, { speed: 28, showCursor: true }); }
+        var p = hero.querySelector('.lede');
+        if (p){ typeElement(p, { startDelay: (h1 && (h1.textContent||'').length*28+300) || 300, speed: 18, showCursor: true, cursorMuted: true }); }
+      }
+      return;
+    }
+
+    // If explicit targets exist, sequence by DOM order
+    var cumulativeDelay = 0;
+    targets.forEach(function(el, idx){
+      var speedAttr = parseInt(el.getAttribute('data-typed-speed') || '28', 10);
+      var delayAttr = parseInt(el.getAttribute('data-typed-delay') || String(cumulativeDelay), 10);
+      var muted = el.hasAttribute('data-typed-muted');
+      typeElement(el, { speed: isNaN(speedAttr) ? 28 : speedAttr, startDelay: isNaN(delayAttr) ? cumulativeDelay : delayAttr, showCursor: true, cursorMuted: muted });
+      cumulativeDelay = (isNaN(delayAttr) ? cumulativeDelay : delayAttr) + (el.textContent || '').length * (isNaN(speedAttr) ? 28 : speedAttr) + 350;
     });
   }
 

@@ -807,6 +807,18 @@
   .icon svg path {
   stroke: currentColor !important;
   }
+
+  /* Allow image-based icons to fit existing wrappers */
+  .icon img,
+  .card-icon img,
+  .feature-icon img,
+  .integration-icon img,
+  .contact-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  }
   
   /* -----------------------------
     Metrics & Stats
@@ -1484,6 +1496,33 @@
   .reveal-visible {
   opacity: 1;
   transform: translateY(0);
+  }
+
+  /* -----------------------------
+    Typing Effect
+  ------------------------------ */
+  .typing-line {
+  white-space: pre-wrap;
+  position: relative;
+  }
+
+  .typing-cursor {
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  vertical-align: -0.15em;
+  background: var(--color-text);
+  margin-left: 2px;
+  animation: typing-cursor-blink 1s step-end infinite;
+  }
+
+  .typing-cursor.muted {
+  background: var(--color-text-dim);
+  }
+
+  @keyframes typing-cursor-blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
   }
   
   /* -----------------------------
