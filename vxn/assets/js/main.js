@@ -158,6 +158,9 @@
         var el = entry.target;
         var revealOnce = el.hasAttribute('data-reveal-once');
         if (entry.isIntersecting) {
+          if (el.classList.contains('metric')) {
+            runCountUp(el);
+          }
           var delay = parseInt(el.getAttribute('data-reveal-delay') || '0', 10);
           if (timers.has(el)) { clearTimeout(timers.get(el)); }
           var id = setTimeout(function () { el.classList.add('reveal-visible'); }, isNaN(delay) ? 0 : delay);
@@ -173,6 +176,34 @@
     }, { rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
 
     elements.forEach(function (el) { observer.observe(el); });
+  }
+
+  // Count-up animation for metrics
+  function runCountUp(metricEl){
+    try {
+      var strong = metricEl.querySelector('strong');
+      if (!strong) return;
+      if (strong.getAttribute('data-countup')) return; // already run
+      var text = strong.textContent.trim();
+      var isPercent = text.indexOf('%') !== -1;
+      var isPlus = text.indexOf('+') !== -1;
+      var clean = text.replace(/[^0-9.]/g, '');
+      var target = parseFloat(clean);
+      if (isNaN(target)) return;
+      strong.setAttribute('data-countup', '1');
+      var duration = 1200;
+      var start = null;
+      function step(ts){
+        if (!start) start = ts;
+        var p = Math.min(1, (ts - start) / duration);
+        var val = Math.floor(target * p * 100) / 100;
+        var prefix = isPlus ? '+' : '';
+        var suffix = isPercent ? '%' : '';
+        strong.textContent = prefix + (val.toFixed(val % 1 === 0 ? 0 : 1)) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    } catch(e) {}
   }
 
   function setupFormValidation() {
