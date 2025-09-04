@@ -60,13 +60,37 @@
         <div class="container">
           <span class="eyebrow reveal" data-i18n="contact.hero.eyebrow">Contact</span>
           <h1 class="reveal" data-reveal-delay="60" data-typed data-i18n="contact.hero.title">Let’s talk about your goals</h1>
-          <p class="reveal" data-reveal-delay="120" data-typed data-typed-muted data-i18n="contact.hero.lede">Tell us about your team and workflows. We’ll tailor a quick demo and share pricing that fits your stage.</p>
+          <p class="reveal lede" data-reveal-delay="120" data-typed data-typed-muted data-i18n="contact.hero.lede">Tell us about your team and workflows. We’ll tailor a quick demo and share pricing that fits your stage.</p>
+          <div class="features" style="margin-top:16px;">
+            <div class="card reveal">
+              <div class="icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <strong>Fast, no-pressure walkthrough</strong>
+              <p class="muted">See the fit in 20 minutes. No hard sell.</p>
+            </div>
+            <div class="card reveal" data-reveal-delay="60">
+              <div class="icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 1v22M1 12h22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </div>
+              <strong>Tailored to your stage</strong>
+              <p class="muted">Startup to enterprise—right-sized recommendations.</p>
+            </div>
+            <div class="card reveal" data-reveal-delay="120">
+              <div class="icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 20s8-4 8-10a8 8 0 10-16 0c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2"/></svg>
+              </div>
+              <strong>Privacy-first</strong>
+              <p class="muted">Your info is never shared. Ever.</p>
+            </div>
+          </div>
         </div>
       </section>
 
       <section class="section">
         <div class="container contact">
-          <form class="form reveal" data-validate="contact" aria-label="Contact form">
+          <div class="form-progress" aria-hidden="true"><div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div></div>
+          <form class="form reveal" data-validate="contact" aria-label="Contact form" data-enhanced="true">
             <div class="grid-2">
               <div class="field">
                 <label for="name" data-i18n="contact.form.name">Full name</label>
@@ -89,12 +113,14 @@
             </div>
             <div class="field">
               <label for="message" data-i18n="contact.form.message">How can we help?</label>
-              <textarea id="message" name="message" rows="5" required></textarea>
+              <textarea id="message" name="message" rows="5" required placeholder="Tell us about your goals…"></textarea>
+              <div class="muted" id="message-count" aria-live="polite" style="font-size:12px; margin-top:6px;">0 / 800</div>
             </div>
             <div style="display:flex; gap:10px; align-items:center;">
               <button class="btn btn-primary" type="submit" data-i18n="contact.form.send">Send message</button>
               <span class="muted" data-i18n="contact.form.response">We'll respond within 48 hours.</span>
             </div>
+            <p class="muted" style="margin-top:8px; font-size:13px;">By submitting, you agree to our <a href="privacy.html" class="accent">Privacy Policy</a>.</p>
           </form>
 
           <div class="stack reveal" data-reveal-delay="100">
@@ -131,6 +157,46 @@
             <div class="card" aria-label="CRM Dashboard Preview" style="height: 260px; display:grid; place-items:center; overflow:hidden; border-radius: 16px; box-shadow: var(--shadow-sm);">
               <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=400&auto=format&fit=crop" alt="CRM Dashboard Interface" style="width:100%; height:100%; object-fit:cover; border-radius: 16px;" />
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2 class="reveal center section-title heading-accent">What happens <span class="accent">next</span></h2>
+          <div class="grid-3">
+            <div class="step reveal">
+              <div class="step-num">1</div>
+              <div>
+                <strong>Quick discovery</strong>
+                <p class="muted">We align on goals, data, and timelines in one brief call.</p>
+              </div>
+            </div>
+            <div class="step reveal" data-reveal-delay="60">
+              <div class="step-num">2</div>
+              <div>
+                <strong>Tailored walkthrough</strong>
+                <p class="muted">See a focused demo mapped to your workflows.</p>
+              </div>
+            </div>
+            <div class="step reveal" data-reveal-delay="120">
+              <div class="step-num">3</div>
+              <div>
+                <strong>Clear next steps</strong>
+                <p class="muted">Get a concise plan with options, timelines, and investment.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section band">
+        <div class="container">
+          <h2 class="reveal center section-title heading-accent">Answers to <span class="accent">common questions</span></h2>
+          <div class="stack">
+            <details class="reveal"><summary><strong>How soon can we get started?</strong></summary><p class="muted" style="margin-top:8px;">Typical kickoff is within 1–2 weeks. Urgent timelines available.</p></details>
+            <details class="reveal" data-reveal-delay="60"><summary><strong>Do you support migrations?</strong></summary><p class="muted" style="margin-top:8px;">Yes. We handle discovery, mapping, and phased cutovers to reduce risk.</p></details>
+            <details class="reveal" data-reveal-delay="120"><summary><strong>What if we’re early-stage?</strong></summary><p class="muted" style="margin-top:8px;">We offer starter packages with the same care—right-sized to your stage.</p></details>
           </div>
         </div>
       </section>

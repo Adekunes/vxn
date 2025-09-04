@@ -19,6 +19,7 @@
     setupFormValidation();
     setupTypingEffect();
     setupHeaderScrollState();
+    setupEnhancedContactForm();
   }
 
   function isInternalLink(anchor) {
@@ -268,6 +269,66 @@
         form.appendChild(notice);
         setTimeout(function () { if (notice && notice.parentElement) notice.parentElement.removeChild(notice); }, 4000);
       }
+    });
+  }
+
+  // -----------------------------
+  // Enhanced Contact Form UX
+  // -----------------------------
+  function setupEnhancedContactForm(){
+    var form = document.querySelector('form[data-validate="contact"][data-enhanced="true"]');
+    if (!form) return;
+
+    var inputs = Array.prototype.slice.call(form.querySelectorAll('input, textarea'));
+    var progressBar = document.querySelector('.form-progress .bar');
+    var message = form.querySelector('#message');
+    var messageCount = form.querySelector('#message-count');
+    var placeholders = [
+      'Tell us about your goals…',
+      'Which team will use this first?',
+      'What’s the outcome you want in 90 days?'
+    ];
+
+    // Autosize textarea
+    function autosize(el){
+      if (!el) return;
+      el.style.height = 'auto';
+      el.style.height = Math.min(800, Math.max(120, el.scrollHeight)) + 'px';
+    }
+    if (message){
+      autosize(message);
+      message.addEventListener('input', function(){
+        autosize(message);
+        if (messageCount){
+          var len = (message.value || '').length;
+          if (len > 800) { message.value = message.value.slice(0,800); len = 800; autosize(message); }
+          messageCount.textContent = len + ' / 800';
+        }
+      });
+      // Rotating placeholder for inspiration
+      var idx = 0;
+      setInterval(function(){
+        idx = (idx + 1) % placeholders.length;
+        if (!message.value) message.setAttribute('placeholder', placeholders[idx]);
+      }, 4000);
+    }
+
+    // Progress bar based on filled fields
+    function updateProgress(){
+      var required = inputs.filter(function(el){ return el.hasAttribute('required'); });
+      var filled = required.filter(function(el){ return !!(el.value && el.value.trim()); }).length;
+      var pct = Math.round((filled / Math.max(1, required.length)) * 100);
+      if (progressBar){
+        progressBar.style.width = pct + '%';
+        progressBar.setAttribute('aria-valuenow', String(pct));
+      }
+    }
+    inputs.forEach(function(el){ el.addEventListener('input', updateProgress); });
+    updateProgress();
+
+    // Submit micro-feedback
+    form.addEventListener('submit', function(){
+      if (progressBar){ progressBar.style.width = '100%'; }
     });
   }
 

@@ -1097,6 +1097,34 @@
   padding: 0 32px;
   }
   }
+
+  /* -----------------------------
+    Mobile Scrollbar Removal
+  ------------------------------ */
+  @media (max-width: 860px) {
+  /* Hide all element scrollbars on mobile (visual only) */
+  * { -ms-overflow-style: none; scrollbar-width: none; }
+  *::-webkit-scrollbar { width: 0 !important; height: 0 !important; }
+
+  /* Prevent inner scrollbars in common sections */
+  .site-header,
+  .nav,
+  .hero,
+  .section,
+  .container,
+  .footer-grid,
+  .metrics,
+  .testimonials,
+  .posts-grid,
+  .features,
+  .form,
+  .card,
+  .mobile-drawer .stack { overflow: visible !important; }
+
+  /* Keep drawer scroll functional but hide its scrollbar */
+  .mobile-drawer { -ms-overflow-style: none; scrollbar-width: none; }
+  .mobile-drawer::-webkit-scrollbar { width: 0; height: 0; }
+  }
   
   /* -----------------------------
     Utilities
