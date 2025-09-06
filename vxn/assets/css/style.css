@@ -1528,18 +1528,6 @@
   background: rgba(0, 122, 255, 0.06);
   }
   
-  /* -----------------------------
-    Responsive Grid Adjustments
-  ------------------------------ */
-  @media (min-width: 640px) {
-  .grid-2 {
-  grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .contact {
-  grid-template-columns: 1.2fr 1fr;
-  }
-  
   /* Footer mobile refinements */
   @media (max-width: 639.98px) {
   .footer-grid {
@@ -1555,6 +1543,20 @@
   margin-left: 6px;
   }
   }
+  
+  /* -----------------------------
+    Responsive Grid Adjustments
+  ------------------------------ */
+  @media (min-width: 640px) {
+  .grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .contact {
+  grid-template-columns: 1.2fr 1fr;
+  }
+  
+  /* Footer desktop refinements live in this >=640 block; mobile rules moved top-level */
 
   .cta {
   grid-template-columns: 1fr auto;
