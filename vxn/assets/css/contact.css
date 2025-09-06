@@ -1,0 +1,207 @@
+/* Contact page specific styles and phone protection */
+
+/* Subtle grid pattern over the page */
+.contact-page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 1px 1px, rgba(0,0,0,0.06) 1px, transparent 0) 0 0/22px 22px,
+    radial-gradient(circle at 1px 1px, rgba(0,0,0,0.03) 1px, transparent 0) 11px 11px/22px 22px;
+  opacity: 0.25;
+}
+
+/* Phone number protection from AI scrapers */
+.phone-number {
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+  user-select: none;
+}
+
+.phone-part { display: inline-block; position: relative; }
+.phone-part::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: var(--color-surface);
+  color: transparent;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+.phone-part:hover::before { background: transparent; color: var(--color-primary); }
+
+@media (max-width: 1px) { .phone-number { display: none; } }
+.phone-number[data-phone] { pointer-events: auto; }
+.phone-number[data-phone]:not([data-phone]) { pointer-events: none; }
+
+/* Contact page accent and overrides */
+.contact-page main {
+  background: linear-gradient(180deg,
+    rgba(0, 122, 255, 0.06) 0%,
+    rgba(0, 122, 255, 0.03) 40%,
+    rgba(0, 122, 255, 0.00) 100%);
+}
+
+/* Hero section depth and glow accents */
+.contact-page .section:first-of-type {
+  position: relative;
+  overflow: hidden;
+}
+.contact-page .section:first-of-type::before {
+  content: '';
+  position: absolute;
+  top: -120px; right: -140px;
+  width: 520px; height: 520px;
+  background: radial-gradient(closest-side, rgba(0, 122, 255, 0.18), rgba(0, 122, 255, 0.00));
+  filter: blur(20px);
+  z-index: -1;
+}
+.contact-page .section:first-of-type::after {
+  content: '';
+  position: absolute;
+  bottom: -160px; left: -180px;
+  width: 620px; height: 620px;
+  background: radial-gradient(closest-side, rgba(0, 122, 255, 0.12), rgba(0, 122, 255, 0.00));
+  filter: blur(18px);
+  z-index: -1;
+}
+
+/* Layout refinements */
+.contact-page .contact {
+  gap: 28px;
+}
+@media (min-width: 860px) {
+  .contact-page .contact {
+    grid-template-columns: 1.35fr 1fr;
+    align-items: start;
+  }
+}
+
+.contact-page .section:first-of-type .container .eyebrow { color: var(--color-primary); }
+.contact-page .section:first-of-type h1 {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-700));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+.contact-page .form { border-color: rgba(0, 122, 255, 0.2); box-shadow: 0 10px 30px rgba(0, 122, 255, 0.08); }
+.contact-page .form {
+  border: 1px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(135deg, rgba(0,122,255,0.25), rgba(0,122,255,0.05)) border-box;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.contact-page .form::before {
+  content: '';
+  display: block;
+  height: 3px;
+  margin: -32px -32px 24px -32px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-700));
+  opacity: 0.85;
+}
+
+/* Right panel (cards) as a cohesive glass panel */
+.contact-page .contact > .stack {
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.86));
+  border: 1px solid rgba(0, 122, 255, 0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+.contact-page .field input:focus,
+.contact-page .field textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.12);
+}
+
+.contact-page .card { background: rgba(255, 255, 255, 0.9); border-color: rgba(0, 122, 255, 0.15); }
+.contact-page .card strong { color: var(--color-text); }
+.contact-page .card .muted { color: var(--color-primary); }
+.contact-page .btn-primary { box-shadow: 0 12px 24px rgba(0, 122, 255, 0.25); }
+.contact-page .btn-primary:hover { box-shadow: 0 16px 32px rgba(0, 86, 204, 0.28); }
+
+/* Soften input backgrounds on contact page */
+.contact-page .field input,
+.contact-page .field textarea {
+  background: rgba(0, 122, 255, 0.06);
+  border-color: rgba(0, 122, 255, 0.18);
+  border-radius: var(--radius-md);
+  box-shadow: 0 0 0 0 rgba(0,122,255,0.0);
+}
+.contact-page .field input:hover,
+.contact-page .field textarea:hover { background: rgba(0, 122, 255, 0.08); }
+.contact-page .field input::placeholder,
+.contact-page .field textarea::placeholder { color: var(--color-text-dim); }
+
+/* Field focus lift */
+.contact-page .field:focus-within {
+  transform: translateY(-1px);
+  transition: transform 180ms ease;
+}
+.contact-page .field input:focus,
+.contact-page .field textarea:focus {
+  box-shadow: 0 10px 24px rgba(0, 122, 255, 0.10);
+}
+
+/* Form success pill (injected by JS) */
+.contact-page .form .pill {
+  margin-top: 8px;
+  background: linear-gradient(135deg, rgba(52,199,89,0.12), rgba(52,199,89,0.06));
+  border-color: rgba(52,199,89,0.28);
+  color: var(--color-text);
+}
+
+/* Error messaging prominence */
+.contact-page .form .error {
+  background: linear-gradient(180deg, rgba(255,59,48,0.08), rgba(255,59,48,0.04));
+  border: 1px solid rgba(255,59,48,0.25);
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+/* Elevate contact cards */
+.contact .card {
+  position: relative;
+  border: 1px solid rgba(0, 122, 255, 0.14);
+  background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.86));
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+.contact .card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-700));
+  opacity: 0.85;
+}
+.contact .card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.10);
+  transition: all 220ms ease;
+}
+
+/* Icon emphasis */
+.contact .card .contact-icon {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, rgba(0,122,255,0.12), rgba(0,122,255,0.06));
+}
+.contact .card strong { font-weight: 700; }
+.contact .card .muted { color: var(--color-text-dim); }
+
+/* Primary button glow (contact page) */
+.contact-page .btn-primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-700));
+  box-shadow: 0 10px 28px rgba(0, 122, 255, 0.28);
+}
+.contact-page .btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 16px 40px rgba(0, 86, 204, 0.34);
+}
+
+/* Responsive refinements */
+@media (max-width: 639.98px) {
+  .contact-page .form::before { margin: -28px -20px 16px -20px; }
+}
+
+

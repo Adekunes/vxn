@@ -19,6 +19,8 @@
     setupFormValidation();
     setupTypingEffect();
     setupHeaderScrollState();
+    setupEnhancedContactForm();
+    hideDuplicateHeroCtaOnHome();
   }
 
   function isInternalLink(anchor) {
@@ -28,6 +30,23 @@
     } catch (e) {
       return false;
     }
+  }
+
+  // Hide duplicate CTA in homepage hero when both buttons link to same page
+  function hideDuplicateHeroCtaOnHome(){
+    try {
+      var hero = document.querySelector('.hero');
+      if (!hero) return;
+      var ctas = Array.prototype.slice.call(hero.querySelectorAll('.hero-ctas .btn, .hero-ctas .btn-primary'));
+      if (ctas.length < 2) return;
+      var href1 = (ctas[0].getAttribute('href') || '').trim();
+      var href2 = (ctas[1].getAttribute('href') || '').trim();
+      if (href1 && href2 && href1 === href2) {
+        // Keep the primary if present; otherwise keep the first
+        var keep = hero.querySelector('.hero-ctas .btn-primary') || ctas[0];
+        ctas.forEach(function(btn){ if (btn !== keep) btn.parentElement && btn.parentElement.removeChild(btn); });
+      }
+    } catch(e) {}
   }
 
   function setupHeaderScrollState(){
@@ -268,6 +287,66 @@
         form.appendChild(notice);
         setTimeout(function () { if (notice && notice.parentElement) notice.parentElement.removeChild(notice); }, 4000);
       }
+    });
+  }
+
+  // -----------------------------
+  // Enhanced Contact Form UX
+  // -----------------------------
+  function setupEnhancedContactForm(){
+    var form = document.querySelector('form[data-validate="contact"][data-enhanced="true"]');
+    if (!form) return;
+
+    var inputs = Array.prototype.slice.call(form.querySelectorAll('input, textarea'));
+    var progressBar = document.querySelector('.form-progress .bar');
+    var message = form.querySelector('#message');
+    var messageCount = form.querySelector('#message-count');
+    var placeholders = [
+      'Tell us about your goals…',
+      'Which team will use this first?',
+      'What’s the outcome you want in 90 days?'
+    ];
+
+    // Autosize textarea
+    function autosize(el){
+      if (!el) return;
+      el.style.height = 'auto';
+      el.style.height = Math.min(800, Math.max(120, el.scrollHeight)) + 'px';
+    }
+    if (message){
+      autosize(message);
+      message.addEventListener('input', function(){
+        autosize(message);
+        if (messageCount){
+          var len = (message.value || '').length;
+          if (len > 800) { message.value = message.value.slice(0,800); len = 800; autosize(message); }
+          messageCount.textContent = len + ' / 800';
+        }
+      });
+      // Rotating placeholder for inspiration
+      var idx = 0;
+      setInterval(function(){
+        idx = (idx + 1) % placeholders.length;
+        if (!message.value) message.setAttribute('placeholder', placeholders[idx]);
+      }, 4000);
+    }
+
+    // Progress bar based on filled fields
+    function updateProgress(){
+      var required = inputs.filter(function(el){ return el.hasAttribute('required'); });
+      var filled = required.filter(function(el){ return !!(el.value && el.value.trim()); }).length;
+      var pct = Math.round((filled / Math.max(1, required.length)) * 100);
+      if (progressBar){
+        progressBar.style.width = pct + '%';
+        progressBar.setAttribute('aria-valuenow', String(pct));
+      }
+    }
+    inputs.forEach(function(el){ el.addEventListener('input', updateProgress); });
+    updateProgress();
+
+    // Submit micro-feedback
+    form.addEventListener('submit', function(){
+      if (progressBar){ progressBar.style.width = '100%'; }
     });
   }
 

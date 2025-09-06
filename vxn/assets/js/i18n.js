@@ -75,15 +75,17 @@
         else { try { console.debug('i18n missing key:', key); } catch(e) {} }
       });
 
-      // Fallback: value-based translation for elements without data-i18n
+      // Fallback: value-based translation for elements without data-i18n (round-trip)
       var baseFlat = flattenDict(base);
       var dictFlat = flattenDict(dict);
-      var valueMap = {};
+      var valueMapForward = {}; // en -> target
+      var valueMapReverse = {}; // target -> en
       Object.keys(baseFlat).forEach(function(k){
         var from = baseFlat[k];
         var to = dictFlat[k];
         if (typeof from === 'string' && typeof to === 'string') {
-          valueMap[from] = to;
+          valueMapForward[from] = to;
+          valueMapReverse[to] = from;
         }
       });
 
@@ -91,7 +93,7 @@
         if (el.hasAttribute('data-i18n')) return false;
         var t = (el.textContent || '').trim();
         if (!t) return false;
-        var repl = valueMap[t];
+        var repl = (lang === DEFAULT_LANG) ? valueMapReverse[t] : valueMapForward[t];
         if (typeof repl === 'string' && repl !== t) { setText(el, repl); return true; }
         return false;
       }
@@ -103,7 +105,7 @@
       var inputs = document.querySelectorAll('input[placeholder],textarea[placeholder]');
       inputs.forEach(function(el){
         var ph = el.getAttribute('placeholder');
-        var repl = valueMap[ph];
+        var repl = (lang === DEFAULT_LANG) ? valueMapReverse[ph] : valueMapForward[ph];
         if (typeof repl === 'string' && repl !== ph) { el.setAttribute('placeholder', repl); updated++; }
       });
 
