@@ -1771,6 +1771,11 @@
   margin-right: auto;
   }
   
+  /* Add spacing above testimonials heading when it follows a features grid */
+  .features + h2.heading-accent {
+  margin-top: 40px;
+  }
+  
   .quote {
   background: linear-gradient(180deg, var(--glass-bg), rgba(0, 122, 255, 0.03));
   backdrop-filter: var(--glass-blur);
@@ -1845,6 +1850,10 @@
   background: var(--color-surface);
   }
   
+  .site-footer .muted {
+  white-space: nowrap;
+  }
+  
   .footer-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -1909,6 +1918,7 @@
   .footer-grid {
   grid-template-columns: 1fr auto;
   text-align: left;
+  align-items: baseline;
   }
   }
   
