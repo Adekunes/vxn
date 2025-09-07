@@ -117,6 +117,27 @@
       var candidates = document.querySelectorAll('h1,h2,h3,h4,h5,h6,a,button,span,p,li,label,small,strong,em,th,td');
       candidates.forEach(function(el){ if (translateTextElement(el)) updated++; });
 
+      // Special handling: homepage hero title composed of two parts with styling
+      var heroTitleLine = document.querySelector('.hero-title .line');
+      if (heroTitleLine) {
+        var part1 = get(dict, 'value.index.title.part1');
+        var part2 = get(dict, 'value.index.title.part2');
+        if (typeof part1 === 'string' && typeof part2 === 'string') {
+          // Rebuild DOM to preserve accent styling and re-add data-i18n hooks
+          while (heroTitleLine.firstChild) heroTitleLine.removeChild(heroTitleLine.firstChild);
+          var s1 = document.createElement('span');
+          s1.setAttribute('data-i18n', 'value.index.title.part1');
+          s1.textContent = part1;
+          var s2 = document.createElement('span');
+          s2.className = 'accent';
+          s2.setAttribute('data-i18n', 'value.index.title.part2');
+          s2.textContent = part2;
+          heroTitleLine.appendChild(s1);
+          heroTitleLine.appendChild(s2);
+          updated++;
+        }
+      }
+
       // Placeholders
       var inputs = document.querySelectorAll('input[placeholder],textarea[placeholder]');
       inputs.forEach(function(el){
