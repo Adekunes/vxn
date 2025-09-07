@@ -3,6 +3,7 @@
   var STORAGE_KEY = 'vxn_lang';
   var CACHE = {};
   var LANG_NAME = { en: 'English', fr: 'Français' };
+  var APPLY_SEQ = 0; // prevents race conditions on rapid language switches
 
   var LEGACY_MAP = [
     { sel: '.nav-cta a.btn.btn-primary', key: 'nav.requestDemo' },
@@ -70,12 +71,14 @@
   }
 
   function applyTranslations(lang){
+    var mySeq = ++APPLY_SEQ;
     // Always merge selected language over default to avoid missing keys
     Promise.all([
       loadTranslations(DEFAULT_LANG),
       lang === DEFAULT_LANG ? Promise.resolve({}) : loadTranslations(lang),
       loadTranslations('fr')
     ]).then(function(res){
+      if (mySeq !== APPLY_SEQ) return; // A newer apply took precedence
       var base = res[0] || {};
       var over = res[1] || {};
       var frAll = res[2] || {};
