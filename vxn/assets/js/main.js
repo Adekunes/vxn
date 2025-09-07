@@ -23,6 +23,7 @@
     setupHeaderScrollState();
     setupEnhancedContactForm();
     hideDuplicateHeroCtaOnHome();
+    setupSeoMeta();
   }
 
   function isInternalLink(anchor) {
@@ -32,6 +33,40 @@
     } catch (e) {
       return false;
     }
+  }
+
+  // -----------------------------
+  // SEO Meta Helper
+  // -----------------------------
+  function setupSeoMeta(){
+    try {
+      var head = document.head;
+      var loc = window.location;
+      var canonicalHref = loc.origin + loc.pathname.replace(/index\.html$/, '');
+      // Canonical
+      var link = head.querySelector('link[rel="canonical"]');
+      if (!link){ link = document.createElement('link'); link.setAttribute('rel','canonical'); head.appendChild(link); }
+      link.setAttribute('href', canonicalHref);
+
+      // Basic OG/Twitter meta if missing
+      function setMeta(name, content){
+        if (!content) return;
+        var m = head.querySelector('meta[name="'+name+'"], meta[property="'+name+'"]');
+        if (!m){ m = document.createElement('meta'); if (name.indexOf(':')!==-1){ m.setAttribute('property', name);} else { m.setAttribute('name', name);} head.appendChild(m); }
+        m.setAttribute('content', content);
+      }
+
+      var title = document.title || 'VXN VISION';
+      var descMeta = head.querySelector('meta[name="description"]');
+      var desc = descMeta ? (descMeta.getAttribute('content')||'') : '';
+      setMeta('og:title', title);
+      setMeta('og:description', desc);
+      setMeta('og:url', canonicalHref);
+      setMeta('og:type', 'website');
+      setMeta('twitter:card', 'summary_large_image');
+      setMeta('twitter:title', title);
+      setMeta('twitter:description', desc);
+    } catch(e) {}
   }
 
   // Hide duplicate CTA in homepage hero when both buttons link to same page
