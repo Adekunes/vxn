@@ -107,12 +107,19 @@
 
       function translateTextElement(el){
         if (el.hasAttribute('data-i18n')) return false;
+        // Avoid translating containers that have element children to prevent duplication
+        if (el.children && el.children.length > 0) return false;
         var t = (el.textContent || '').trim();
         if (!t) return false;
         var repl = (lang === DEFAULT_LANG) ? valueMapReverse[t] : valueMapForward[t];
         if (typeof repl === 'string' && repl !== t) { setText(el, repl); return true; }
         return false;
       }
+
+      // Remove residual typing cursors on language switch
+      Array.prototype.slice.call(document.querySelectorAll('.typing-cursor')).forEach(function(cursor){
+        if (cursor && cursor.parentElement) cursor.parentElement.removeChild(cursor);
+      });
 
       var candidates = document.querySelectorAll('h1,h2,h3,h4,h5,h6,a,button,span,p,li,label,small,strong,em,th,td');
       candidates.forEach(function(el){ if (translateTextElement(el)) updated++; });
