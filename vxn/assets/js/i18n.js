@@ -73,10 +73,12 @@
     // Always merge selected language over default to avoid missing keys
     Promise.all([
       loadTranslations(DEFAULT_LANG),
-      lang === DEFAULT_LANG ? Promise.resolve({}) : loadTranslations(lang)
+      lang === DEFAULT_LANG ? Promise.resolve({}) : loadTranslations(lang),
+      loadTranslations('fr')
     ]).then(function(res){
       var base = res[0] || {};
       var over = res[1] || {};
+      var frAll = res[2] || {};
       var dict = deepMerge(base, over);
       document.documentElement.setAttribute('lang', lang);
 
@@ -95,16 +97,17 @@
       });
 
       // Fallback: value-based translation for elements without data-i18n (round-trip)
-      var baseFlat = flattenDict(base);
-      var dictFlat = flattenDict(dict);
-      var valueMapForward = {}; // en -> target
-      var valueMapReverse = {}; // target -> en
+      var baseFlat = flattenDict(base); // EN
+      var dictFlat = flattenDict(dict); // Selected
+      var frFlat = flattenDict(frAll);  // FR
+      var enToFr = {}; // en -> fr
+      var frToEn = {}; // fr -> en
       Object.keys(baseFlat).forEach(function(k){
-        var from = baseFlat[k];
-        var to = dictFlat[k];
-        if (typeof from === 'string' && typeof to === 'string') {
-          valueMapForward[from] = to;
-          valueMapReverse[to] = from;
+        var enV = baseFlat[k];
+        var frV = frFlat[k];
+        if (typeof enV === 'string' && typeof frV === 'string') {
+          enToFr[enV] = frV;
+          frToEn[frV] = enV;
         }
       });
 
@@ -114,7 +117,7 @@
         if (el.children && el.children.length > 0) return false;
         var t = (el.textContent || '').trim();
         if (!t) return false;
-        var repl = (lang === DEFAULT_LANG) ? valueMapReverse[t] : valueMapForward[t];
+        var repl = (lang === DEFAULT_LANG) ? frToEn[t] : enToFr[t];
         if (typeof repl === 'string' && repl !== t) { setText(el, repl); return true; }
         return false;
       }
