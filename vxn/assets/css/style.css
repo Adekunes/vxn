@@ -262,12 +262,12 @@
   
   /* Brand logo image */
   .brand-img {
-  height: 48px;
+  height: 5em;
   width: auto;
   display: block;
   }
   @media (max-width: 860px) {
-  .brand-img { height: 40px; }
+  .brand-img { height: 52px; }
   }
   
   .brand-mark {
