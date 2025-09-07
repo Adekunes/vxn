@@ -80,6 +80,9 @@
       var dict = deepMerge(base, over);
       document.documentElement.setAttribute('lang', lang);
 
+      // Stop any ongoing typing animations before changing text to prevent duplication
+      try { if (typeof window.cancelTyping === 'function') window.cancelTyping(); } catch(e) {}
+
       // data-i18n attributes
       var nodes = document.querySelectorAll('[data-i18n]');
       try { console.log('i18n scanning nodes:', nodes.length); } catch(e) {}

@@ -6,6 +6,8 @@
 
 (function () {
   var transitionDurationMs = 380;
+  // Generation token used to cancel in-flight typing animations
+  var typingGeneration = 0;
 
   function onReady() {
     // Allow CSS transition to apply after initial render
@@ -365,6 +367,7 @@
       var startDelay = options && options.startDelay != null ? options.startDelay : 0;
       var showCursor = options && options.showCursor !== false;
       var cursorMuted = !!(options && options.cursorMuted);
+      var myGeneration = typingGeneration;
 
       // Skip if no text or reduced motion
       if (!text || prefersReduced) return Promise.resolve(0);
@@ -385,6 +388,11 @@
 
       var i = 0;
       function step(){
+        // If a new generation was issued (e.g., language switch), cancel typing
+        if (myGeneration !== typingGeneration) {
+          try { if (cursor && cursor.parentElement) cursor.parentElement.removeChild(cursor); } catch(e) {}
+          return;
+        }
         if (i < original.length){
           // Insert next char before cursor
           if (cursor){ cursor.remove(); }
@@ -444,6 +452,15 @@
       cumulativeDelay = (isNaN(delayAttr) ? cumulativeDelay : delayAttr) + (el.textContent || '').length * (isNaN(speedAttr) ? 28 : speedAttr) + 350;
     });
   }
+
+  // Expose a cancellation hook for language switches
+  try {
+    window.cancelTyping = function(){
+      typingGeneration++;
+      var cursors = Array.prototype.slice.call(document.querySelectorAll('.typing-cursor'));
+      cursors.forEach(function(c){ if (c && c.parentElement) c.parentElement.removeChild(c); });
+    };
+  } catch(e) {}
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', onReady);
