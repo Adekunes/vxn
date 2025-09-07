@@ -17,9 +17,25 @@
     var url = new URL('assets/i18n/' + lang + '.json', window.location.href);
     // bust cache
     url.searchParams.set('_', Date.now());
+
+    function relaxedJsonParse(text){
+      try {
+        // Remove BOM
+        if (text.charCodeAt(0) === 0xFEFF) text = text.slice(1);
+        // Strip // and /* */ comments
+        text = text.replace(/\/\/[^\n]*$/mg, '').replace(/\/\*[\s\S]*?\*\//g, '');
+        // Remove trailing commas before } or ]
+        text = text.replace(/,\s*([}\]])/g, '$1');
+        return JSON.parse(text);
+      } catch (e) {
+        try { console.error('i18n JSON parse error:', e); } catch(_) {}
+        return {};
+      }
+    }
+
     return fetch(url.toString(), { cache: 'no-store' })
-      .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-      .then(function(json){ CACHE[lang] = json; try { console.log('Loaded translations for', lang); } catch(e) {} return json; })
+      .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+      .then(function(text){ var json = relaxedJsonParse(text); CACHE[lang] = json; try { console.log('Loaded translations for', lang); } catch(e) {} return json; })
       .catch(function(err){ try { console.error('i18n load failed for', lang, err); } catch(e) {} return {}; });
   }
 
