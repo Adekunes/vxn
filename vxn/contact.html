@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/contact.css" />
     
+    <!-- reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    
     <script defer src="assets/js/i18n.js"></script>
     <script defer src="assets/js/main.js"></script>
   </head>
@@ -21,8 +24,8 @@
 
     <header class="site-header">
       <div class="container nav" role="navigation" aria-label="Main">
-        <a class="brand" href="index.html" aria-label="VXN CRM Home">
-          <img class="brand-img" src="assets/img/vxn-logo.png" alt="VXN CRM" />
+        <a class="brand" href="index.html" aria-label="VXN Vision Home">
+          <img class="brand-img" src="assets/img/Power_Platform_scalable/shabeer vxn visio9n logo.png" alt="VXN Vision" />
         </a>
         <nav class="nav-links" aria-label="Primary">
           <a href="index.html" data-i18n="nav.home">Home</a>
@@ -89,8 +92,8 @@
 
       <section class="section">
         <div class="container contact">
-          <div class="form-progress" aria-hidden="true"><div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div></div>
           <form class="form reveal" data-validate="contact" aria-label="Contact form" data-enhanced="true">
+            <div class="form-progress" aria-hidden="true"><div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div></div>
             <div class="grid-2">
               <div class="field">
                 <label for="name" data-i18n="contact.form.name">Full name</label>
@@ -115,6 +118,10 @@
               <label for="message" data-i18n="contact.form.message">How can we help?</label>
               <textarea id="message" name="message" rows="5" required placeholder="Tell us about your goals…"></textarea>
               <div class="muted" id="message-count" aria-live="polite" style="font-size:12px; margin-top:6px;">0 / 800</div>
+            </div>
+            <div class="field">
+              <div class="g-recaptcha" data-sitekey="6LcSIMErAAAAAO4EsAd2Yt-PdRDY1C7T1eM16iZN"></div>
+              <p class="muted" style="font-size:12px; margin-top:4px;" data-i18n="contact.form.captcha">Please complete the reCAPTCHA verification to submit the form.</p>
             </div>
             <div style="display:flex; gap:10px; align-items:center;">
               <button class="btn btn-primary" type="submit" data-i18n="contact.form.send">Send message</button>
