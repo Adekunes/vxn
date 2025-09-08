@@ -1218,10 +1218,17 @@
   /* -----------------------------
     Typing Effect
   ------------------------------ */
+  [data-typed] {
+  background: linear-gradient(to right, #000 45%, #007aff 65%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
   .typing-line {
   white-space: pre-wrap;
   position: relative;
-  }
+}
 
   .typing-cursor {
   display: inline-block;
