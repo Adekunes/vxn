@@ -158,7 +158,7 @@
       var inputs = document.querySelectorAll('input[placeholder],textarea[placeholder]');
       inputs.forEach(function(el){
         var ph = el.getAttribute('placeholder');
-        var repl = (lang === DEFAULT_LANG) ? valueMapReverse[ph] : valueMapForward[ph];
+        var repl = (lang === DEFAULT_LANG) ? frToEn[ph] : enToFr[ph];
         if (typeof repl === 'string' && repl !== ph) { el.setAttribute('placeholder', repl); updated++; }
       });
 
@@ -181,7 +181,18 @@
       }
 
       try { localStorage.setItem(STORAGE_KEY, lang); } catch(e) {}
+      // Ensure active styling on all language buttons reflects current language
+      try { updateActiveLangButtons(lang); } catch(e) {}
       try { console.log('i18n applied:', lang, '→', updated, 'nodes'); } catch(e) {}
+    });
+  }
+
+  // Update visual active state for all language buttons across header and drawer
+  function updateActiveLangButtons(lang){
+    var buttons = document.querySelectorAll('.lang-switch [data-lang]');
+    buttons.forEach(function(b){
+      var isActive = b.getAttribute('data-lang') === lang;
+      b.classList.toggle('active', isActive);
     });
   }
 
@@ -189,6 +200,8 @@
     var saved = DEFAULT_LANG;
     try { saved = localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG; } catch(e) {}
     applyTranslations(saved);
+    // Apply active state on initial load so the current language is highlighted
+    try { updateActiveLangButtons(saved); } catch(e) {}
 
     // Explicit listeners on language switch buttons (more reliable on some layouts)
     var langButtons = document.querySelectorAll('.lang-switch [data-lang]');
@@ -197,8 +210,8 @@
         var lang = btn.getAttribute('data-lang');
         if (!lang) return;
         applyTranslations(lang);
-        // Visual active state (optional)
-        langButtons.forEach(function(b){ b.classList.toggle('active', b === btn); });
+        // Visual active state across all language buttons
+        updateActiveLangButtons(lang);
         try { console.log('Language selected:', LANG_NAME[lang] || lang); } catch(e) {}
       });
     });
@@ -210,6 +223,7 @@
       var lang = btn.getAttribute('data-lang');
       if (!lang) return;
       applyTranslations(lang);
+      updateActiveLangButtons(lang);
       try { console.log('Language selected:', LANG_NAME[lang] || lang); } catch(e) {}
     });
   }
