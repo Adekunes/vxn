@@ -93,6 +93,16 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
+.contact-page .form .form-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.contact-page .form .form-actions .btn,
+.contact-page .form .form-actions .btn-primary {
+  flex: 1 1 auto;
+}
 .contact-page .form::before {
   content: '';
   display: block;
@@ -216,7 +226,39 @@
 
 /* Responsive refinements */
 @media (max-width: 639.98px) {
-  .contact-page .form::before { margin: -28px -20px 16px -20px; }
+  .contact-page .form { padding: 20px; }
+  .contact-page .form::before { margin: -20px -20px 16px -20px; }
+  .contact-page .form .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .contact-page .form .form-actions .btn,
+  .contact-page .form .form-actions .btn-primary {
+    width: 100%;
+    min-height: 52px;
+    padding: 16px 20px;
+    font-size: 16px;
+  }
+  .contact-page .form .form-actions .muted {
+    text-align: center;
+  }
+  /* Prevent captcha overflow on small screens */
+  .contact-page .g-recaptcha {
+    transform-origin: 0 0;
+  }
+}
+
+/* Scale reCAPTCHA if it overflows the container width */
+@media (max-width: 360px) {
+  .contact-page .g-recaptcha {
+    transform: scale(0.88);
+  }
+}
+@media (max-width: 320px) {
+  .contact-page .g-recaptcha {
+    transform: scale(0.8);
+  }
 }
 
 
