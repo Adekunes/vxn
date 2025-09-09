@@ -268,6 +268,7 @@
     if (!form) return;
 
     var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var topAlert;
 
     function showError(field, message) {
       var container = field.closest('.field') || field.parentElement;
@@ -291,20 +292,80 @@
       field.removeAttribute('aria-invalid');
     }
 
+    function getRequiredFields(){
+      return [
+        form.querySelector('input[name="name"]'),
+        form.querySelector('input[name="email"]'),
+        form.querySelector('input[name="company"]'),
+        form.querySelector('input[name="team_size"]'),
+        form.querySelector('textarea[name="message"]')
+      ].filter(function(f){ return !!f; });
+    }
+
+    function updateTopAlert(count){
+      if (!topAlert){
+        topAlert = document.createElement('div');
+        topAlert.className = 'form-alert error';
+        topAlert.setAttribute('role', 'alert');
+        // insert after progress bar for visibility
+        var progress = form.querySelector('.form-progress');
+        if (progress && progress.parentElement){
+          progress.parentElement.insertBefore(topAlert, progress.nextSibling);
+        } else {
+          form.insertBefore(topAlert, form.firstChild);
+        }
+      }
+      if (count > 0){
+        topAlert.textContent = count + (count === 1 ? ' required field is missing.' : ' required fields are missing.');
+        topAlert.hidden = false;
+      } else {
+        topAlert.hidden = true;
+      }
+    }
+
+    function validateField(field){
+      if (!field) return true;
+      var value = (field.value || '').trim();
+      var ok = true;
+      clearError(field);
+      if (!value){
+        ok = false;
+        showError(field, 'This field is required.');
+      } else if (field.name === 'email' && !emailPattern.test(value)){
+        ok = false;
+        showError(field, 'Enter a valid email address.');
+      }
+      field.classList.toggle('is-invalid', !ok);
+      return ok;
+    }
+
+    // Live validation on blur and input for required fields
+    var allFields = getRequiredFields();
+    allFields.forEach(function(f){
+      f.addEventListener('blur', function(){ validateField(f); });
+      f.addEventListener('input', function(){
+        validateField(f);
+        var req = getRequiredFields();
+        var missing = req.filter(function(el){ return !(el.value && el.value.trim()); }).length;
+        updateTopAlert(missing);
+      });
+    });
+
     form.addEventListener('submit', function (e) {
       var isValid = true;
       var name = form.querySelector('input[name="name"]');
       var email = form.querySelector('input[name="email"]');
       var company = form.querySelector('input[name="company"]');
+      var teamSize = form.querySelector('input[name="team_size"]');
       var message = form.querySelector('textarea[name="message"]');
 
-      [name, email, company, message].forEach(function (field) {
+      var fields = [name, email, company, teamSize, message];
+      var firstInvalid = null;
+      fields.forEach(function(field){
         if (!field) return;
-        clearError(field);
-        if (!field.value || field.value.trim() === '') {
-          isValid = false;
-          showError(field, 'This field is required.');
-        }
+        var ok = validateField(field);
+        if (!ok && !firstInvalid) firstInvalid = field;
+        isValid = isValid && ok;
       });
 
       if (email && email.value && !emailPattern.test(email.value)) {
@@ -312,8 +373,39 @@
         showError(email, 'Enter a valid email address.');
       }
 
+      // Validate reCAPTCHA (if present)
+      try {
+        var hasRecaptcha = typeof grecaptcha !== 'undefined';
+        if (hasRecaptcha) {
+          var recaptchaResponse = grecaptcha.getResponse();
+          if (!recaptchaResponse) {
+            isValid = false;
+            // Show message near captcha container
+            var captchaContainer = form.querySelector('.g-recaptcha');
+            if (captchaContainer) {
+              var fieldLike = captchaContainer.closest('.field') || captchaContainer.parentElement || form;
+              var msgHost = fieldLike.querySelector('.error') || document.createElement('div');
+              msgHost.className = 'error';
+              msgHost.setAttribute('role', 'alert');
+              msgHost.textContent = 'Please complete the reCAPTCHA.';
+              if (!fieldLike.contains(msgHost)) fieldLike.appendChild(msgHost);
+            }
+          }
+        }
+      } catch (err) {}
+
+      // Update top alert with count of missing required fields
+      var req = getRequiredFields();
+      var missing = req.filter(function(el){ return !(el.value && el.value.trim()); }).length;
+      updateTopAlert(missing);
+
       if (!isValid) {
         e.preventDefault();
+        // Focus and scroll to the first invalid field to guide the user
+        if (firstInvalid && typeof firstInvalid.focus === 'function') {
+          firstInvalid.focus();
+          try { firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (_) {}
+        }
       } else {
         e.preventDefault();
         // Simulate successful submit for static site
@@ -323,6 +415,9 @@
         notice.textContent = 'Thanks! Your message has been sent.';
         form.appendChild(notice);
         setTimeout(function () { if (notice && notice.parentElement) notice.parentElement.removeChild(notice); }, 4000);
+        // Hide alert and invalid states after successful submission
+        if (topAlert) topAlert.hidden = true;
+        fields.forEach(function(field){ if (field) field.classList.remove('is-invalid'); });
       }
     });
   }

@@ -161,6 +161,21 @@
   border-radius: 8px;
 }
 
+/* Top form alert for missing required fields */
+.contact-page .form .form-alert.error {
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+/* Invalid field highlighting */
+.contact-page .field .is-invalid,
+.contact-page .field input.is-invalid,
+.contact-page .field textarea.is-invalid {
+  border-color: rgba(255,59,48,0.6);
+  background: rgba(255,59,48,0.06);
+  box-shadow: 0 0 0 4px rgba(255,59,48,0.12);
+}
+
 /* Elevate contact cards */
 .contact .card {
   position: relative;
