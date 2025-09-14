@@ -100,8 +100,12 @@
 
       <section class="section">
         <div class="container contact">
-          <form class="form reveal" data-validate="contact" aria-label="Contact form" data-enhanced="true">
+          <form class="form reveal" data-validate="contact" aria-label="Contact form" data-enhanced="true" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
             <div class="form-progress" aria-hidden="true"><div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div></div>
+            <input type="hidden" name="form-name" value="contact" />
+            <div hidden aria-hidden="true">
+              <label>Don’t fill this out: <input name="bot-field" /></label>
+            </div>
             <div class="grid-2">
               <div class="field">
                 <label for="name" data-i18n="contact.form.name">Full name</label>

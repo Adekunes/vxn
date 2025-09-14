@@ -406,18 +406,6 @@
           firstInvalid.focus();
           try { firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (_) {}
         }
-      } else {
-        e.preventDefault();
-        // Simulate successful submit for static site
-        form.reset();
-        var notice = document.createElement('div');
-        notice.className = 'pill';
-        notice.textContent = 'Thanks! Your message has been sent.';
-        form.appendChild(notice);
-        setTimeout(function () { if (notice && notice.parentElement) notice.parentElement.removeChild(notice); }, 4000);
-        // Hide alert and invalid states after successful submission
-        if (topAlert) topAlert.hidden = true;
-        fields.forEach(function(field){ if (field) field.classList.remove('is-invalid'); });
       }
     });
   }
