@@ -411,7 +411,10 @@
         // Block native submit while verifying on server
         e.preventDefault();
         var submitBtn = form.querySelector('button[type="submit"]');
-        if (submitBtn) submitBtn.disabled = true;
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.setAttribute('data-loading', '1');
+        }
         fetch('/.netlify/functions/verify-recaptcha', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -420,7 +423,18 @@
           .then(function(res){ return res.json().catch(function(){ return {}; }); })
           .then(function(data){
             if (data && data.success) {
-              if (submitBtn) submitBtn.disabled = false;
+              if (submitBtn) { submitBtn.disabled = false; submitBtn.removeAttribute('data-loading'); }
+              // Ensure hidden g-recaptcha-response field is present for backends that expect it
+              try {
+                var hidden = form.querySelector('input[name="g-recaptcha-response"]');
+                if (!hidden) {
+                  hidden = document.createElement('input');
+                  hidden.type = 'hidden';
+                  hidden.name = 'g-recaptcha-response';
+                  form.appendChild(hidden);
+                }
+                hidden.value = recaptchaResponse;
+              } catch (_) {}
               // Proceed with actual submission to Netlify Forms
               form.submit();
             } else {
@@ -430,10 +444,25 @@
                 var msgHost = fieldLike.querySelector('.error') || document.createElement('div');
                 msgHost.className = 'error';
                 msgHost.setAttribute('role', 'alert');
-                msgHost.textContent = 'reCAPTCHA verification failed. Please try again.';
+                // Map Google error codes to human-friendly messages
+                var codes = (data && data.errorCodes) || [];
+                var friendly = 'reCAPTCHA verification failed. Please try again.';
+                if (codes && codes.length) {
+                  var map = {
+                    'missing-input-secret': 'Server is missing the reCAPTCHA secret. Contact site owner.',
+                    'invalid-input-secret': 'Server reCAPTCHA secret is invalid. Contact site owner.',
+                    'missing-input-response': 'Please complete the reCAPTCHA.',
+                    'invalid-input-response': 'Invalid reCAPTCHA response. Please tick the checkbox again.',
+                    'bad-request': 'Bad verification request. Please retry.',
+                    'timeout-or-duplicate': 'reCAPTCHA expired or already used. Please check the box again.'
+                  };
+                  // Prefer the first code for messaging
+                  friendly = map[codes[0]] || friendly;
+                }
+                msgHost.textContent = friendly;
                 if (!fieldLike.contains(msgHost)) fieldLike.appendChild(msgHost);
               }
-              if (submitBtn) submitBtn.disabled = false;
+              if (submitBtn) { submitBtn.disabled = false; submitBtn.removeAttribute('data-loading'); }
               try { grecaptcha.reset(); } catch (_) {}
             }
           })
@@ -444,10 +473,10 @@
               var msgHost = fieldLike.querySelector('.error') || document.createElement('div');
               msgHost.className = 'error';
               msgHost.setAttribute('role', 'alert');
-              msgHost.textContent = 'Network error while verifying reCAPTCHA. Please retry.';
+              msgHost.textContent = 'Verification service unavailable. Please retry in a moment.';
               if (!fieldLike.contains(msgHost)) fieldLike.appendChild(msgHost);
             }
-            if (submitBtn) submitBtn.disabled = false;
+            if (submitBtn) { submitBtn.disabled = false; submitBtn.removeAttribute('data-loading'); }
           });
       }
       // If no reCAPTCHA present, allow normal submission
