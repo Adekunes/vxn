@@ -373,40 +373,84 @@
         showError(email, 'Enter a valid email address.');
       }
 
-      // Validate reCAPTCHA (if present)
-      try {
-        var hasRecaptcha = typeof grecaptcha !== 'undefined';
-        if (hasRecaptcha) {
-          var recaptchaResponse = grecaptcha.getResponse();
-          if (!recaptchaResponse) {
-            isValid = false;
-            // Show message near captcha container
+      // Update top alert with count of missing required fields
+      var req = getRequiredFields();
+      var missing = req.filter(function(el){ return !(el.value && el.value.trim()); }).length;
+      updateTopAlert(missing);
+
+      // If invalid basic fields, stop here
+      if (!isValid) {
+        e.preventDefault();
+        if (firstInvalid && typeof firstInvalid.focus === 'function') {
+          firstInvalid.focus();
+          try { firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (_) {}
+        }
+        return;
+      }
+
+      // If reCAPTCHA is present, verify with serverless function before allowing submit
+      var needsServerVerify = false;
+      var recaptchaResponse = '';
+      try { needsServerVerify = typeof grecaptcha !== 'undefined'; } catch (_) { needsServerVerify = false; }
+      if (needsServerVerify) {
+        try { recaptchaResponse = grecaptcha.getResponse(); } catch (_) { recaptchaResponse = ''; }
+        if (!recaptchaResponse) {
+          e.preventDefault();
+          var captchaContainer = form.querySelector('.g-recaptcha');
+          if (captchaContainer) {
+            var fieldLike = captchaContainer.closest('.field') || captchaContainer.parentElement || form;
+            var msgHost = fieldLike.querySelector('.error') || document.createElement('div');
+            msgHost.className = 'error';
+            msgHost.setAttribute('role', 'alert');
+            msgHost.textContent = 'Please complete the reCAPTCHA.';
+            if (!fieldLike.contains(msgHost)) fieldLike.appendChild(msgHost);
+          }
+          return;
+        }
+
+        // Block native submit while verifying on server
+        e.preventDefault();
+        var submitBtn = form.querySelector('button[type="submit"]');
+        if (submitBtn) submitBtn.disabled = true;
+        fetch('/.netlify/functions/verify-recaptcha', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token: recaptchaResponse })
+        })
+          .then(function(res){ return res.json().catch(function(){ return {}; }); })
+          .then(function(data){
+            if (data && data.success) {
+              if (submitBtn) submitBtn.disabled = false;
+              // Proceed with actual submission to Netlify Forms
+              form.submit();
+            } else {
+              var captchaContainer = form.querySelector('.g-recaptcha');
+              if (captchaContainer) {
+                var fieldLike = captchaContainer.closest('.field') || captchaContainer.parentElement || form;
+                var msgHost = fieldLike.querySelector('.error') || document.createElement('div');
+                msgHost.className = 'error';
+                msgHost.setAttribute('role', 'alert');
+                msgHost.textContent = 'reCAPTCHA verification failed. Please try again.';
+                if (!fieldLike.contains(msgHost)) fieldLike.appendChild(msgHost);
+              }
+              if (submitBtn) submitBtn.disabled = false;
+              try { grecaptcha.reset(); } catch (_) {}
+            }
+          })
+          .catch(function(){
             var captchaContainer = form.querySelector('.g-recaptcha');
             if (captchaContainer) {
               var fieldLike = captchaContainer.closest('.field') || captchaContainer.parentElement || form;
               var msgHost = fieldLike.querySelector('.error') || document.createElement('div');
               msgHost.className = 'error';
               msgHost.setAttribute('role', 'alert');
-              msgHost.textContent = 'Please complete the reCAPTCHA.';
+              msgHost.textContent = 'Network error while verifying reCAPTCHA. Please retry.';
               if (!fieldLike.contains(msgHost)) fieldLike.appendChild(msgHost);
             }
-          }
-        }
-      } catch (err) {}
-
-      // Update top alert with count of missing required fields
-      var req = getRequiredFields();
-      var missing = req.filter(function(el){ return !(el.value && el.value.trim()); }).length;
-      updateTopAlert(missing);
-
-      if (!isValid) {
-        e.preventDefault();
-        // Focus and scroll to the first invalid field to guide the user
-        if (firstInvalid && typeof firstInvalid.focus === 'function') {
-          firstInvalid.focus();
-          try { firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (_) {}
-        }
+            if (submitBtn) submitBtn.disabled = false;
+          });
       }
+      // If no reCAPTCHA present, allow normal submission
     });
   }
 
