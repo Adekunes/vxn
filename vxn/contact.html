@@ -148,9 +148,9 @@
     <div class="muted" id="message-count" aria-live="polite" style="font-size:12px; margin-top:6px;">0 / 800</div>
   </div>
 
-  <!-- reCAPTCHA -->
+  <!-- Netlify reCAPTCHA -->
   <div class="field">
-    <div class="g-recaptcha" data-sitekey="6LcSIMErAAAAAO4EsAd2Yt-PdRDY1C7T1eM16iZN"></div>
+    <div data-netlify-recaptcha="true"></div>
     <p class="muted" style="font-size:12px; margin-top:4px;" data-i18n="contact.form.captcha">
       Please complete the reCAPTCHA verification to submit the form.
     </p>
@@ -166,8 +166,7 @@
   </p>
 </form>
 
-<!-- Load reCAPTCHA script -->
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<!-- Netlify reCAPTCHA does not require a manual script include -->
 
           <div class="stack reveal" data-reveal-delay="100">
             <div class="card">
