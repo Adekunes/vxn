@@ -99,47 +99,75 @@
 
       <section class="section">
         <div class="container contact">
-          <form class="form reveal" data-validate="contact" aria-label="Contact form" data-enhanced="true" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
-            <div class="form-progress" aria-hidden="true"><div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div></div>
-            <input type="hidden" name="form-name" value="contact" />
-            <div hidden aria-hidden="true">
-              <label>Don’t fill this out: <input name="bot-field" /></label>
-            </div>
-            <div class="grid-2">
-              <div class="field">
-                <label for="name" data-i18n="contact.form.name">Full name</label>
-                <input id="name" name="name" type="text" autocomplete="name" required />
-              </div>
-              <div class="field">
-                <label for="email" data-i18n="contact.form.email">Work email</label>
-                <input id="email" name="email" type="email" autocomplete="email" required />
-              </div>
-            </div>
-            <div class="grid-2">
-              <div class="field">
-                <label for="company" data-i18n="contact.form.company">Company</label>
-                <input id="company" name="company" type="text" autocomplete="organization" required />
-              </div>
-              <div class="field">
-                <label for="team_size" data-i18n="contact.form.teamSize">Team size</label>
-                <input id="team_size" name="team_size" type="text" required />
-              </div>
-            </div>
-            <div class="field">
-              <label for="message" data-i18n="contact.form.message">How can we help?</label>
-              <textarea id="message" name="message" rows="5" required placeholder="Tell us about your goals…"></textarea>
-              <div class="muted" id="message-count" aria-live="polite" style="font-size:12px; margin-top:6px;">0 / 800</div>
-            </div>
-            <div class="field">
-              <div data-netlify-recaptcha="true"></div>
-              <p class="muted" style="font-size:12px; margin-top:4px;" data-i18n="contact.form.captcha">Please complete the reCAPTCHA verification to submit the form.</p>
-            </div>
-            <div class="form-actions" style="display:flex; gap:10px; align-items:center;">
-              <button class="btn btn-primary" type="submit" data-i18n="contact.form.send">Send message</button>
-              <span class="muted" data-i18n="contact.form.response">We'll respond within 48 hours.</span>
-            </div>
-            <p class="muted" style="margin-top:8px; font-size:13px;">By submitting, you agree to our <a href="privacy.html" class="accent">Privacy Policy</a>.</p>
-          </form>
+          <form class="form reveal" 
+      data-validate="contact" 
+      aria-label="Contact form" 
+      data-enhanced="true" 
+      name="contact" 
+      method="POST" 
+      data-netlify="true" 
+      data-netlify-honeypot="bot-field">
+  
+  <div class="form-progress" aria-hidden="true">
+    <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+  </div>
+
+  <!-- REQUIRED hidden field -->
+  <input type="hidden" name="form-name" value="contact" />
+
+  <!-- Honeypot (spam trap) -->
+  <div hidden aria-hidden="true">
+    <label>Don’t fill this out: <input name="bot-field" /></label>
+  </div>
+
+  <div class="grid-2">
+    <div class="field">
+      <label for="name" data-i18n="contact.form.name">Full name</label>
+      <input id="name" name="name" type="text" autocomplete="name" required />
+    </div>
+    <div class="field">
+      <label for="email" data-i18n="contact.form.email">Work email</label>
+      <input id="email" name="email" type="email" autocomplete="email" required />
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="field">
+      <label for="company" data-i18n="contact.form.company">Company</label>
+      <input id="company" name="company" type="text" autocomplete="organization" required />
+    </div>
+    <div class="field">
+      <label for="team_size" data-i18n="contact.form.teamSize">Team size</label>
+      <input id="team_size" name="team_size" type="text" required />
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="message" data-i18n="contact.form.message">How can we help?</label>
+    <textarea id="message" name="message" rows="5" required placeholder="Tell us about your goals…"></textarea>
+    <div class="muted" id="message-count" aria-live="polite" style="font-size:12px; margin-top:6px;">0 / 800</div>
+  </div>
+
+  <!-- reCAPTCHA -->
+  <div class="field">
+    <div class="g-recaptcha" data-sitekey="6LcSIMErAAAAAO4EsAd2Yt-PdRDY1C7T1eM16iZN"></div>
+    <p class="muted" style="font-size:12px; margin-top:4px;" data-i18n="contact.form.captcha">
+      Please complete the reCAPTCHA verification to submit the form.
+    </p>
+  </div>
+
+  <div class="form-actions" style="display:flex; gap:10px; align-items:center;">
+    <button class="btn btn-primary" type="submit" data-i18n="contact.form.send">Send message</button>
+    <span class="muted" data-i18n="contact.form.response">We'll respond within 48 hours.</span>
+  </div>
+
+  <p class="muted" style="margin-top:8px; font-size:13px;">
+    By submitting, you agree to our <a href="privacy.html" class="accent">Privacy Policy</a>.
+  </p>
+</form>
+
+<!-- Load reCAPTCHA script -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
           <div class="stack reveal" data-reveal-delay="100">
             <div class="card">
