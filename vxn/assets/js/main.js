@@ -388,10 +388,10 @@
         return;
       }
 
-      // If reCAPTCHA is present, verify with serverless function before allowing submit
-      var needsServerVerify = false;
+      // Optional server-side reCAPTCHA verification path.
+      // Only enabled if the form explicitly opts in via data-verify-recaptcha.
+      var needsServerVerify = form.hasAttribute('data-verify-recaptcha');
       var recaptchaResponse = '';
-      try { needsServerVerify = typeof grecaptcha !== 'undefined'; } catch (_) { needsServerVerify = false; }
       if (needsServerVerify) {
         try { recaptchaResponse = grecaptcha.getResponse(); } catch (_) { recaptchaResponse = ''; }
         if (!recaptchaResponse) {
