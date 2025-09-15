@@ -1,5 +1,12 @@
 [build]
   publish = "vxn"
+  command = ""
+
+[functions]
+  directory = "netlify/functions"
+
+[build]
+  publish = "vxn"
   functions = "netlify/functions"
 
 # Define environment variable name (set value in Netlify UI)
