@@ -13,8 +13,7 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/contact.css" />
     
-    <!-- reCAPTCHA -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    
     
     <script defer src="assets/js/i18n.js"></script>
     <script defer src="assets/js/main.js"></script>
@@ -132,7 +131,7 @@
               <div class="muted" id="message-count" aria-live="polite" style="font-size:12px; margin-top:6px;">0 / 800</div>
             </div>
             <div class="field">
-              <div class="g-recaptcha" data-sitekey="6LcSIMErAAAAAO4EsAd2Yt-PdRDY1C7T1eM16iZN"></div>
+              <div data-netlify-recaptcha="true"></div>
               <p class="muted" style="font-size:12px; margin-top:4px;" data-i18n="contact.form.captcha">Please complete the reCAPTCHA verification to submit the form.</p>
             </div>
             <div class="form-actions" style="display:flex; gap:10px; align-items:center;">
